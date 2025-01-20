@@ -1,0 +1,122 @@
+[
+    {
+        "avatar": "/images/avatar.png",
+        "name": "Olivia Rhys",
+        "email": "oliva.rhye@gmail.com",
+        "status": "Active",
+        "userStatus": "Internal",
+        "date": "24 Jan, 2023",
+        "role": "GP",
+        "id": 1
+    },
+    {
+        "avatar": "/images/avatar.png",
+        "name": "John Doe",
+        "email": "john.doe@gmail.com",
+        "status": "Inactive",
+        "userStatus": "External",
+        "date": "15 Feb, 2023",
+        "role": "Nurse Practitioner",
+        "id": 2
+    },
+    {
+        "avatar": "/images/avatar.png",
+        "name": "Jane Smith",
+        "email": "jane.smith@gmail.com",
+        "status": "Active",
+        "userStatus": "ThirdParty",
+        "date": "30 Mar, 2023",
+        "role": "Practice Manager",
+        "id": 3
+    },
+    {
+        "avatar": "/images/avatar.png",
+        "name": "Jane Smith",
+        "email": "jane.smith@gmail.com",
+        "status": "Active",
+        "userStatus": "ThirdParty",
+        "date": "30 Mar, 2023",
+        "role": "System Admin",
+        "id": 4
+    },
+    {
+        "avatar": "/images/avatar.png",
+        "name": "Jane Smith",
+        "email": "jane.smith@gmail.com",
+        "status": "Active",
+        "userStatus": "External",
+        "date": "30 Mar, 2023",
+        "role": "Nurse Practitioner",
+        "id": 5
+    },
+    {
+        "avatar": "/images/avatar.png",
+        "name": "Olivia Rhye",
+        "email": "oliva.rhye@gmail.com",
+        "status": "Active",
+        "userStatus": "Internal",
+        "date": "24 Jan, 2023",
+        "role": "GP",
+        "id": 6
+    },
+    {
+        "avatar": "/images/avatar.png",
+        "name": "John Doe",
+        "email": "john.doe@gmail.com",
+        "status": "Inactive",
+        "userStatus": "External",
+        "date": "15 Feb, 2023",
+        "role": "Nurse Practitioner",
+        "id": 7
+    },
+    {
+        "avatar": "/images/avatar.png",
+        "name": "Jane Smith",
+        "email": "jane.smith@gmail.com",
+        "status": "Active",
+        "userStatus": "ThirdParty",
+        "date": "30 Mar, 2023",
+        "role": "Practice Manager",
+        "id": 8
+    },
+    {
+        "avatar": "/images/avatar.png",
+        "name": "Jane Smith",
+        "email": "jane.smith@gmail.com",
+        "status": "Active",
+        "userStatus": "ThirdParty",
+        "date": "30 Mar, 2023",
+        "role": "System Admin",
+        "id": 9
+    },
+    {
+        "avatar": "/images/avatar.png",
+        "name": "Jane Smith",
+        "email": "jane.smith@gmail.com",
+        "status": "Active",
+        "userStatus": "External",
+        "date": "30 Mar, 2023",
+        "role": "Nurse Practitioner",
+        "id": 10
+    },
+    {
+        "avatar": "/images/avatar.png",
+        "name": "Jane Smith",
+        "email": "jane.smith@gmail.com",
+        "status": "Active",
+        "userStatus": "External",
+        "date": "30 Mar, 2023",
+        "role": "Nurse Practitioner",
+        "id": 11
+    },
+    {
+        "avatar": "/images/avatar.png",
+        "name": "Jane Smith",
+        "email": "jane.smith@gmail.com",
+        "status": "Active",
+        "userStatus": "External",
+        "date": "30 Mar, 2023",
+        "role": "Nurse Practitioner",
+        "id": 12
+    }
+]

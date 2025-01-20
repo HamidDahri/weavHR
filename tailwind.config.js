@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-const flowbite = require("flowbite-react/tailwind");
+import flowbite from "flowbite-react/tailwind";
 
 module.exports = {
   content: [
@@ -17,6 +17,7 @@ module.exports = {
         primaryDark: "#662797",
         success50: "#ECFDF3",
         success700: "#027A48",
+        ebonClay: "#1D2939",
       },
     },
   },

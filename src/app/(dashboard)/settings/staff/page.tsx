@@ -8,131 +8,10 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState, useEffect } from "react";
 import AddStaffForm from "../../../components/AddStaffForm";
+import { useRouter } from "next/navigation";
+import data from "../../../../../public/_data/userData.json";
 
 export default function StaffPage() {
-  const [data, setData] = useState([
-    {
-      avatar: "/images/avatar.png",
-      name: "Olivia Rhye",
-      email: "oliva.rhye@gmail.com",
-      status: "Active",
-      userStatus: "Checked-in",
-      date: "24 Jan, 2023",
-      role: "GP",
-      id: 1,
-    },
-    {
-      avatar: "/images/avatar.png",
-      name: "John Doe",
-      email: "john.doe@gmail.com",
-      status: "Inactive",
-      userStatus: "Assigned",
-      date: "15 Feb, 2023",
-      role: "Nurse Practitioner",
-      id: 2,
-    },
-    {
-      avatar: "/images/avatar.png",
-      name: "Jane Smith",
-      email: "jane.smith@gmail.com",
-      status: "Active",
-      userStatus: "CounterOffer",
-      date: "30 Mar, 2023",
-      role: "Practice Manager",
-      id: 3,
-    },
-    {
-      avatar: "/images/avatar.png",
-      name: "Jane Smith",
-      email: "jane.smith@gmail.com",
-      status: "Active",
-      userStatus: "CounterOffer",
-      date: "30 Mar, 2023",
-      role: "System Admin",
-      id: 4,
-    },
-    {
-      avatar: "/images/avatar.png",
-      name: "Jane Smith",
-      email: "jane.smith@gmail.com",
-      status: "Active",
-      userStatus: "Assigned",
-      date: "30 Mar, 2023",
-      role: "Nurse Practitioner",
-      id: 5,
-    },
-    {
-      avatar: "/images/avatar.png",
-      name: "Olivia Rhye",
-      email: "oliva.rhye@gmail.com",
-      status: "Active",
-      userStatus: "Checked-in",
-      date: "24 Jan, 2023",
-      role: "GP",
-      id: 6,
-    },
-    {
-      avatar: "/images/avatar.png",
-      name: "John Doe",
-      email: "john.doe@gmail.com",
-      status: "Inactive",
-      userStatus: "Assigned",
-      date: "15 Feb, 2023",
-      role: "Nurse Practitioner",
-      id: 7,
-    },
-    {
-      avatar: "/images/avatar.png",
-      name: "Jane Smith",
-      email: "jane.smith@gmail.com",
-      status: "Active",
-      userStatus: "CounterOffer",
-      date: "30 Mar, 2023",
-      role: "Practice Manager",
-      id: 8,
-    },
-    {
-      avatar: "/images/avatar.png",
-      name: "Jane Smith",
-      email: "jane.smith@gmail.com",
-      status: "Active",
-      userStatus: "CounterOffer",
-      date: "30 Mar, 2023",
-      role: "System Admin",
-      id: 9,
-    },
-    {
-      avatar: "/images/avatar.png",
-      name: "Jane Smith",
-      email: "jane.smith@gmail.com",
-      status: "Active",
-      userStatus: "Assigned",
-      date: "30 Mar, 2023",
-      role: "Nurse Practitioner",
-      id: 10,
-    },
-    {
-      avatar: "/images/avatar.png",
-      name: "Jane Smith",
-      email: "jane.smith@gmail.com",
-      status: "Active",
-      userStatus: "Assigned",
-      date: "30 Mar, 2023",
-      role: "Nurse Practitioner",
-      id: 11,
-    },
-    {
-      avatar: "/images/avatar.png",
-      name: "Jane Smith",
-      email: "jane.smith@gmail.com",
-      status: "Active",
-      userStatus: "Assigned",
-      date: "30 Mar, 2023",
-      role: "Nurse Practitioner",
-      id: 12,
-    },
-  ]);
-
   const [addStaff, setAddStaff] = useState(false);
 
   const [openDropdownId, setOpenDropdownId] = useState(null);
@@ -195,6 +74,12 @@ export default function StaffPage() {
   const toggleDropdown = (id, e) => {
     e.stopPropagation();
     setOpenDropdownId(openDropdownId === id ? null : id);
+  };
+
+  const router = useRouter();
+
+  const handleRowClick = (id: number) => {
+    router.push(`/settings/staff/${id}`); // Navigate to the user detail page
   };
 
   if (addStaff) {
@@ -307,15 +192,16 @@ export default function StaffPage() {
                 <tr
                   key={item.id}
                   className="bg-white border-b hover:bg-slate-100"
+                  onClick={() => handleRowClick(item.id)}
                 >
                   <td
                     scope="row"
                     className={`flex items-center px-6 py-4 text-gray-900 border-l-[3px] ${
-                      item.userStatus === "Checked-in"
+                      item.userStatus === "Internal"
+                        ? "border-l-purple-400"
+                        : item.userStatus === "External"
                         ? "border-l-green-400"
-                        : item.userStatus === "CounterOffer"
-                        ? "border-l-red-400"
-                        : item.userStatus.trim() === "Assigned"
+                        : item.userStatus.trim() === "ThirdParty"
                         ? "border-l-yellow-400"
                         : ""
                     } whitespace-nowrap`}

@@ -30,7 +30,7 @@ const OrganizationAddressForm: React.FC<OrganizationAddressFormProps> = ({
           <input
             id="state"
             type="text"
-            className={`w-full px-3 py-2.5 border border-gray-300 shadow-sm rounded-lg outline-none placeholder:text-gray-m-500`}
+            className={`w-full px-3 py-2.5 border border-gray-300 shadow-sm rounded-lg outline-none focus:ring-primary placeholder:text-gray-m-500`}
             name="state"
             placeholder=""
           ></input>
@@ -49,7 +49,7 @@ const OrganizationAddressForm: React.FC<OrganizationAddressFormProps> = ({
           <input
             id="state"
             type="text"
-            className={`w-full px-3 py-2.5 border border-gray-300 shadow-sm rounded-lg outline-none placeholder:text-gray-m-500`}
+            className={`w-full px-3 py-2.5 border border-gray-300 shadow-sm rounded-lg outline-none focus:ring-primary placeholder:text-gray-m-500`}
             name="state"
             placeholder=""
           ></input>
@@ -68,7 +68,7 @@ const OrganizationAddressForm: React.FC<OrganizationAddressFormProps> = ({
           <input
             id="state"
             type="text"
-            className={`w-full px-3 py-2.5 border border-gray-300 shadow-sm rounded-lg outline-none placeholder:text-gray-m-500`}
+            className={`w-full px-3 py-2.5 border border-gray-300 shadow-sm rounded-lg outline-none focus:ring-primary placeholder:text-gray-m-500`}
             name="state"
             placeholder=""
           ></input>
@@ -86,7 +86,7 @@ const OrganizationAddressForm: React.FC<OrganizationAddressFormProps> = ({
           <input
             id="state"
             type="text"
-            className={`w-full px-3 py-2.5 border border-gray-300 shadow-sm rounded-lg outline-none placeholder:text-gray-m-500`}
+            className={`w-full px-3 py-2.5 border border-gray-300 shadow-sm rounded-lg outline-none focus:ring-primary placeholder:text-gray-m-500`}
             name="state"
             placeholder=""
           ></input>
@@ -107,7 +107,7 @@ const OrganizationAddressForm: React.FC<OrganizationAddressFormProps> = ({
               name="registerTypeSelection"
               // value={values.registerTypeSelection}
               // onChange={handleChange}
-              className="w-full px-3 py-2.5 border rounded-lg border-gray-300 outline-none appearance-none outline-gray-m-400 select-wrapper"
+              className="w-full px-3 py-2.5 border rounded-lg border-gray-300 outline-none focus:ring-primary appearance-none outline-gray-m-400 select-wrapper"
             >
               <option value="pk">Pakistan</option>
               <option value="in">India</option>

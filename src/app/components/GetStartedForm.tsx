@@ -66,7 +66,7 @@ const GetStartedForm: React.FC<GetStartedFormProps> = ({ onClickHandler }) => {
           <input
             id="organizationName"
             type="text"
-            className={`w-full px-3 py-2.5 border border-gray-300 shadow-sm rounded-lg outline-none placeholder:text-gray-m-500 ${
+            className={`w-full px-3 py-2.5 border border-gray-300 shadow-sm rounded-lg focus:ring-primary outline-none placeholder:text-gray-m-500 ${
               errors.organizationName ? "border-red-500" : ""
             }`}
             name="organizationName"
@@ -90,7 +90,7 @@ const GetStartedForm: React.FC<GetStartedFormProps> = ({ onClickHandler }) => {
           <input
             id="businessNumber"
             type="text"
-            className={`w-full px-3 py-2.5 border border-gray-300 shadow-sm rounded-lg outline-none placeholder:text-gray-m-500 ${
+            className={`w-full px-3 py-2.5 border border-gray-300 shadow-sm rounded-lg focus:ring-primary outline-none placeholder:text-gray-m-500 ${
               errors.businessNumber ? "border-red-500" : ""
             }`}
             name="businessNumber"
@@ -115,7 +115,7 @@ const GetStartedForm: React.FC<GetStartedFormProps> = ({ onClickHandler }) => {
             <select
               id="industryType"
               name="industryType"
-              className="w-full px-3 py-2.5 border rounded-lg border-gray-300 outline-none appearance-none outline-gray-m-400 select-wrapper"
+              className="w-full px-3 py-2.5 border rounded-lg border-gray-300 outline-none focus:ring-primary appearance-none outline-gray-m-400 select-wrapper"
               value={formData.industryType}
               onChange={handleChange}
             >
@@ -142,7 +142,7 @@ const GetStartedForm: React.FC<GetStartedFormProps> = ({ onClickHandler }) => {
             <select
               id="organizationType"
               name="organizationType"
-              className="w-full px-3 py-2.5 border rounded-lg border-gray-300 outline-none appearance-none outline-gray-m-400 select-wrapper"
+              className="w-full px-3 py-2.5 border rounded-lg border-gray-300 outline-none focus:ring-primary appearance-none outline-gray-m-400 select-wrapper"
               value={formData.organizationType}
               onChange={handleChange}
             >
@@ -171,7 +171,7 @@ const GetStartedForm: React.FC<GetStartedFormProps> = ({ onClickHandler }) => {
             <select
               id="organizationSize"
               name="organizationSize"
-              className="w-full px-3 py-2.5 border rounded-lg border-gray-300 outline-none appearance-none outline-gray-m-400 select-wrapper"
+              className="w-full px-3 py-2.5 border rounded-lg border-gray-300 outline-none focus:ring-primary appearance-none outline-gray-m-400 select-wrapper"
               value={formData.organizationSize}
               onChange={handleChange}
             >

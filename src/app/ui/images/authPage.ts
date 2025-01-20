@@ -6,6 +6,7 @@ import arrowWithTailIcon from "/public/images/arrowWithTailIcon.svg";
 import logo from "/public/images/logo.svg";
 import logoColor from "/public/images/logoColor.svg";
 import mailIconWhite from "/public/images/mailIconWhite.svg";
+import logo2 from "/public/images/logoHalf.svg";
 export const authPage = {
   logo: logo,
   mailIconWhite: mailIconWhite,
@@ -15,4 +16,5 @@ export const authPage = {
   arrowWithTailIcon: arrowWithTailIcon,
   logoColor: logoColor,
   starIcon : starIcon,
+  logo2:logo2
 };

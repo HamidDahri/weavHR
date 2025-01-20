@@ -2,7 +2,7 @@ import React from "react";
 import { Images } from "../ui/images";
 import Image from "next/image";
 import Slider from "../components/Slider";
-import dataSlider from "../components/_data/slider-data.json";
+import dataSlider from "../../../public/_data/slider-data.json";
 const SideSection = () => {
   return (
     <div className="flex flex-col justify-between h-screen gap-3 p-8">

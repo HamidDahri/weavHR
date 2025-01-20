@@ -33,7 +33,7 @@ export default function RootLayout({ children }) {
       </head>
       <body className={`${GoogFonts.Outfit.variable}`}>
         {children}
-        <script src="/flowbite/flowbite.min.js" async></script>
+        <script src="/flowbite/flowbite.min.js" defer></script>
       </body>
     </html>
   );

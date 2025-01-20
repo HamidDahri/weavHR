@@ -30,7 +30,7 @@ const AccountSetupForm: React.FC<AccountSetupFormProps> = ({
           <input
             id="state"
             type="text"
-            className={`w-full px-3 py-2.5 border border-gray-300 shadow-sm rounded-lg outline-none placeholder:text-gray-m-500`}
+            className={`w-full px-3 py-2.5 border border-gray-300 shadow-sm focus:ring-primary rounded-lg outline-none placeholder:text-gray-m-500`}
             name="state"
             placeholder=""
           ></input>
@@ -54,7 +54,7 @@ const AccountSetupForm: React.FC<AccountSetupFormProps> = ({
           <input
             id="state"
             type="text"
-            className={`w-full px-3 py-2.5 border border-gray-300 shadow-sm rounded-lg outline-none placeholder:text-gray-m-500`}
+            className={`w-full px-3 py-2.5 border border-gray-300 shadow-sm focus:ring-primary rounded-lg outline-none placeholder:text-gray-m-500`}
             name="state"
             placeholder=""
           ></input>
@@ -95,7 +95,7 @@ const AccountSetupForm: React.FC<AccountSetupFormProps> = ({
           <input
             id="state"
             type="text"
-            className={`w-full px-3 py-2.5 border border-gray-300 shadow-sm rounded-lg outline-none placeholder:text-gray-m-500`}
+            className={`w-full px-3 py-2.5 border border-gray-300 shadow-sm rounded-lg focus:ring-primary outline-none placeholder:text-gray-m-500`}
             name="state"
             placeholder=""
           ></input>
@@ -119,7 +119,7 @@ const AccountSetupForm: React.FC<AccountSetupFormProps> = ({
               name="registerTypeSelection"
               // value={values.registerTypeSelection}
               // onChange={handleChange}
-              className="w-full px-3 py-2.5 border rounded-lg border-gray-300 outline-none appearance-none outline-gray-m-400 select-wrapper"
+              className="w-full px-3 py-2.5 border rounded-lg border-gray-300 focus:ring-primary outline-none appearance-none outline-gray-m-400 select-wrapper"
             >
               <option value="Wellington">Wellington (GMT+13)</option>
               <option value=" New Zealand">New Zealand (GMT+13)</option>

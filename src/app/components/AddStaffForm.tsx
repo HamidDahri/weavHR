@@ -75,7 +75,7 @@ const AddStaffForm: React.FC<AddStaffFormProps> = ({ onClickHandler }) => {
             <input
               id="state"
               type="text"
-              className={`w-full px-3 py-2.5 border border-gray-300 shadow-sm rounded-lg outline-none placeholder:text-gray-m-500`}
+              className={`w-full px-3 py-2.5 border border-gray-300 focus:ring-primary shadow-sm rounded-lg outline-none placeholder:text-gray-m-500`}
               name="state"
               placeholder=""
             ></input>
@@ -94,7 +94,7 @@ const AddStaffForm: React.FC<AddStaffFormProps> = ({ onClickHandler }) => {
             <input
               id="state"
               type="text"
-              className={`w-full px-3 py-2.5 border border-gray-300 shadow-sm rounded-lg outline-none placeholder:text-gray-m-500`}
+              className={`w-full px-3 py-2.5 border border-gray-300 focus:ring-primary shadow-sm rounded-lg outline-none placeholder:text-gray-m-500`}
               name="state"
               placeholder=""
             ></input>
@@ -113,7 +113,7 @@ const AddStaffForm: React.FC<AddStaffFormProps> = ({ onClickHandler }) => {
             <input
               id="state"
               type="text"
-              className={`w-full px-3 py-2.5 border border-gray-300 shadow-sm rounded-lg outline-none placeholder:text-gray-m-500`}
+              className={`w-full px-3 py-2.5 border border-gray-300 focus:ring-primary shadow-sm rounded-lg outline-none placeholder:text-gray-m-500`}
               name="state"
               placeholder="Enter Mobile"
             ></input>
@@ -134,7 +134,7 @@ const AddStaffForm: React.FC<AddStaffFormProps> = ({ onClickHandler }) => {
             <input
               id="state"
               type="text"
-              className={`w-full px-3 py-2.5 border border-gray-300 shadow-sm rounded-lg outline-none placeholder:text-gray-m-500`}
+              className={`w-full px-3 py-2.5 border border-gray-300 shadow-sm focus:ring-primary rounded-lg outline-none placeholder:text-gray-m-500`}
               name="state"
               placeholder="Enter Email"
             ></input>
@@ -155,7 +155,7 @@ const AddStaffForm: React.FC<AddStaffFormProps> = ({ onClickHandler }) => {
           <textarea
             id="message"
             rows={4}
-            className="block p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 placeholder:text-slate-500 focus:ring-blue-500 focus:border-blue-500 resize-none"
+            className="block p-2.5 w-full text-sm text-gray-900 bg-white focus:ring-primary rounded-lg border border-gray-300 placeholder:text-slate-500  focus:border-primary resize-none"
             placeholder="Write overview......"
           ></textarea>
         </div>
@@ -173,7 +173,7 @@ const AddStaffForm: React.FC<AddStaffFormProps> = ({ onClickHandler }) => {
           <textarea
             id="message"
             rows={4}
-            className="block p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 placeholder:text-slate-500 focus:ring-blue-500 focus:border-blue-500 resize-none"
+            className="block p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 placeholder:text-slate-500 focus:ring-primary focus:border-primary resize-none"
             placeholder="Write a note"
           ></textarea>
         </div>
@@ -261,7 +261,7 @@ const AddStaffForm: React.FC<AddStaffFormProps> = ({ onClickHandler }) => {
               <input
                 type="search"
                 id="default-search"
-                className="block w-full p-3 text-sm text-gray-900 bg-white border border-gray-300 rounded-lg placeholder:text-slate-500 pe-10 focus:ring-blue-500 focus:border-blue-500 "
+                className="block w-full p-3 text-sm text-gray-900 bg-white border border-gray-300 rounded-lg focus:ring-primary placeholder:text-slate-500 pe-10 focus:ring-blue-500 focus:border-blue-500 "
                 placeholder="Search address"
                 required
               />
@@ -277,7 +277,7 @@ const AddStaffForm: React.FC<AddStaffFormProps> = ({ onClickHandler }) => {
             <input
               id="state"
               type="text"
-              className={`w-full px-3 py-2.5 border border-gray-300 shadow-sm rounded-lg outline-none placeholder:text-gray-m-500`}
+              className={`w-full px-3 py-2.5 border focus:ring-primary border-gray-300 shadow-sm rounded-lg outline-none placeholder:text-gray-m-500`}
               name="state"
               placeholder="Building #"
             ></input>
@@ -293,7 +293,7 @@ const AddStaffForm: React.FC<AddStaffFormProps> = ({ onClickHandler }) => {
             <input
               id="state"
               type="text"
-              className={`w-full px-3 py-2.5 border border-gray-300 shadow-sm rounded-lg outline-none placeholder:text-gray-m-500`}
+              className={`w-full px-3 py-2.5 border focus:ring-primary border-gray-300 shadow-sm rounded-lg outline-none placeholder:text-gray-m-500`}
               name="state"
               placeholder="Street #"
             ></input>
@@ -311,7 +311,7 @@ const AddStaffForm: React.FC<AddStaffFormProps> = ({ onClickHandler }) => {
               <select
                 id="registerTypeSelection"
                 name="registerTypeSelection"
-                className="w-full px-3 py-2.5 border rounded-lg border-gray-300 outline-none appearance-none outline-gray-m-400 select-wrapper"
+                className="w-full px-3 py-2.5 border rounded-lg focus:ring-primary border-gray-300 outline-none appearance-none outline-gray-m-400 select-wrapper"
               >
                 <option value="Wellington">Wellington (GMT+13)</option>
                 <option value=" New Zealand">New Zealand (GMT+13)</option>
@@ -335,7 +335,7 @@ const AddStaffForm: React.FC<AddStaffFormProps> = ({ onClickHandler }) => {
               <select
                 id="registerTypeSelection"
                 name="registerTypeSelection"
-                className="w-full px-3 py-2.5 border rounded-lg border-gray-300 outline-none appearance-none outline-gray-m-400 select-wrapper"
+                className="w-full px-3 py-2.5 border rounded-lg focus:ring-primary border-gray-300 outline-none appearance-none outline-gray-m-400 select-wrapper"
               >
                 <option value="Wellington">Wellington (GMT+13)</option>
                 <option value=" New Zealand">New Zealand (GMT+13)</option>
@@ -359,7 +359,7 @@ const AddStaffForm: React.FC<AddStaffFormProps> = ({ onClickHandler }) => {
               <select
                 id="registerTypeSelection"
                 name="registerTypeSelection"
-                className="w-full px-3 py-2.5 border rounded-lg border-gray-300 outline-none appearance-none outline-gray-m-400 select-wrapper"
+                className="w-full px-3 py-2.5 border rounded-lg focus:ring-primary border-gray-300 outline-none appearance-none outline-gray-m-400 select-wrapper"
               >
                 <option value="Wellington">Wellington (GMT+13)</option>
                 <option value=" New Zealand">New Zealand (GMT+13)</option>
@@ -382,7 +382,7 @@ const AddStaffForm: React.FC<AddStaffFormProps> = ({ onClickHandler }) => {
             <input
               id="state"
               type="text"
-              className={`w-full px-3 py-2.5 border border-gray-300 shadow-sm rounded-lg outline-none placeholder:text-gray-m-500`}
+              className={`w-full px-3 py-2.5 border border-gray-300 focus:ring-primary shadow-sm rounded-lg outline-none placeholder:text-gray-m-500`}
               name="state"
               placeholder="Enter Postal code"
             ></input>
@@ -397,7 +397,7 @@ const AddStaffForm: React.FC<AddStaffFormProps> = ({ onClickHandler }) => {
             <input
               id="state"
               type="text"
-              className={`w-full px-3 py-2.5 border border-gray-300 shadow-sm rounded-lg outline-none placeholder:text-gray-m-500`}
+              className={`w-full px-3 py-2.5 border border-gray-300 focus:ring-primary shadow-sm rounded-lg outline-none placeholder:text-gray-m-500`}
               name="state"
               placeholder=""
             ></input>
@@ -412,7 +412,7 @@ const AddStaffForm: React.FC<AddStaffFormProps> = ({ onClickHandler }) => {
             <input
               id="state"
               type="text"
-              className={`w-full px-3 py-2.5 border border-gray-300 shadow-sm rounded-lg outline-none placeholder:text-gray-m-500`}
+              className={`w-full px-3 py-2.5 border border-gray-300 focus:ring-primary shadow-sm rounded-lg outline-none placeholder:text-gray-m-500`}
               name="state"
               placeholder=""
             ></input>
@@ -427,7 +427,7 @@ const AddStaffForm: React.FC<AddStaffFormProps> = ({ onClickHandler }) => {
             <input
               id="state"
               type="text"
-              className={`w-full px-3 py-2.5 border border-gray-300 shadow-sm rounded-lg outline-none placeholder:text-gray-m-500`}
+              className={`w-full px-3 py-2.5 border border-gray-300 shadow-sm focus:ring-primary rounded-lg outline-none placeholder:text-gray-m-500`}
               name="state"
               placeholder=""
             ></input>
@@ -448,7 +448,7 @@ const AddStaffForm: React.FC<AddStaffFormProps> = ({ onClickHandler }) => {
             <input
               id="state"
               type="text"
-              className={`w-full px-3 py-2.5 border border-gray-300 shadow-sm rounded-lg outline-none placeholder:text-gray-m-500`}
+              className={`w-full px-3 py-2.5 border border-gray-300 shadow-sm focus:ring-primary rounded-lg outline-none placeholder:text-gray-m-500`}
               name="state"
               placeholder=""
             ></input>
@@ -463,7 +463,7 @@ const AddStaffForm: React.FC<AddStaffFormProps> = ({ onClickHandler }) => {
             <input
               id="state"
               type="text"
-              className={`w-full px-3 py-2.5 border border-gray-300 shadow-sm rounded-lg outline-none placeholder:text-gray-m-500`}
+              className={`w-full px-3 py-2.5 border border-gray-300 shadow-sm focus:ring-primary rounded-lg outline-none placeholder:text-gray-m-500`}
               name="state"
               placeholder=""
             ></input>
@@ -478,7 +478,7 @@ const AddStaffForm: React.FC<AddStaffFormProps> = ({ onClickHandler }) => {
             <input
               id="state"
               type="text"
-              className={`w-full px-3 py-2.5 border border-gray-300 shadow-sm rounded-lg outline-none placeholder:text-gray-m-500`}
+              className={`w-full px-3 py-2.5 border border-gray-300 shadow-sm focus:ring-primary rounded-lg outline-none placeholder:text-gray-m-500`}
               name="state"
               placeholder=""
             ></input>
@@ -502,7 +502,7 @@ const AddStaffForm: React.FC<AddStaffFormProps> = ({ onClickHandler }) => {
               <select
                 id="registerTypeSelection"
                 name="registerTypeSelection"
-                className="w-full px-3 py-2.5 border rounded-lg border-gray-300 outline-none appearance-none outline-gray-m-400 select-wrapper"
+                className="w-full px-3 py-2.5 border rounded-lg border-gray-300 focus:ring-primary outline-none appearance-none outline-gray-m-400 select-wrapper"
               >
                 <option value="Wellington">Wellington (GMT+13)</option>
                 <option value=" New Zealand">New Zealand (GMT+13)</option>
@@ -524,7 +524,7 @@ const AddStaffForm: React.FC<AddStaffFormProps> = ({ onClickHandler }) => {
             <input
               id="state"
               type="date"
-              className={`w-full px-3 py-2.5 border border-gray-300 shadow-sm rounded-lg outline-none placeholder:text-gray-m-500`}
+              className={`w-full px-3 py-2.5 border border-gray-300 shadow-sm focus:ring-primary rounded-lg outline-none placeholder:text-gray-m-500`}
               name="state"
               placeholder=""
             ></input>
@@ -539,7 +539,7 @@ const AddStaffForm: React.FC<AddStaffFormProps> = ({ onClickHandler }) => {
             <input
               id="state"
               type="date"
-              className={`w-full px-3 py-2.5 border border-gray-300 shadow-sm rounded-lg outline-none placeholder:text-gray-m-500`}
+              className={`w-full px-3 py-2.5 border border-gray-300 shadow-sm focus:ring-primary rounded-lg outline-none placeholder:text-gray-m-500`}
               name="state"
               placeholder=""
             ></input>
@@ -557,7 +557,7 @@ const AddStaffForm: React.FC<AddStaffFormProps> = ({ onClickHandler }) => {
               <select
                 id="registerTypeSelection"
                 name="registerTypeSelection"
-                className="w-full px-3 py-2.5 border rounded-lg border-gray-300 outline-none appearance-none outline-gray-m-400 select-wrapper"
+                className="w-full px-3 py-2.5 border rounded-lg border-gray-300 focus:ring-primary outline-none appearance-none outline-gray-m-400 select-wrapper"
               >
                 <option value="Wellington">Wellington (GMT+13)</option>
                 <option value=" New Zealand">New Zealand (GMT+13)</option>
@@ -579,7 +579,7 @@ const AddStaffForm: React.FC<AddStaffFormProps> = ({ onClickHandler }) => {
             <input
               id="state"
               type="text"
-              className={`w-full px-3 py-2.5 border border-gray-300 shadow-sm rounded-lg outline-none placeholder:text-gray-m-500`}
+              className={`w-full px-3 py-2.5 border border-gray-300 shadow-sm focus:ring-primary rounded-lg outline-none placeholder:text-gray-m-500`}
               name="state"
               placeholder=""
             ></input>
@@ -604,7 +604,7 @@ const AddStaffForm: React.FC<AddStaffFormProps> = ({ onClickHandler }) => {
               <select
                 id="registerTypeSelection"
                 name="registerTypeSelection"
-                className="w-full px-3 py-2.5 border rounded-lg border-gray-300 outline-none appearance-none outline-gray-m-400 select-wrapper"
+                className="w-full px-3 py-2.5 border rounded-lg border-gray-300 focus:ring-primary outline-none appearance-none outline-gray-m-400 select-wrapper"
               >
                 <option value="Wellington">Wellington (GMT+13)</option>
                 <option value=" New Zealand">New Zealand (GMT+13)</option>
@@ -629,7 +629,7 @@ const AddStaffForm: React.FC<AddStaffFormProps> = ({ onClickHandler }) => {
               <select
                 id="registerTypeSelection"
                 name="registerTypeSelection"
-                className="w-full px-3 py-2.5 border rounded-lg border-gray-300 outline-none appearance-none outline-gray-m-400 select-wrapper"
+                className="w-full px-3 py-2.5 border rounded-lg border-gray-300 focus:ring-primary outline-none appearance-none outline-gray-m-400 select-wrapper"
               >
                 <option value="Wellington">Wellington (GMT+13)</option>
                 <option value=" New Zealand">New Zealand (GMT+13)</option>
@@ -661,7 +661,7 @@ const AddStaffForm: React.FC<AddStaffFormProps> = ({ onClickHandler }) => {
               <select
                 id="registerTypeSelection"
                 name="registerTypeSelection"
-                className="w-full px-3 py-2.5 border rounded-lg border-gray-300 outline-none appearance-none outline-gray-m-400 select-wrapper"
+                className="w-full px-3 py-2.5 border rounded-lg border-gray-300 focus:ring-primary outline-none appearance-none outline-gray-m-400 select-wrapper"
               >
                 <option value="Wellington">Wellington (GMT+13)</option>
                 <option value=" New Zealand">New Zealand (GMT+13)</option>
@@ -685,7 +685,7 @@ const AddStaffForm: React.FC<AddStaffFormProps> = ({ onClickHandler }) => {
               <select
                 id="registerTypeSelection"
                 name="registerTypeSelection"
-                className="w-full px-3 py-2.5 border rounded-lg border-gray-300 outline-none appearance-none outline-gray-m-400 select-wrapper"
+                className="w-full px-3 py-2.5 border rounded-lg border-gray-300 focus:ring-primary outline-none appearance-none outline-gray-m-400 select-wrapper"
               >
                 <option value="Wellington">Wellington (GMT+13)</option>
                 <option value=" New Zealand">New Zealand (GMT+13)</option>
@@ -709,7 +709,7 @@ const AddStaffForm: React.FC<AddStaffFormProps> = ({ onClickHandler }) => {
               <select
                 id="registerTypeSelection"
                 name="registerTypeSelection"
-                className="w-full px-3 py-2.5 border rounded-lg border-gray-300 outline-none appearance-none outline-gray-m-400 select-wrapper"
+                className="w-full px-3 py-2.5 border rounded-lg border-gray-300 focus:ring-primary outline-none appearance-none outline-gray-m-400 select-wrapper"
               >
                 <option value="Wellington">Wellington (GMT+13)</option>
                 <option value=" New Zealand">New Zealand (GMT+13)</option>
@@ -733,7 +733,7 @@ const AddStaffForm: React.FC<AddStaffFormProps> = ({ onClickHandler }) => {
               <select
                 id="registerTypeSelection"
                 name="registerTypeSelection"
-                className="w-full px-3 py-2.5 border rounded-lg border-gray-300 outline-none appearance-none outline-gray-m-400 select-wrapper"
+                className="w-full px-3 py-2.5 border rounded-lg border-gray-300 focus:ring-primary outline-none appearance-none outline-gray-m-400 select-wrapper"
               >
                 <option value="Wellington">Wellington (GMT+13)</option>
                 <option value=" New Zealand">New Zealand (GMT+13)</option>
@@ -756,7 +756,7 @@ const AddStaffForm: React.FC<AddStaffFormProps> = ({ onClickHandler }) => {
                 checked
                 readOnly
                 value=""
-                className="w-4 h-4 bg-white rounded border-slate-300 text-primary focus:ring-primary focus:ring-2 "
+                className="w-4 h-4 bg-white rounded border-slate-300 focus:ring-primary text-primary focus:ring-2 "
               />
               <label
                 htmlFor="default-checkbox"
@@ -810,7 +810,7 @@ const AddStaffForm: React.FC<AddStaffFormProps> = ({ onClickHandler }) => {
             <input
               id="state"
               type="text"
-              className={`w-full px-3 py-2.5 border border-gray-300 shadow-sm rounded-lg outline-none placeholder:text-gray-m-500`}
+              className={`w-full px-3 py-2.5 border border-gray-300 shadow-sm rounded-lg focus:ring-primary outline-none placeholder:text-gray-m-500`}
               name="state"
               placeholder=""
             ></input>
@@ -834,7 +834,7 @@ const AddStaffForm: React.FC<AddStaffFormProps> = ({ onClickHandler }) => {
             <input
               id="state"
               type="text"
-              className={`w-full px-3 py-2.5 border border-gray-300 shadow-sm rounded-lg outline-none placeholder:text-gray-m-500`}
+              className={`w-full px-3 py-2.5 border border-gray-300 shadow-sm rounded-lg focus:ring-primary outline-none placeholder:text-gray-m-500`}
               name="state"
               placeholder=""
             ></input>
@@ -848,8 +848,6 @@ const AddStaffForm: React.FC<AddStaffFormProps> = ({ onClickHandler }) => {
             <input
               id="default-checkbox"
               type="checkbox"
-              checked
-              readOnly
               value=""
               className="w-4 h-4 bg-white rounded border-slate-300 text-primary focus:ring-primary focus:ring-2 "
             />
@@ -863,21 +861,37 @@ const AddStaffForm: React.FC<AddStaffFormProps> = ({ onClickHandler }) => {
         </div>
 
         <div className="flex items-center justify-between col-span-12 mt-4 ">
-          <div className="flex items-center ">
-            <input
-              id="default-checkbox"
-              type="checkbox"
-              checked
-              readOnly
-              value=""
-              className="w-4 h-4 bg-white rounded border-slate-300 text-primary focus:ring-primary focus:ring-2 "
-            />
-            <label
-              htmlFor="default-checkbox"
-              className="text-sm font-normal text-gray-600 ms-2 "
-            >
-              Active
-            </label>
+          <div className="flex items-center gap-3">
+            <div>
+              <input
+                id="default-checkbox"
+                type="checkbox"
+                checked
+                readOnly
+                value=""
+                className="w-4 h-4 bg-white rounded border-slate-300 text-primary focus:ring-primary focus:ring-2 "
+              />
+              <label
+                htmlFor="default-checkbox"
+                className="text-sm font-normal text-gray-600 ms-2 "
+              >
+                Active
+              </label>
+            </div>
+            <div>
+              <input
+                id="default-checkbox"
+                type="checkbox"
+                value=""
+                className="w-4 h-4 bg-white rounded border-slate-300 text-primary focus:ring-primary focus:ring-2 "
+              />
+              <label
+                htmlFor="default-checkbox"
+                className="text-sm font-normal text-gray-600 ms-2 "
+              >
+                Temporary Suspended
+              </label>
+            </div>
           </div>
 
           <div className="flex items-center gap-3">
