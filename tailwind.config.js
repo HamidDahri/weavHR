@@ -18,6 +18,7 @@ module.exports = {
         success50: "#ECFDF3",
         success700: "#027A48",
         ebonClay: "#1D2939",
+        modernGray900: "#121926",
       },
     },
   },

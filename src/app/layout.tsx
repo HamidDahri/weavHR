@@ -31,10 +31,7 @@ export default function RootLayout({ children }) {
 
         <title>WEAVHR</title>
       </head>
-      <body className={`${GoogFonts.Outfit.variable}`}>
-        {children}
-        <script src="/flowbite/flowbite.min.js" defer></script>
-      </body>
+      <body className={`${GoogFonts.Outfit.variable}`}>{children}</body>
     </html>
   );
 }

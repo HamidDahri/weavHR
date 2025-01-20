@@ -1,20 +1,40 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import data from "../../../../../../public/_data/userData.json";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
+  faBarsFilter,
+  faBriefcase,
+  faCalendar,
+  faClock,
   faEllipsisVertical,
   faEnvelope,
+  faGrid2,
+  faHospital,
   faKey,
+  faListCheck,
+  faLocationDot,
   faLock,
+  faMessageDots,
   faPenToSquare,
   faPhone,
   faShareNodes,
 } from "@fortawesome/pro-regular-svg-icons";
 import { Images } from "../../../../ui/images";
 import Image from "next/image";
+
+type TabId = "Overview" | "AvailabilitySetup" | "Schedule" | "inbox";
+
 const Page = ({ params }) => {
+  const [activeTab, setActiveTab] = useState<TabId>("Schedule"); // Default active tab is 'Overview'
+
   const { id } = params;
 
+  const handleTabClick = (tabId: TabId) => {
+    setActiveTab(tabId);
+  };
+  const [view, setView] = useState("grid");
   const user = data.find((item) => item.id === parseInt(id, 10));
 
   return (
@@ -42,7 +62,7 @@ const Page = ({ params }) => {
               <div>
                 <div className="flex items-center gap-2">
                   <h2 className="text-lg font-semibold text-gray-900">
-                    Rimsha Hameed Khan
+                    {user.name}
                   </h2>
                   <span
                     className={`inline-flex items-center ${
@@ -70,134 +90,129 @@ const Page = ({ params }) => {
               </div>
             </div>
 
-            <button
-              id="dropdownMenuIconHorizontalButton"
-              data-dropdown-toggle="dropdownDotsHorizontal"
-              data-dropdown-placement="left-end"
-              className="inline-flex items-center p-2 text-sm font-medium text-center text-gray-900 bg-white rounded-full hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 "
-              type="button"
-            >
-              <FontAwesomeIcon
-                icon={faEllipsisVertical}
-                className="w-5 h-5 text-sm"
-              ></FontAwesomeIcon>
-            </button>
-
-            <div
-              id="dropdownDotsHorizontal"
-              className="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 "
-            >
-              <ul
-                className="p-2 text-sm text-gray-700 "
-                aria-labelledby="dropdownMenuIconHorizontalButton"
+            <div className="relative inline-block text-left">
+              <button
+                className="inline-flex items-center p-2 text-sm font-medium text-gray-900 bg-white rounded-full hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 peer"
+                type="button"
               >
-                <li>
-                  <a
-                    href="#"
-                    className="block px-3 py-2 rounded-md hover:bg-gray-100 "
-                  >
-                    <FontAwesomeIcon
-                      icon={faShareNodes}
-                      className="me-2 text-slate-600"
-                    ></FontAwesomeIcon>
-                    Share
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="block px-3 py-2 rounded-md hover:bg-gray-100 "
-                  >
-                    <FontAwesomeIcon
-                      icon={faLock}
-                      className="me-2 text-slate-600"
-                    ></FontAwesomeIcon>
-                    Add Internal Note
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="block px-3 py-2 rounded-md hover:bg-gray-100 "
-                  >
-                    <FontAwesomeIcon
-                      icon={faKey}
-                      className="me-2 text-slate-600"
-                    ></FontAwesomeIcon>
-                    Reset Password
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="block px-3 py-2 rounded-md hover:bg-gray-100 "
-                  >
-                    <FontAwesomeIcon
-                      icon={faPenToSquare}
-                      className="me-2 text-slate-600"
-                    ></FontAwesomeIcon>
-                    Edit Profile
-                  </a>
-                </li>
-              </ul>
+                <FontAwesomeIcon
+                  icon={faEllipsisVertical}
+                  className="w-5 h-5 text-sm"
+                ></FontAwesomeIcon>
+              </button>
+
+              <div className="absolute right-0 z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 peer-focus:block">
+                <ul className="p-2 text-sm text-gray-700">
+                  <li>
+                    <a
+                      href="#"
+                      className="block px-3 py-2 rounded-md hover:bg-gray-100"
+                    >
+                      <FontAwesomeIcon
+                        icon={faShareNodes}
+                        className="me-2 text-slate-600"
+                      ></FontAwesomeIcon>
+                      Share
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      className="block px-3 py-2 rounded-md hover:bg-gray-100"
+                    >
+                      <FontAwesomeIcon
+                        icon={faLock}
+                        className="me-2 text-slate-600"
+                      ></FontAwesomeIcon>
+                      Add Internal Note
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      className="block px-3 py-2 rounded-md hover:bg-gray-100"
+                    >
+                      <FontAwesomeIcon
+                        icon={faKey}
+                        className="me-2 text-slate-600"
+                      ></FontAwesomeIcon>
+                      Reset Password
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      className="block px-3 py-2 rounded-md hover:bg-gray-100"
+                    >
+                      <FontAwesomeIcon
+                        icon={faPenToSquare}
+                        className="me-2 text-slate-600"
+                      ></FontAwesomeIcon>
+                      Edit Profile
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
+
           <div className="mb-4 border-b border-gray-200 ">
             <ul
               className="flex flex-wrap -mb-px text-sm font-medium text-center"
               id="default-tab"
-              data-tabs-active-classes="text-primary border-primary"
               data-tabs-toggle="#default-tab-content"
               role="tablist"
             >
-              <li className="me-2" role="presentation">
+              <li className="" role="presentation">
                 <button
-                  className="inline-block px-4 pb-2 border-b-2 rounded-t-lg"
-                  id="Overview-tab"
-                  data-tabs-target="#Overview"
+                  className={`inline-block px-4 pb-2 border-b-2 rounded-t-lg ${
+                    activeTab === "Overview"
+                      ? "border-primary text-primary"
+                      : ""
+                  }`}
                   type="button"
                   role="tab"
-                  aria-controls="Overview"
-                  aria-selected="false"
+                  onClick={() => handleTabClick("Overview")}
                 >
                   Overview
                 </button>
               </li>
-              <li className="me-2" role="presentation">
+              <li className="" role="presentation">
                 <button
-                  className="inline-block px-4 pb-2 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 "
-                  id="Availability-setup-tab"
-                  data-tabs-target="#Availability-setup"
+                  className={`inline-block  px-4 pb-2 border-b-2 rounded-t-lg ${
+                    activeTab === "AvailabilitySetup"
+                      ? "border-primary text-primary"
+                      : ""
+                  }`}
                   type="button"
                   role="tab"
-                  aria-controls="Availability-setup"
-                  aria-selected="false"
+                  onClick={() => handleTabClick("AvailabilitySetup")}
                 >
                   Availability Setup
                 </button>
               </li>
-              <li className="me-2" role="presentation">
+              <li className="" role="presentation">
                 <button
-                  className="inline-block px-4 pb-2 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 "
-                  id="Schedule-tab"
-                  data-tabs-target="#Schedule"
+                  className={`inline-block  px-4 pb-2 border-b-2 rounded-t-lg ${
+                    activeTab === "Schedule"
+                      ? "border-primary text-primary"
+                      : ""
+                  }`}
                   type="button"
                   role="tab"
-                  aria-controls="Schedule"
-                  aria-selected="false"
+                  onClick={() => handleTabClick("Schedule")}
                 >
                   Schedule
                 </button>
               </li>
               <li role="presentation">
                 <button
-                  className="inline-block px-4 pb-2 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 "
-                  id="Inbox-tab"
-                  data-tabs-target="#Inbox"
+                  className={`inline-block  px-4 pb-2 border-b-2 rounded-t-lg ${
+                    activeTab === "inbox" ? "border-primary text-primary" : ""
+                  }`}
                   type="button"
                   role="tab"
-                  aria-controls="Inbox"
-                  aria-selected="false"
+                  onClick={() => handleTabClick("inbox")}
                 >
                   Inbox
                 </button>
@@ -205,16 +220,13 @@ const Page = ({ params }) => {
             </ul>
           </div>
         </div>
-
-        <div
-          id="default-tab-content"
-          className="py-6 bg-white rounded-lg shadow px-7"
-        >
+        <div id="default-tab-content">
           <div
-            className="hidden "
+            className={`py-6 bg-white rounded-lg shadow px-7 ${
+              activeTab === "Overview" ? "block" : "hidden"
+            }`}
             id="Overview"
             role="tabpanel"
-            aria-labelledby="Overview-tab"
           >
             <div className="grid grid-cols-6 gap-4 mb-6">
               <div className="p-3 bg-white border border-gray-200 rounded-xl">
@@ -467,39 +479,783 @@ const Page = ({ params }) => {
             </div>
           </div>
           <div
-            className="hidden p-4 rounded-lg bg-gray-50 "
-            id="Availability-setup"
+            className={`py-6 bg-white rounded-lg shadow px-7 ${
+              activeTab === "AvailabilitySetup" ? "block" : "hidden"
+            }`}
+            id="AvailabilitySetup"
             role="tabpanel"
-            aria-labelledby="Availability-setup-tab"
           >
             <p className="text-sm text-gray-500 ">
               <strong className="font-medium text-gray-800 ">
-                Availability-setup tab's associated content
+                AvailabilitySetup tab's associated content
               </strong>
             </p>
           </div>
           <div
-            className="hidden p-4 rounded-lg bg-gray-50 "
+            className={`${activeTab === "Schedule" ? "block" : "hidden"}`}
             id="Schedule"
             role="tabpanel"
-            aria-labelledby="Schedule-tab"
           >
-            <p className="text-sm text-gray-500 ">
-              <strong className="font-medium text-gray-800 ">
-                Schedule tab's associated content
-              </strong>
-            </p>
+            <div className="flex items-center justify-between gap-3">
+              <h2 className="text-2xl font-semibold text-modernGray900">
+                Jobs
+              </h2>
+
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  className="flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border rounded-lg border-slate-200 focus:outline-none hover:bg-gray-100 focus:ring-0 hover:shadow-sm focus:ring-gray-100 "
+                >
+                  <FontAwesomeIcon
+                    icon={faBarsFilter}
+                    className="text-base text-gray-700 me-2"
+                  ></FontAwesomeIcon>
+                  Filters
+                </button>
+
+                <div className="inline-flex rounded-md shadow-sm" role="group">
+                  <button
+                    type="button"
+                    onClick={() => setView("grid")}
+                    className={`px-4 py-2 text-sm font-medium  bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 hover:text-primary focus:z-10 focus:ring-0 ${
+                      view === "grid" ? "text-primary" : "text-gray-900"
+                    } focus:text-primary`}
+                  >
+                    <FontAwesomeIcon
+                      icon={faGrid2}
+                      className="me-1.5"
+                    ></FontAwesomeIcon>
+                    Board
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setView("list")}
+                    className={`px-4 py-2 text-sm font-medium  bg-white border-t border-b border-gray-200 hover:bg-gray-100 hover:text-primary focus:z-10 focus:ring-0 ${
+                      view === "list" ? "text-primary" : "text-gray-900"
+                    } focus:text-primary `}
+                  >
+                    <FontAwesomeIcon
+                      icon={faListCheck}
+                      className="me-1.5"
+                    ></FontAwesomeIcon>
+                    List
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setView("calender")}
+                    className={`px-4 py-2 text-sm font-medium  bg-white border border-gray-200 rounded-e-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-0 ${
+                      view === "calender" ? "text-primary" : "text-gray-900"
+                    } focus:text-primary `}
+                  >
+                    <FontAwesomeIcon
+                      icon={faGrid2}
+                      className="me-1.5"
+                    ></FontAwesomeIcon>
+                    Calendar
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div className="mt-8">
+              {view === "grid" ? (
+                <div className="grid grid-cols-4 gap-4">
+                  <div className="">
+                    <div className="flex items-center gap-3 mb-4">
+                      <span className="flex items-center text-base font-medium text-slate-900">
+                        <span className="flex w-2 h-2 bg-green-500 rounded-full me-3"></span>
+                        Today’s Job
+                      </span>
+                      <span className="flex items-center justify-center w-6 h-6 text-sm font-medium text-center bg-white rounded-md shadow">
+                        3
+                      </span>
+                    </div>
+
+                    <div className="mb-4 overflow-hidden bg-white rounded-md shadow ">
+                      <div className="p-4 border-b border-slate-200">
+                        <div className="flex justify-between ">
+                          <span className="inline-flex items-center px-4 py-1 text-sm font-medium text-green-600 rounded-full leading-2 bg-success50">
+                            Checked In
+                          </span>
+
+                          <div className="relative inline-block text-left">
+                            <button
+                              className="inline-flex items-center p-2 text-sm font-medium text-gray-900 bg-white rounded-full hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 peer"
+                              type="button"
+                            >
+                              <FontAwesomeIcon
+                                icon={faEllipsisVertical}
+                                className="w-5 h-5 text-sm"
+                              ></FontAwesomeIcon>
+                            </button>
+
+                            <div className="absolute right-0 z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 peer-focus:block">
+                              <ul className="p-2 text-sm text-gray-700">
+                                <li>
+                                  <a
+                                    href="#"
+                                    className="block px-3 py-2 rounded-md hover:bg-gray-100"
+                                  >
+                                    Share
+                                  </a>
+                                </li>
+                                <li>
+                                  <a
+                                    href="#"
+                                    className="block px-3 py-2 rounded-md hover:bg-gray-100"
+                                  >
+                                    Add Internal Note
+                                  </a>
+                                </li>
+                                <li>
+                                  <a
+                                    href="#"
+                                    className="block px-3 py-2 rounded-md hover:bg-gray-100"
+                                  >
+                                    Reset Password
+                                  </a>
+                                </li>
+                                <li>
+                                  <a
+                                    href="#"
+                                    className="block px-3 py-2 rounded-md hover:bg-gray-100"
+                                  >
+                                    Edit Profile
+                                  </a>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="mt-4">
+                          <h2 className="mb-2 text-base font-medium text-slate-900">
+                            Virtual Consult
+                          </h2>
+
+                          <div className="flex items-center gap-2 mb-2">
+                            <FontAwesomeIcon
+                              icon={faBriefcase}
+                              className="w-5 text-slate-500"
+                            ></FontAwesomeIcon>
+                            <div className="flex items-center line-clamp-1">
+                              <span className="line-clamp-1 text-slate-500">
+                                <span className="text-slate-900">
+                                  Job Title:
+                                </span>
+                                Virtual Locum for Consult, Inbox and Rx
+                              </span>
+                            </div>
+                          </div>
+
+                          <div className="flex items-center gap-2 mb-2">
+                            <FontAwesomeIcon
+                              icon={faCalendar}
+                              className="w-5 text-slate-500"
+                            ></FontAwesomeIcon>
+                            <div className="flex items-center line-clamp-1">
+                              <span className="line-clamp-1 text-slate-500">
+                                <span className="text-slate-900">
+                                  Shift ID:
+                                </span>{" "}
+                                After hours
+                              </span>
+                            </div>
+                          </div>
+
+                          <div className="flex items-center gap-2 mb-2">
+                            <FontAwesomeIcon
+                              icon={faClock}
+                              className="w-5 text-slate-500"
+                            ></FontAwesomeIcon>
+                            <div className="flex items-center line-clamp-1">
+                              <span className="line-clamp-1 text-slate-500">
+                                <span className="text-slate-900">
+                                  Date/Time:
+                                </span>{" "}
+                                24 Jan 8:00 AM - 24 Jan 5:00 PM
+                              </span>
+                            </div>
+                          </div>
+
+                          <div className="flex items-center gap-2 mb-2">
+                            <FontAwesomeIcon
+                              icon={faLocationDot}
+                              className="w-5 text-slate-500"
+                            ></FontAwesomeIcon>
+                            <div className="flex items-center line-clamp-1">
+                              <span className="line-clamp-1 text-slate-500">
+                                <span className="text-slate-900">
+                                  Location:
+                                </span>{" "}
+                                711 Victoria Street, Hamilton 3210
+                              </span>
+                            </div>
+                          </div>
+
+                          <div className="flex items-center gap-2">
+                            <FontAwesomeIcon
+                              icon={faHospital}
+                              className="w-5 text-slate-500"
+                            ></FontAwesomeIcon>
+                            <div className="flex items-center line-clamp-1">
+                              <span className="line-clamp-1 text-slate-500">
+                                <span className="text-slate-900">Client:</span>{" "}
+                                Victoria Clinic
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="flex items-center justify-between p-4 bg-white">
+                        <div className="flex items-center gap-2">
+                          <img
+                            src="/images/avatar.png"
+                            className="w-6 h-6 rounded-full border-slate-200 bg-gray-50"
+                            alt=""
+                          />
+                          <h2 className="text-sm text-gray-600">
+                            Bessie Cooper
+                          </h2>
+                        </div>
+
+                        <div className="flex items-center gap-1 text-slate-400">
+                          <FontAwesomeIcon
+                            icon={faMessageDots}
+                          ></FontAwesomeIcon>
+                          <span>0</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="">
+                    <div className="flex items-center gap-3 mb-4">
+                      <span className="flex items-center text-base font-medium text-slate-900">
+                        <span className="flex w-2 h-2 rounded-full bg-primary me-3"></span>
+                        Upcoming Jobs
+                      </span>
+                      <span className="flex items-center justify-center w-6 h-6 text-sm font-medium text-center bg-white rounded-md shadow">
+                        29
+                      </span>
+                    </div>
+
+                    <div className="mb-4 overflow-hidden bg-white rounded-md shadow ">
+                      <div className="p-4 border-b border-slate-200">
+                        <div className="flex justify-between ">
+                          <span className="inline-flex items-center px-4 py-1 text-sm font-medium text-green-600 rounded-full leading-2 bg-success50">
+                            Checked In
+                          </span>
+
+                          <div className="relative inline-block text-left">
+                            <button
+                              className="inline-flex items-center p-2 text-sm font-medium text-gray-900 bg-white rounded-full hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 peer"
+                              type="button"
+                            >
+                              <FontAwesomeIcon
+                                icon={faEllipsisVertical}
+                                className="w-5 h-5 text-sm"
+                              ></FontAwesomeIcon>
+                            </button>
+
+                            <div className="absolute right-0 z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 peer-focus:block">
+                              <ul className="p-2 text-sm text-gray-700">
+                                <li>
+                                  <a
+                                    href="#"
+                                    className="block px-3 py-2 rounded-md hover:bg-gray-100"
+                                  >
+                                    Share
+                                  </a>
+                                </li>
+                                <li>
+                                  <a
+                                    href="#"
+                                    className="block px-3 py-2 rounded-md hover:bg-gray-100"
+                                  >
+                                    Add Internal Note
+                                  </a>
+                                </li>
+                                <li>
+                                  <a
+                                    href="#"
+                                    className="block px-3 py-2 rounded-md hover:bg-gray-100"
+                                  >
+                                    Reset Password
+                                  </a>
+                                </li>
+                                <li>
+                                  <a
+                                    href="#"
+                                    className="block px-3 py-2 rounded-md hover:bg-gray-100"
+                                  >
+                                    Edit Profile
+                                  </a>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="mt-4">
+                          <h2 className="mb-2 text-base font-medium text-slate-900">
+                            Virtual Consult
+                          </h2>
+
+                          <div className="flex items-center gap-2 mb-2">
+                            <FontAwesomeIcon
+                              icon={faBriefcase}
+                              className="w-5 text-slate-500"
+                            ></FontAwesomeIcon>
+                            <div className="flex items-center line-clamp-1">
+                              <span className="line-clamp-1 text-slate-500">
+                                <span className="text-slate-900">
+                                  Job Title:
+                                </span>
+                                Virtual Locum for Consult, Inbox and Rx
+                              </span>
+                            </div>
+                          </div>
+
+                          <div className="flex items-center gap-2 mb-2">
+                            <FontAwesomeIcon
+                              icon={faCalendar}
+                              className="w-5 text-slate-500"
+                            ></FontAwesomeIcon>
+                            <div className="flex items-center line-clamp-1">
+                              <span className="line-clamp-1 text-slate-500">
+                                <span className="text-slate-900">
+                                  Shift ID:
+                                </span>{" "}
+                                After hours
+                              </span>
+                            </div>
+                          </div>
+
+                          <div className="flex items-center gap-2 mb-2">
+                            <FontAwesomeIcon
+                              icon={faClock}
+                              className="w-5 text-slate-500"
+                            ></FontAwesomeIcon>
+                            <div className="flex items-center line-clamp-1">
+                              <span className="line-clamp-1 text-slate-500">
+                                <span className="text-slate-900">
+                                  Date/Time:
+                                </span>{" "}
+                                24 Jan 8:00 AM - 24 Jan 5:00 PM
+                              </span>
+                            </div>
+                          </div>
+
+                          <div className="flex items-center gap-2 mb-2">
+                            <FontAwesomeIcon
+                              icon={faLocationDot}
+                              className="w-5 text-slate-500"
+                            ></FontAwesomeIcon>
+                            <div className="flex items-center line-clamp-1">
+                              <span className="line-clamp-1 text-slate-500">
+                                <span className="text-slate-900">
+                                  Location:
+                                </span>{" "}
+                                711 Victoria Street, Hamilton 3210
+                              </span>
+                            </div>
+                          </div>
+
+                          <div className="flex items-center gap-2">
+                            <FontAwesomeIcon
+                              icon={faHospital}
+                              className="w-5 text-slate-500"
+                            ></FontAwesomeIcon>
+                            <div className="flex items-center line-clamp-1">
+                              <span className="line-clamp-1 text-slate-500">
+                                <span className="text-slate-900">Client:</span>{" "}
+                                Victoria Clinic
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="flex items-center justify-between p-4 bg-white">
+                        <div className="flex items-center gap-2">
+                          <img
+                            src="/images/avatar.png"
+                            className="w-6 h-6 rounded-full border-slate-200 bg-gray-50"
+                            alt=""
+                          />
+                          <h2 className="text-sm text-gray-600">
+                            Bessie Cooper
+                          </h2>
+                        </div>
+
+                        <div className="flex items-center gap-1 text-slate-400">
+                          <FontAwesomeIcon
+                            icon={faMessageDots}
+                          ></FontAwesomeIcon>
+                          <span>0</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="">
+                    <div className="flex items-center gap-3 mb-4">
+                      <span className="flex items-center text-base font-medium text-slate-900">
+                        <span className="flex w-2 h-2 rounded-full bg-amber-500 me-3"></span>
+                        Open
+                      </span>
+                      <span className="flex items-center justify-center w-6 h-6 text-sm font-medium text-center bg-white rounded-md shadow">
+                        12
+                      </span>
+                    </div>
+
+                    <div className="mb-4 overflow-hidden bg-white rounded-md shadow ">
+                      <div className="p-4 border-b border-slate-200">
+                        <div className="flex justify-between ">
+                          <span className="inline-flex items-center px-4 py-1 text-sm font-medium text-green-600 rounded-full leading-2 bg-success50">
+                            Checked In
+                          </span>
+
+                          <div className="relative inline-block text-left">
+                            <button
+                              className="inline-flex items-center p-2 text-sm font-medium text-gray-900 bg-white rounded-full hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 peer"
+                              type="button"
+                            >
+                              <FontAwesomeIcon
+                                icon={faEllipsisVertical}
+                                className="w-5 h-5 text-sm"
+                              ></FontAwesomeIcon>
+                            </button>
+
+                            <div className="absolute right-0 z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 peer-focus:block">
+                              <ul className="p-2 text-sm text-gray-700">
+                                <li>
+                                  <a
+                                    href="#"
+                                    className="block px-3 py-2 rounded-md hover:bg-gray-100"
+                                  >
+                                    Share
+                                  </a>
+                                </li>
+                                <li>
+                                  <a
+                                    href="#"
+                                    className="block px-3 py-2 rounded-md hover:bg-gray-100"
+                                  >
+                                    Add Internal Note
+                                  </a>
+                                </li>
+                                <li>
+                                  <a
+                                    href="#"
+                                    className="block px-3 py-2 rounded-md hover:bg-gray-100"
+                                  >
+                                    Reset Password
+                                  </a>
+                                </li>
+                                <li>
+                                  <a
+                                    href="#"
+                                    className="block px-3 py-2 rounded-md hover:bg-gray-100"
+                                  >
+                                    Edit Profile
+                                  </a>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="mt-4">
+                          <h2 className="mb-2 text-base font-medium text-slate-900">
+                            Virtual Consult
+                          </h2>
+
+                          <div className="flex items-center gap-2 mb-2">
+                            <FontAwesomeIcon
+                              icon={faBriefcase}
+                              className="w-5 text-slate-500"
+                            ></FontAwesomeIcon>
+                            <div className="flex items-center line-clamp-1">
+                              <span className="line-clamp-1 text-slate-500">
+                                <span className="text-slate-900">
+                                  Job Title:
+                                </span>
+                                Virtual Locum for Consult, Inbox and Rx
+                              </span>
+                            </div>
+                          </div>
+
+                          <div className="flex items-center gap-2 mb-2">
+                            <FontAwesomeIcon
+                              icon={faCalendar}
+                              className="w-5 text-slate-500"
+                            ></FontAwesomeIcon>
+                            <div className="flex items-center line-clamp-1">
+                              <span className="line-clamp-1 text-slate-500">
+                                <span className="text-slate-900">
+                                  Shift ID:
+                                </span>{" "}
+                                After hours
+                              </span>
+                            </div>
+                          </div>
+
+                          <div className="flex items-center gap-2 mb-2">
+                            <FontAwesomeIcon
+                              icon={faClock}
+                              className="w-5 text-slate-500"
+                            ></FontAwesomeIcon>
+                            <div className="flex items-center line-clamp-1">
+                              <span className="line-clamp-1 text-slate-500">
+                                <span className="text-slate-900">
+                                  Date/Time:
+                                </span>{" "}
+                                24 Jan 8:00 AM - 24 Jan 5:00 PM
+                              </span>
+                            </div>
+                          </div>
+
+                          <div className="flex items-center gap-2 mb-2">
+                            <FontAwesomeIcon
+                              icon={faLocationDot}
+                              className="w-5 text-slate-500"
+                            ></FontAwesomeIcon>
+                            <div className="flex items-center line-clamp-1">
+                              <span className="line-clamp-1 text-slate-500">
+                                <span className="text-slate-900">
+                                  Location:
+                                </span>{" "}
+                                711 Victoria Street, Hamilton 3210
+                              </span>
+                            </div>
+                          </div>
+
+                          <div className="flex items-center gap-2">
+                            <FontAwesomeIcon
+                              icon={faHospital}
+                              className="w-5 text-slate-500"
+                            ></FontAwesomeIcon>
+                            <div className="flex items-center line-clamp-1">
+                              <span className="line-clamp-1 text-slate-500">
+                                <span className="text-slate-900">Client:</span>{" "}
+                                Victoria Clinic
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="flex items-center justify-between p-4 bg-white">
+                        <div className="flex items-center gap-2">
+                          <img
+                            src="/images/avatar.png"
+                            className="w-6 h-6 rounded-full border-slate-200 bg-gray-50"
+                            alt=""
+                          />
+                          <h2 className="text-sm text-gray-600">
+                            Bessie Cooper
+                          </h2>
+                        </div>
+
+                        <div className="flex items-center gap-1 text-slate-400">
+                          <FontAwesomeIcon
+                            icon={faMessageDots}
+                          ></FontAwesomeIcon>
+                          <span>0</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="">
+                    <div className="flex items-center gap-3 mb-4">
+                      <span className="flex items-center text-base font-medium text-slate-900">
+                        <span className="flex w-2 h-2 rounded-full bg-rose-500 me-3"></span>
+                        Completed Jobs
+                      </span>
+                      <span className="flex items-center justify-center w-6 h-6 text-sm font-medium text-center bg-white rounded-md shadow">
+                        12
+                      </span>
+                    </div>
+
+                    <div className="mb-4 overflow-hidden bg-white rounded-md shadow ">
+                      <div className="p-4 border-b border-slate-200">
+                        <div className="flex justify-between ">
+                          <span className="inline-flex items-center px-4 py-1 text-sm font-medium text-green-600 rounded-full leading-2 bg-success50">
+                            Checked In
+                          </span>
+
+                          <div className="relative inline-block text-left">
+                            <button
+                              className="inline-flex items-center p-2 text-sm font-medium text-gray-900 bg-white rounded-full hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 peer"
+                              type="button"
+                            >
+                              <FontAwesomeIcon
+                                icon={faEllipsisVertical}
+                                className="w-5 h-5 text-sm"
+                              ></FontAwesomeIcon>
+                            </button>
+
+                            <div className="absolute right-0 z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 peer-focus:block">
+                              <ul className="p-2 text-sm text-gray-700">
+                                <li>
+                                  <a
+                                    href="#"
+                                    className="block px-3 py-2 rounded-md hover:bg-gray-100"
+                                  >
+                                    Share
+                                  </a>
+                                </li>
+                                <li>
+                                  <a
+                                    href="#"
+                                    className="block px-3 py-2 rounded-md hover:bg-gray-100"
+                                  >
+                                    Add Internal Note
+                                  </a>
+                                </li>
+                                <li>
+                                  <a
+                                    href="#"
+                                    className="block px-3 py-2 rounded-md hover:bg-gray-100"
+                                  >
+                                    Reset Password
+                                  </a>
+                                </li>
+                                <li>
+                                  <a
+                                    href="#"
+                                    className="block px-3 py-2 rounded-md hover:bg-gray-100"
+                                  >
+                                    Edit Profile
+                                  </a>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="mt-4">
+                          <h2 className="mb-2 text-base font-medium text-slate-900">
+                            Virtual Consult
+                          </h2>
+
+                          <div className="flex items-center gap-2 mb-2">
+                            <FontAwesomeIcon
+                              icon={faBriefcase}
+                              className="w-5 text-slate-500"
+                            ></FontAwesomeIcon>
+                            <div className="flex items-center line-clamp-1">
+                              <span className="line-clamp-1 text-slate-500">
+                                <span className="text-slate-900">
+                                  Job Title:
+                                </span>
+                                Virtual Locum for Consult, Inbox and Rx
+                              </span>
+                            </div>
+                          </div>
+
+                          <div className="flex items-center gap-2 mb-2">
+                            <FontAwesomeIcon
+                              icon={faCalendar}
+                              className="w-5 text-slate-500"
+                            ></FontAwesomeIcon>
+                            <div className="flex items-center line-clamp-1">
+                              <span className="line-clamp-1 text-slate-500">
+                                <span className="text-slate-900">
+                                  Shift ID:
+                                </span>{" "}
+                                After hours
+                              </span>
+                            </div>
+                          </div>
+
+                          <div className="flex items-center gap-2 mb-2">
+                            <FontAwesomeIcon
+                              icon={faClock}
+                              className="w-5 text-slate-500"
+                            ></FontAwesomeIcon>
+                            <div className="flex items-center line-clamp-1">
+                              <span className="line-clamp-1 text-slate-500">
+                                <span className="text-slate-900">
+                                  Date/Time:
+                                </span>{" "}
+                                24 Jan 8:00 AM - 24 Jan 5:00 PM
+                              </span>
+                            </div>
+                          </div>
+
+                          <div className="flex items-center gap-2 mb-2">
+                            <FontAwesomeIcon
+                              icon={faLocationDot}
+                              className="w-5 text-slate-500"
+                            ></FontAwesomeIcon>
+                            <div className="flex items-center line-clamp-1">
+                              <span className="line-clamp-1 text-slate-500">
+                                <span className="text-slate-900">
+                                  Location:
+                                </span>{" "}
+                                711 Victoria Street, Hamilton 3210
+                              </span>
+                            </div>
+                          </div>
+
+                          <div className="flex items-center gap-2">
+                            <FontAwesomeIcon
+                              icon={faHospital}
+                              className="w-5 text-slate-500"
+                            ></FontAwesomeIcon>
+                            <div className="flex items-center line-clamp-1">
+                              <span className="line-clamp-1 text-slate-500">
+                                <span className="text-slate-900">Client:</span>{" "}
+                                Victoria Clinic
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="flex items-center justify-between p-4 bg-white">
+                        <div className="flex items-center gap-2">
+                          <img
+                            src="/images/avatar.png"
+                            className="w-6 h-6 rounded-full border-slate-200 bg-gray-50"
+                            alt=""
+                          />
+                          <h2 className="text-sm text-gray-600">
+                            Bessie Cooper
+                          </h2>
+                        </div>
+
+                        <div className="flex items-center gap-1 text-slate-400">
+                          <FontAwesomeIcon
+                            icon={faMessageDots}
+                          ></FontAwesomeIcon>
+                          <span>0</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ) : view === "list" ? (
+                <div> calender </div>
+              ) : (
+                <ul>List</ul>
+              )}
+            </div>
           </div>
           <div
-            className="hidden p-4 rounded-lg bg-gray-50 "
-            id="Inbox"
+            className={`py-6 bg-white rounded-lg shadow px-7 ${
+              activeTab === "inbox" ? "block" : "hidden"
+            }`}
+            id="inbox"
             role="tabpanel"
-            aria-labelledby="Inbox-tab"
           >
             <p className="text-sm text-gray-500 ">
-              <strong className="font-medium text-gray-800">
-                Inbox tab's associated content
+              This is some placeholder content the{" "}
+              <strong className="font-medium text-gray-800 ">
+                inbox tab's associated content
               </strong>
+              .
             </p>
           </div>
         </div>
