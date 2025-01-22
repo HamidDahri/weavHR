@@ -18,7 +18,7 @@ export const Sidebar = () => {
     Account: ["Profile", "Settings"],
     List: ["Profile", "Settings"],
     File: ["Profile", "Settings"],
-    Settings: ["Profile", "Staff", "Clinics", "Jobs", "Lookup"],
+    Settings: ["Profile", "Staff", "Clinics", "Jobs", "Lookup", "Organization"],
   };
 
   const handleMenuClick = (menu: string, submenu: string) => {
@@ -110,7 +110,7 @@ export const Sidebar = () => {
           )}
         </div>
       </div>
-      <div className="px-3 pb-4 transition-opacity duration-300">
+      {/* <div className="px-3 pb-4 transition-opacity duration-300">
         <div className="flex items-center gap-4">
           <div className="relative">
             <Image
@@ -129,7 +129,7 @@ export const Sidebar = () => {
             </div>
           )}
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

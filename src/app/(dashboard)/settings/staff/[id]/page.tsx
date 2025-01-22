@@ -23,6 +23,7 @@ import {
 } from "@fortawesome/pro-regular-svg-icons";
 import { Images } from "../../../../ui/images";
 import Image from "next/image";
+import { faLoader } from "@fortawesome/pro-light-svg-icons";
 
 type TabId = "Overview" | "AvailabilitySetup" | "Schedule" | "inbox";
 
@@ -573,6 +574,7 @@ const Page = ({ params }) => {
                     <div className="mb-4 overflow-hidden bg-white rounded-md shadow ">
                       <div className="p-4 border-b border-slate-200">
                         <div className="flex justify-between ">
+                          <img src="/images/FictionalCompanyLogo.svg" alt="" />
                           <span className="inline-flex items-center px-4 py-1 text-sm font-medium text-green-600 rounded-full leading-2 bg-success50">
                             Checked In
                           </span>
@@ -1237,9 +1239,9 @@ const Page = ({ params }) => {
                   </div>
                 </div>
               ) : view === "list" ? (
-                <div> calender </div>
+                <div> List </div>
               ) : (
-                <ul>List</ul>
+                <ul>Calendar</ul>
               )}
             </div>
           </div>
@@ -1253,7 +1255,7 @@ const Page = ({ params }) => {
             <p className="text-sm text-gray-500 ">
               This is some placeholder content the{" "}
               <strong className="font-medium text-gray-800 ">
-                inbox tab's associated content
+                inbox tab&apos;s associated content
               </strong>
               .
             </p>
