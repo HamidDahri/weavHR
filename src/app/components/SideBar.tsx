@@ -79,18 +79,6 @@ export const Sidebar = () => {
               </div>
               <div className="p-4 pt-2 space-y-1">
                 {menuData[activeMenu].map((submenu) => (
-                  // <button
-                  //   key={submenu}
-                  //   onClick={() => handleMenuClick(activeMenu, submenu)}
-                  //   className={`flex items-center w-full px-5 py-2 transition-colors duration-300 rounded-lg ${
-                  //     pathname ===
-                  //     `/${activeMenu.toLowerCase()}/${submenu.toLowerCase()}`
-                  //       ? "bg-purple-100 text-primary"
-                  //       : "text-gray-500 hover:bg-gray-100"
-                  //   }`}
-                  // >
-                  //   <span className="text-sm font-medium">{submenu}</span>
-                  // </button>
                   <button
                     key={submenu}
                     onClick={() => handleMenuClick(activeMenu, submenu)}
@@ -110,7 +98,7 @@ export const Sidebar = () => {
           )}
         </div>
       </div>
-      <div className="px-3 pb-4 transition-opacity duration-300">
+      {/* <div className="px-3 pb-4 transition-opacity duration-300">
         <div className="flex items-center gap-4">
           <div className="relative">
             <Image
@@ -129,7 +117,7 @@ export const Sidebar = () => {
             </div>
           )}
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

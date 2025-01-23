@@ -23,6 +23,7 @@ import {
 } from "@fortawesome/pro-regular-svg-icons";
 import { Images } from "../../../../ui/images";
 import Image from "next/image";
+import CircularLoader from "../../../../components/CircularLoader";
 
 type TabId = "Overview" | "AvailabilitySetup" | "Schedule" | "inbox";
 
@@ -329,7 +330,7 @@ const Page = ({ params }) => {
                 families. My expertise lies in diagnosing a wide range of
                 conditions, offering preventive care, and managing chronic
                 diseases. I am particularly interested in [specific interests
-                like geriatric care, women's health, pediatrics, etc.].
+                like geriatric care, women&apos;s health, pediatrics, etc.].
               </p>
             </div>
 
@@ -487,7 +488,7 @@ const Page = ({ params }) => {
           >
             <p className="text-sm text-gray-500 ">
               <strong className="font-medium text-gray-800 ">
-                AvailabilitySetup tab's associated content
+                AvailabilitySetup tab&apos;s associated content
               </strong>
             </p>
           </div>
@@ -1237,9 +1238,11 @@ const Page = ({ params }) => {
                   </div>
                 </div>
               ) : view === "list" ? (
-                <div> calender </div>
+                <div>
+                  <CircularLoader percentage={80}></CircularLoader>
+                </div>
               ) : (
-                <ul>List</ul>
+                <ul>Calender</ul>
               )}
             </div>
           </div>
@@ -1253,7 +1256,7 @@ const Page = ({ params }) => {
             <p className="text-sm text-gray-500 ">
               This is some placeholder content the{" "}
               <strong className="font-medium text-gray-800 ">
-                inbox tab's associated content
+                inbox tab&apos;s associated content
               </strong>
               .
             </p>
