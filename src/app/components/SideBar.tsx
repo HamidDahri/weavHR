@@ -1,8 +1,14 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGear } from "@fortawesome/pro-regular-svg-icons";
+import {
+  faBell,
+  faBriefcaseBlank,
+  faGear,
+} from "@fortawesome/pro-regular-svg-icons";
 import { faGear as faGearSolid } from "@fortawesome/free-solid-svg-icons";
+import { faBell as faBellSolid } from "@fortawesome/free-solid-svg-icons";
+import { faBriefcase as faBriefcaseBlankSolid } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
 import { Images } from "../ui/images";
 import { useRouter, usePathname } from "next/navigation";
@@ -10,7 +16,7 @@ import { useRouter, usePathname } from "next/navigation";
 export const Sidebar = () => {
   const router = useRouter();
   const pathname = usePathname();
-  const [activeMenu, setActiveMenu] = useState("Settings");
+  const [activeMenu, setActiveMenu] = useState("Jobs");
 
   const menuData = {
     // Home: ["Posts", "Users"],
@@ -19,12 +25,20 @@ export const Sidebar = () => {
     List: ["Profile", "Settings"],
     File: ["Profile", "Settings"],
     Settings: ["Profile", "Staff", "Clinics", "Jobs", "Lookup"],
+    Notifications: [],
+    Jobs: [],
   };
 
   const handleMenuClick = (menu: string, submenu: string) => {
+    console.log(menu);
+
     setActiveMenu(menu);
     router.push(`/${menu.toLowerCase()}/${submenu.toLowerCase()}`);
   };
+
+  useEffect(() => {
+    router.push(`/jobs`);
+  }, []);
 
   return (
     <div className="flex flex-col justify-between h-screen transition-all duration-300 border-r">
@@ -54,6 +68,48 @@ export const Sidebar = () => {
         <div className="flex mt-6 transition-all duration-300">
           <div className="flex flex-col items-center w-16 pb-8 space-y-4 transition-transform duration-300 bg-white">
             <button
+              onClick={() => handleMenuClick("Home", "")}
+              className={`p-2 transition-colors duration-300 flex items-center justify-center rounded-lg ${
+                activeMenu === "Home"
+                  ? "bg-purple-100 text-primary"
+                  : "text-gray-500 hover:bg-gray-100"
+              }`}
+            >
+              <FontAwesomeIcon icon={faGear} className="w-5 h-5" />
+            </button>
+
+            <button
+              onClick={() => handleMenuClick("Jobs", "")}
+              className={`p-2 transition-colors duration-300 flex items-center justify-center rounded-lg ${
+                activeMenu === "Jobs"
+                  ? "bg-purple-100 text-primary"
+                  : "text-gray-500 hover:bg-gray-100"
+              }`}
+            >
+              <FontAwesomeIcon
+                icon={
+                  activeMenu === "Jobs"
+                    ? faBriefcaseBlankSolid
+                    : faBriefcaseBlank
+                }
+                className="w-5 h-5"
+              />
+            </button>
+
+            <button
+              onClick={() => handleMenuClick("Notifications", "")}
+              className={`p-2 transition-colors duration-300 flex items-center justify-center rounded-lg ${
+                activeMenu === "Notifications"
+                  ? "bg-purple-100 text-primary"
+                  : "text-gray-500 hover:bg-gray-100"
+              }`}
+            >
+              <FontAwesomeIcon
+                icon={activeMenu === "Notifications" ? faBellSolid : faBell}
+                className="w-5 h-5"
+              />
+            </button>
+            <button
               onClick={() => handleMenuClick("Settings", "Profile")}
               className={`p-2 transition-colors duration-300 flex items-center justify-center rounded-lg ${
                 activeMenu === "Settings"
@@ -65,17 +121,6 @@ export const Sidebar = () => {
                 icon={activeMenu === "Settings" ? faGearSolid : faGear}
                 className="w-5 h-5"
               />
-            </button>
-
-            <button
-              onClick={() => handleMenuClick("Home", "")}
-              className={`p-2 transition-colors duration-300 flex items-center justify-center rounded-lg ${
-                activeMenu === "Home"
-                  ? "bg-purple-100 text-primary"
-                  : "text-gray-500 hover:bg-gray-100"
-              }`}
-            >
-              <FontAwesomeIcon icon={faGear} className="w-5 h-5" />
             </button>
           </div>
 
