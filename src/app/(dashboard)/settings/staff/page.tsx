@@ -191,7 +191,7 @@ export default function StaffPage() {
               {currentRows.map((item) => (
                 <tr
                   key={item.id}
-                  className="bg-white border-b hover:bg-slate-100"
+                  className="bg-white border-b cursor-pointer hover:bg-slate-100"
                   onClick={() => handleRowClick(item.id)}
                 >
                   <td

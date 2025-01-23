@@ -31,16 +31,23 @@ export const Sidebar = () => {
       <div>
         <div className="p-3 transition-opacity duration-300">
           {menuData[activeMenu].length > 0 ? (
-            <Image
-              alt=""
-              className="w-32 transition-all duration-300"
-              src={Images.authPageImages.logoColor}
-            />
+            <div className="flex items-center gap-3">
+              <Image
+                alt=""
+                className="w-12 transition-all duration-300"
+                src={Images.dashPageImages.remediLogo}
+              />
+              <Image
+                alt=""
+                className="mb-1 transition-all duration-300 w-28"
+                src={Images.dashPageImages.remediText}
+              />
+            </div>
           ) : (
             <Image
               alt=""
               className="w-12 transition-all duration-300"
-              src={Images.authPageImages.logo2}
+              src={Images.dashPageImages.remediLogo}
             />
           )}
         </div>
