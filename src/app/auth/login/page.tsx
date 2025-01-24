@@ -70,9 +70,12 @@ const Login = () => {
               </Link>
             </div>
 
-            <button className="w-full py-3 my-4 text-base font-semibold text-white rounded-lg bg-primary">
+            <Link
+              href="/settings/staff"
+              className="block w-full py-3 my-4 text-base font-semibold text-center text-white rounded-lg bg-primary hover:bg-primaryDark"
+            >
               Log In
-            </button>
+            </Link>
 
             <div className="flex justify-center gap-1">
               <span className="text-gray-700">Don’t have an account?</span>
