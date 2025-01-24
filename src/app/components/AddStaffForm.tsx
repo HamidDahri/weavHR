@@ -39,7 +39,7 @@ const AddStaffForm: React.FC<AddStaffFormProps> = ({ onClickHandler }) => {
     setSelectedGroups(selected); // Update state with the selected values
   };
 
-  console.log(selectedLanguages, "selectedValues");
+  // console.log(selectedLanguages, "selectedValues");
 
   return (
     <div className="p-6 bg-white rounded-lg shadow-sm">

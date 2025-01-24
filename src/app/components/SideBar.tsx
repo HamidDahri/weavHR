@@ -24,7 +24,7 @@ export const Sidebar = () => {
     Account: ["Profile", "Settings"],
     List: ["Profile", "Settings"],
     File: ["Profile", "Settings"],
-    Settings: ["Profile", "Staff", "Clinics", "Jobs", "Lookup"],
+    Settings: ["Staff", "Organization"],
     Notifications: [],
     Jobs: [],
   };
@@ -36,9 +36,9 @@ export const Sidebar = () => {
     router.push(`/${menu.toLowerCase()}/${submenu.toLowerCase()}`);
   };
 
-  useEffect(() => {
-    router.push(`/jobs`);
-  }, []);
+  // useEffect(() => {
+  //   router.push(`/jobs`);
+  // }, []);
 
   return (
     <div className="flex flex-col justify-between h-screen transition-all duration-300 border-r">
@@ -67,7 +67,7 @@ export const Sidebar = () => {
         </div>
         <div className="flex mt-6 transition-all duration-300">
           <div className="flex flex-col items-center w-16 pb-8 space-y-4 transition-transform duration-300 bg-white">
-            <button
+            {/* <button
               onClick={() => handleMenuClick("Home", "")}
               className={`p-2 transition-colors duration-300 flex items-center justify-center rounded-lg ${
                 activeMenu === "Home"
@@ -76,7 +76,7 @@ export const Sidebar = () => {
               }`}
             >
               <FontAwesomeIcon icon={faGear} className="w-5 h-5" />
-            </button>
+            </button> */}
 
             <button
               onClick={() => handleMenuClick("Jobs", "")}
@@ -110,7 +110,7 @@ export const Sidebar = () => {
               />
             </button>
             <button
-              onClick={() => handleMenuClick("Settings", "Profile")}
+              onClick={() => handleMenuClick("Settings", "Staff")}
               className={`p-2 transition-colors duration-300 flex items-center justify-center rounded-lg ${
                 activeMenu === "Settings"
                   ? "bg-purple-100 text-primary"

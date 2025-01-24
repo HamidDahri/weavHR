@@ -85,9 +85,9 @@ const Page = ({ params }) => {
               </div>
             </div>
 
-            <div className="relative inline-block text-left">
+            <div className="relative inline-block text-left group">
               <button
-                className="inline-flex items-center p-2 text-sm font-medium text-gray-900 bg-white rounded-full hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 peer"
+                className="inline-flex items-center p-2 text-sm font-medium text-gray-900 bg-white rounded-full hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 "
                 type="button"
               >
                 <FontAwesomeIcon
@@ -96,7 +96,7 @@ const Page = ({ params }) => {
                 ></FontAwesomeIcon>
               </button>
 
-              <div className="absolute right-0 z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 peer-focus:block">
+              <div className="absolute right-0 z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 group-hover:block">
                 <ul className="p-2 text-sm text-gray-700">
                   <li>
                     <a
@@ -1036,9 +1036,9 @@ const Page = ({ params }) => {
                   <div className="">
                     <div className="flex items-center gap-3 mb-4">
                       <span className="flex w-2 h-2 rounded-full bg-amber-500 me-1"></span>
-                      <div className="relative inline-block text-left">
+                      <div className="relative inline-block text-left group">
                         <button
-                          className="inline-flex items-center text-base font-medium text-gray-900 peer"
+                          className="inline-flex items-center text-base font-medium text-gray-900 "
                           type="button"
                         >
                           Open
@@ -1048,7 +1048,7 @@ const Page = ({ params }) => {
                           ></FontAwesomeIcon>
                         </button>
 
-                        <div className="absolute right-0 z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-fit peer-focus:block">
+                        <div className="absolute right-0 z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-fit group-hover:block">
                           <ul className="p-2 text-sm text-gray-700">
                             <li>
                               <a
@@ -1649,10 +1649,10 @@ const Page = ({ params }) => {
                               02
                             </span>
                             <CircularLoader percentage={80}></CircularLoader>
-                            <div className="inline-block text-left ">
+                            <div className="inline-block text-left group">
                               {/* relative */}
                               <button
-                                className="inline-flex items-center p-2 text-sm font-medium text-gray-900 bg-white rounded-full hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 peer"
+                                className="inline-flex items-center p-2 text-sm font-medium text-gray-900 bg-white rounded-full hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 "
                                 type="button"
                               >
                                 <FontAwesomeIcon
@@ -1661,7 +1661,7 @@ const Page = ({ params }) => {
                                 ></FontAwesomeIcon>
                               </button>
 
-                              <div className="absolute z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow right-8 w-44 peer-focus:block">
+                              <div className="absolute z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow right-8 w-44 group-hover:block">
                                 <ul className="p-2 text-sm text-gray-700">
                                   <li>
                                     <a
@@ -1792,10 +1792,10 @@ const Page = ({ params }) => {
                               02
                             </span>
                             <CircularLoader percentage={80}></CircularLoader>
-                            <div className="inline-block text-left ">
+                            <div className="inline-block text-left group">
                               {/* relative */}
                               <button
-                                className="inline-flex items-center p-2 text-sm font-medium text-gray-900 bg-white rounded-full hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 peer"
+                                className="inline-flex items-center p-2 text-sm font-medium text-gray-900 bg-white rounded-full hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 "
                                 type="button"
                               >
                                 <FontAwesomeIcon
@@ -1804,7 +1804,7 @@ const Page = ({ params }) => {
                                 ></FontAwesomeIcon>
                               </button>
 
-                              <div className="absolute z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow right-8 w-44 peer-focus:block">
+                              <div className="absolute z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow right-8 w-44 group-hover:block">
                                 <ul className="p-2 text-sm text-gray-700">
                                   <li>
                                     <a
@@ -1930,10 +1930,10 @@ const Page = ({ params }) => {
                               02
                             </span>
                             <CircularLoader percentage={80}></CircularLoader>
-                            <div className="inline-block text-left ">
+                            <div className="inline-block text-left group">
                               {/* relative */}
                               <button
-                                className="inline-flex items-center p-2 text-sm font-medium text-gray-900 bg-white rounded-full hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 peer"
+                                className="inline-flex items-center p-2 text-sm font-medium text-gray-900 bg-white rounded-full hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 "
                                 type="button"
                               >
                                 <FontAwesomeIcon
@@ -1942,7 +1942,7 @@ const Page = ({ params }) => {
                                 ></FontAwesomeIcon>
                               </button>
 
-                              <div className="absolute z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow right-8 w-44 peer-focus:block">
+                              <div className="absolute z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow right-8 w-44 group-hover:block">
                                 <ul className="p-2 text-sm text-gray-700">
                                   <li>
                                     <a
