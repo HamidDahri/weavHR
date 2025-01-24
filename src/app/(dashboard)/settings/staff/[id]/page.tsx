@@ -31,7 +31,7 @@ import CircularLoader from "../../../../components/CircularLoader";
 type TabId = "Overview" | "AvailabilitySetup" | "Schedule" | "inbox";
 
 const Page = ({ params }) => {
-  const [activeTab, setActiveTab] = useState<TabId>("Schedule"); // Default active tab is 'Overview'
+  const [activeTab, setActiveTab] = useState<TabId>("Overview");
 
   const { id } = params;
 

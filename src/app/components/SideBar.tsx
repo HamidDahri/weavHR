@@ -13,13 +13,35 @@ import Image from "next/image";
 import { Images } from "../ui/images";
 import { useRouter, usePathname } from "next/navigation";
 
+// export const Sidebar = () => {
+//   const router = useRouter();
+//   const pathname = usePathname();
+//   const [activeMenu, setActiveMenu] = useState("Jobs");
+
+//   const menuData = {
+//     // Home: ["Posts", "Users"],
+//     Home: [],
+//     Account: ["Profile", "Settings"],
+//     List: ["Profile", "Settings"],
+//     File: ["Profile", "Settings"],
+//     Settings: ["Staff", "Organization"],
+//     Notifications: [],
+//     Jobs: [],
+//   };
+
+//   const handleMenuClick = (menu: string, submenu: string) => {
+//     console.log(menu);
+
+//     setActiveMenu(menu);
+//     router.push(`/${menu.toLowerCase()}/${submenu.toLowerCase()}`);
+//   };
+
 export const Sidebar = () => {
   const router = useRouter();
   const pathname = usePathname();
-  const [activeMenu, setActiveMenu] = useState("Jobs");
+  const [activeMenu, setActiveMenu] = useState("");
 
   const menuData = {
-    // Home: ["Posts", "Users"],
     Home: [],
     Account: ["Profile", "Settings"],
     List: ["Profile", "Settings"],
@@ -29,9 +51,20 @@ export const Sidebar = () => {
     Jobs: [],
   };
 
-  const handleMenuClick = (menu: string, submenu: string) => {
-    console.log(menu);
+  // Synchronize `activeMenu` with the URL
+  useEffect(() => {
+    const pathSegments = pathname.split("/").filter(Boolean); // Split the pathname and remove empty parts
+    if (pathSegments.length > 0) {
+      const currentMenu = Object.keys(menuData).find((menu) =>
+        pathSegments[0].toLowerCase().includes(menu.toLowerCase())
+      );
+      if (currentMenu) {
+        setActiveMenu(currentMenu);
+      }
+    }
+  }, [pathname]);
 
+  const handleMenuClick = (menu: string, submenu: string) => {
     setActiveMenu(menu);
     router.push(`/${menu.toLowerCase()}/${submenu.toLowerCase()}`);
   };
@@ -44,7 +77,7 @@ export const Sidebar = () => {
     <div className="flex flex-col justify-between h-screen transition-all duration-300 border-r">
       <div>
         <div className="p-3 transition-opacity duration-300">
-          {menuData[activeMenu].length > 0 ? (
+          {menuData[activeMenu] && menuData[activeMenu].length > 0 ? (
             <div className="flex items-center gap-3">
               <Image
                 alt=""
@@ -124,7 +157,7 @@ export const Sidebar = () => {
             </button>
           </div>
 
-          {menuData[activeMenu].length > 0 && (
+          {menuData[activeMenu] && menuData[activeMenu].length > 0 && (
             <div className="w-48 pb-8 overflow-y-auto transition-all duration-300 ease-in-out bg-white">
               <div className="px-5 text-lg font-medium text-gray-800">
                 {activeMenu}
