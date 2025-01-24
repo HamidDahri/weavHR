@@ -132,9 +132,37 @@ const shiftsOptions: Option[] = [
   { value: "Night", label: "Night" },
 ];
 
+const WorkOptions: Option[] = [
+  { value: "On-site", label: "On-site" },
+  { value: "Remote", label: "Remote" },
+  { value: "Flexible Hours", label: "Flexible Hours" },
+  { value: "Hybrid", label: "Hybrid" },
+];
 const customGroupTagsOptions: Option[] = [
   { value: "Auckland", label: "Auckland" },
   { value: "Hamilton", label: "Hamilton" },
+];
+
+const jobTypeOptions: Option[] = [
+  { value: "Part-time", label: "Part-time" },
+  { value: "Full-time", label: "Full-time" },
+];
+
+const locationOptions: Option[] = [
+  { value: "Auckland", label: "Auckland" },
+  { value: "Hamilton", label: "Hamilton" },
+];
+
+const requiredSkillsOptions: Option[] = [
+  { value: "Auckland", label: "Auckland" },
+  { value: "Hamilton", label: "Hamilton" },
+  { value: "Casual Shift", label: "Casual Shift" },
+];
+
+const experienceLevelOptions: Option[] = [
+  { value: "Entry-Level", label: "Entry-Level" },
+  { value: "Mid-Level", label: "Mid-Level" },
+  { value: "Expert", label: "Expert" },
 ];
 
 // Define custom styles for the dropdown
@@ -189,6 +217,11 @@ interface LanguageSelectorProps {
   skills?: boolean;
   shift?: boolean;
   groups?: boolean;
+  workstype?: boolean;
+  jobType?: boolean;
+  locationOpt?: boolean;
+  reqSkills?: boolean;
+  expLevel?: boolean;
   onSelectChange: (selected: MultiValue<Option>) => void;
 }
 
@@ -197,7 +230,12 @@ const LanguageSelector: React.FC<LanguageSelectorProps> = ({
   skills,
   shift,
   groups,
+  workstype,
+  jobType,
+  locationOpt,
   onSelectChange,
+  reqSkills,
+  expLevel,
 }) => {
   const [selectedOptions, setSelectedOptions] = useState<MultiValue<Option>>(
     []
@@ -217,6 +255,16 @@ const LanguageSelector: React.FC<LanguageSelectorProps> = ({
     ? shiftsOptions
     : groups
     ? customGroupTagsOptions
+    : workstype
+    ? WorkOptions
+    : jobType
+    ? jobTypeOptions
+    : locationOpt
+    ? locationOptions
+    : reqSkills
+    ? requiredSkillsOptions
+    : expLevel
+    ? experienceLevelOptions
     : [];
 
   return (
@@ -227,7 +275,9 @@ const LanguageSelector: React.FC<LanguageSelectorProps> = ({
         onChange={handleChange}
         isMulti
         placeholder={
-          languages
+          workstype
+            ? "Search Work type"
+            : languages
             ? "Search language"
             : skills
             ? "Search skill"

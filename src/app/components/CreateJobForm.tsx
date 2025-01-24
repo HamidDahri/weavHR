@@ -245,8 +245,8 @@ const CreateJobForm: React.FC<CreateJobFormProps> = ({ onClickHandler }) => {
             </span>
           </label>
           <LanguageSelector
-            groups
-            onSelectChange={handleSelectedGroupsChange}
+            workstype
+            onSelectChange={() => console.log("")}
           ></LanguageSelector>
         </div>
         <div className="col-span-12">
@@ -256,8 +256,8 @@ const CreateJobForm: React.FC<CreateJobFormProps> = ({ onClickHandler }) => {
             </span>
           </label>
           <LanguageSelector
-            groups
-            onSelectChange={handleSelectedGroupsChange}
+            shift
+            onSelectChange={() => console.log("")}
           ></LanguageSelector>
         </div>
         <div className="col-span-12">
@@ -267,8 +267,8 @@ const CreateJobForm: React.FC<CreateJobFormProps> = ({ onClickHandler }) => {
             </span>
           </label>
           <LanguageSelector
-            groups
-            onSelectChange={handleSelectedGroupsChange}
+            jobType
+            onSelectChange={() => console.log("")}
           ></LanguageSelector>
         </div>
         <div className="col-span-12">
@@ -330,8 +330,8 @@ const CreateJobForm: React.FC<CreateJobFormProps> = ({ onClickHandler }) => {
             </span>
           </label>
           <LanguageSelector
-            groups
-            onSelectChange={handleSelectedGroupsChange}
+            locationOpt
+            onSelectChange={() => console.log("")}
           ></LanguageSelector>
         </div>
         <div className="col-span-12">
@@ -341,8 +341,8 @@ const CreateJobForm: React.FC<CreateJobFormProps> = ({ onClickHandler }) => {
             </span>
           </label>
           <LanguageSelector
-            groups
-            onSelectChange={handleSelectedGroupsChange}
+            reqSkills
+            onSelectChange={() => console.log("")}
           ></LanguageSelector>
         </div>
         <div className="col-span-12">
@@ -352,8 +352,8 @@ const CreateJobForm: React.FC<CreateJobFormProps> = ({ onClickHandler }) => {
             </span>
           </label>
           <LanguageSelector
-            groups
-            onSelectChange={handleSelectedGroupsChange}
+            expLevel
+            onSelectChange={() => console.log("")}
           ></LanguageSelector>
         </div>
         <div className="col-span-12">
@@ -364,7 +364,7 @@ const CreateJobForm: React.FC<CreateJobFormProps> = ({ onClickHandler }) => {
           </label>
           <LanguageSelector
             groups
-            onSelectChange={handleSelectedGroupsChange}
+            onSelectChange={() => console.log("")}
           ></LanguageSelector>
         </div>
       </div>
