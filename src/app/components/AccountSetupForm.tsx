@@ -53,7 +53,7 @@ const AccountSetupForm: React.FC<AccountSetupFormProps> = ({
 
           <input
             id="state"
-            type="text"
+            type="password"
             className={`w-full px-3 py-2.5 border border-gray-300 shadow-sm focus:ring-primary rounded-lg outline-none placeholder:text-gray-m-500`}
             name="state"
             placeholder=""
@@ -94,7 +94,7 @@ const AccountSetupForm: React.FC<AccountSetupFormProps> = ({
 
           <input
             id="state"
-            type="text"
+            type="password"
             className={`w-full px-3 py-2.5 border border-gray-300 shadow-sm rounded-lg focus:ring-primary outline-none placeholder:text-gray-m-500`}
             name="state"
             placeholder=""

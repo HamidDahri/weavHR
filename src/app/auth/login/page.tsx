@@ -39,25 +39,31 @@ const Login = () => {
           <div className="col-span-10 col-start-2">
             <label className="block">
               <span className="block mb-1 text-base font-medium text-gray-700">
-                Username
+                Password
                 <span className="text-red-500 ms-1">*</span>
               </span>
 
               <input
                 id="state"
-                type="text"
+                type="password"
                 className={`w-full px-3 py-2.5 border border-gray-300 shadow-sm rounded-lg outline-none focus:ring-primary placeholder:text-gray-m-500`}
                 name="state"
                 placeholder=""
               ></input>
             </label>
 
-            <div className="mt-1 text-sm text-red-500">Username Required</div>
+            <div className="mt-1 text-sm text-red-500">Password Required</div>
           </div>
 
           <div className="col-span-10 col-start-2">
             <div className="flex items-center justify-between gap-3 mt-4">
-              <div>
+              <div className="flex items-center gap-2">
+                <input
+                  id="default-checkbox"
+                  type="checkbox"
+                  value=""
+                  className="w-4 h-4 bg-white rounded border-slate-300 text-primary focus:ring-primary focus:ring-2 "
+                />
                 <span className="text-sm font-medium text-gray-700">
                   Remember me
                 </span>

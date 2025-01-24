@@ -135,7 +135,7 @@ const AddOrganizationForm: React.FC<AddOrganizationFormProps> = ({
 
             <input
               id="state"
-              type="text"
+              type="email"
               className={`w-full px-3 py-2.5 border border-gray-300 focus:ring-primary shadow-sm rounded-lg outline-none placeholder:text-gray-m-500`}
               name="state"
               placeholder=""
@@ -217,7 +217,7 @@ const AddOrganizationForm: React.FC<AddOrganizationFormProps> = ({
 
             <input
               id="state"
-              type="text"
+              type="email"
               className={`w-full px-3 py-2.5 border border-gray-300 focus:ring-primary shadow-sm rounded-lg outline-none placeholder:text-gray-m-500`}
               name="state"
               placeholder=""
