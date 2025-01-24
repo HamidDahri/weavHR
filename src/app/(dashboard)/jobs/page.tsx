@@ -1,32 +1,21 @@
 "use client";
 
 import {
-  faArrowsRotateReverse,
   faBarsFilter,
-  faCalendar,
-  faCalendarClock,
   faChevronDown,
   faClock,
-  faDoorOpen,
   faEllipsisVertical,
-  faEnvelope,
-  faFilePdf,
   faGrid2,
   faHospital,
   faKey,
   faListCheck,
   faLoader,
-  faLocationCheck,
   faLocationDot,
   faLock,
   faMessageDots,
-  faMugHot,
-  faPaperclip,
   faPenToSquare,
-  faPhone,
   faPlus,
   faShareNodes,
-  faUser,
 } from "@fortawesome/pro-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";

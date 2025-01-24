@@ -1,5 +1,5 @@
 "use client";
-import { faCalculator, faCalendar } from "@fortawesome/pro-regular-svg-icons";
+import { faCalendar } from "@fortawesome/pro-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 

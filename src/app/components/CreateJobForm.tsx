@@ -11,29 +11,29 @@ interface CreateJobFormProps {
 }
 
 const CreateJobForm: React.FC<CreateJobFormProps> = ({ onClickHandler }) => {
-  const [selectedLanguages, setSelectedLanguages] = useState<any[]>([]);
+  // const [selectedLanguages, setSelectedLanguages] = useState<any[]>([]);
 
-  const handleSelectedLanguagesChange = (selected: any) => {
-    setSelectedLanguages(selected); // Update state with the selected values
-  };
+  // const handleSelectedLanguagesChange = (selected: any) => {
+  //   setSelectedLanguages(selected); // Update state with the selected values
+  // };
 
-  const [selectedSkills, setSelectedSkills] = useState<any[]>([]);
+  // const [selectedSkills, setSelectedSkills] = useState<any[]>([]);
 
-  const handleSelectedSkillsChange = (selected: any) => {
-    setSelectedSkills(selected); // Update state with the selected values
-  };
+  // const handleSelectedSkillsChange = (selected: any) => {
+  //   setSelectedSkills(selected); // Update state with the selected values
+  // };
 
-  const [selectedShifts, setSelectedShifts] = useState<any[]>([]);
+  // const [selectedShifts, setSelectedShifts] = useState<any[]>([]);
 
-  const handleSelectedShiftsChange = (selected: any) => {
-    setSelectedShifts(selected); // Update state with the selected values
-  };
+  // const handleSelectedShiftsChange = (selected: any) => {
+  //   setSelectedShifts(selected); // Update state with the selected values
+  // };
 
-  const [selectedGroups, setSelectedGroups] = useState<any[]>([]);
+  // const [selectedGroups, setSelectedGroups] = useState<any[]>([]);
 
-  const handleSelectedGroupsChange = (selected: any) => {
-    setSelectedGroups(selected); // Update state with the selected values
-  };
+  // const handleSelectedGroupsChange = (selected: any) => {
+  //   setSelectedGroups(selected); // Update state with the selected values
+  // };
 
   const handleBack = () => {
     onClickHandler(false); // Proceed to the next step

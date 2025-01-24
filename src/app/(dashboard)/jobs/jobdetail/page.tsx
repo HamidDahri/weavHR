@@ -8,7 +8,6 @@ import {
   faDoorOpen,
   faEllipsisVertical,
   faEnvelope,
-  faFilePdf,
   faGrid2,
   faHospital,
   faListCheck,
