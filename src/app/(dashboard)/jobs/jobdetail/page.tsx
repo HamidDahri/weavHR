@@ -1027,7 +1027,6 @@ const Page = () => {
 
                   <div className="flex items-center">
                     <input
-                      checked
                       id="default-radio-2"
                       type="radio"
                       value=""
@@ -1089,14 +1088,14 @@ const Page = () => {
                   <div className="flex items-center gap-4">
                     <div className="flex items-center ">
                       <input
-                        id="default-radio-1"
+                        id="default-radio-3"
                         type="radio"
                         value=""
-                        name="default-radio"
+                        name="default-radio1"
                         className="w-4 h-4 bg-gray-100 border-gray-300 text-primary focus:ring-primary focus:ring-2 "
                       />
                       <label
-                        htmlFor="default-radio-1"
+                        htmlFor="default-radio-3"
                         className="text-sm font-medium text-gray-900 ms-2 "
                       >
                         Notify in Batches
@@ -1105,15 +1104,14 @@ const Page = () => {
 
                     <div className="flex items-center">
                       <input
-                        checked
-                        id="default-radio-2"
+                        id="default-radio-4"
                         type="radio"
                         value=""
-                        name="default-radio"
+                        name="default-radio1"
                         className="w-4 h-4 bg-gray-100 border-gray-300 text-primary focus:ring-primary focus:ring-2 "
                       />
                       <label
-                        htmlFor="default-radio-2"
+                        htmlFor="default-radio-4"
                         className="text-sm font-medium text-gray-900 ms-2 "
                       >
                         Notify All Available Staff Immediately
