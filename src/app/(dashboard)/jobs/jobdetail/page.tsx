@@ -228,7 +228,7 @@ const Page = () => {
           Victoria Clinic
         </h2>
         <div className="inline-flex rounded-md shadow-sm" role="group">
-          <button
+          {/* <button
             type="button"
             onClick={() => setView("Board")}
             className={`px-4 py-2 text-sm font-medium  bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 hover:text-primary focus:z-10 focus:ring-0 ${
@@ -240,7 +240,21 @@ const Page = () => {
               className="me-1.5"
             ></FontAwesomeIcon>
             Board
-          </button>
+          </button> */}
+          <Link
+            href={"/jobs"}
+            type="button"
+            onClick={() => setView("Board")}
+            className={`px-4 py-2 text-sm font-medium  bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 hover:text-primary focus:z-10 focus:ring-0 ${
+              view === "Board" ? "text-primary" : "text-gray-900"
+            } focus:text-primary`}
+          >
+            <FontAwesomeIcon
+              icon={faGrid2}
+              className="me-1.5"
+            ></FontAwesomeIcon>
+            Board
+          </Link>
           <button
             type="button"
             onClick={() => setView("list")}
