@@ -46,7 +46,7 @@ export const Sidebar = () => {
     Account: ["Profile", "Settings"],
     List: ["Profile", "Settings"],
     File: ["Profile", "Settings"],
-    Settings: ["Staff", "Organization"],
+    Settings: ["Staff", "Organization", "Clinics"],
     Notifications: [],
     Jobs: [],
   };
