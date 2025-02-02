@@ -1,14 +1,19 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import data from "../../../../../../public/_data/userData.json";
+import timeLineData from "../../../../../../public/_data/timeLineData.json";
+import documentsData from "../../../../../../public/_data/documentsData.json";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
+  faArrowUp,
+  faArrowUpFromBracket,
   faBarsFilter,
   faBriefcase,
   faCalendar,
   faChevronDown,
   faClock,
+  faEllipsis,
   faEllipsisVertical,
   faEnvelope,
   faGrid2,
@@ -25,10 +30,23 @@ import {
   faShareNodes,
 } from "@fortawesome/pro-regular-svg-icons";
 import { Images } from "../../../../ui/images";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import CircularLoader from "../../../../components/CircularLoader";
+import AvailabilitySetup from "../../../../components/AvalabilitySetup";
+import AvailabilityModal from "../../../../components/AvalabilityModal";
+import { faBell, faClockFour } from "@fortawesome/free-solid-svg-icons";
+import { BarChart } from "recharts";
+import BarChartComponent from "../../../../components/BarChartComponent";
+import Inbox from "../../../../components/inboxUI";
 
-type TabId = "Overview" | "AvailabilitySetup" | "Schedule" | "inbox";
+type TabId =
+  | "Overview"
+  | "AvailabilitySetup"
+  | "Schedule"
+  | "inbox"
+  | "timesheet"
+  | "documents";
 
 const Page = ({ params }) => {
   const [activeTab, setActiveTab] = useState<TabId>("Overview");
@@ -43,6 +61,89 @@ const Page = ({ params }) => {
 
   const user = data.find((item) => item.id === parseInt(id, 10));
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [openDropdownId, setOpenDropdownId] = useState(null);
+  const [rowsPerPage, setRowsPerPage] = useState(8);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [screenHeight, setScreenHeight] = useState(0);
+
+  const rowHeight = 72;
+  const totalPadding = 80;
+  const rowLimit = screenHeight / (rowHeight + totalPadding);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        openDropdownId !== null &&
+        !event.target.closest(".dropdown-container")
+      ) {
+        setOpenDropdownId(null);
+      }
+    };
+
+    document.addEventListener("click", handleClickOutside);
+    return () => document.removeEventListener("click", handleClickOutside);
+  }, [openDropdownId]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setScreenHeight(window.innerHeight - 0);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    setRowsPerPage(Math.floor(rowLimit));
+  }, [screenHeight]);
+
+  const startIndex = (currentPage - 1) * rowsPerPage;
+  const endIndex = startIndex + rowsPerPage;
+  const currentRows = timeLineData.slice(startIndex, endIndex);
+  const currentRows2 = documentsData.slice(startIndex, endIndex);
+
+  const nextPage = () => {
+    if (currentPage * rowsPerPage < timeLineData.length) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const prevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const handleStatusChange = (id, newStatus) => {
+    console.log(id, newStatus);
+  };
+
+  const toggleDropdown = (id, e) => {
+    e.stopPropagation();
+    setOpenDropdownId(openDropdownId === id ? null : id);
+  };
+
+  const router = useRouter();
+
+  const handleRowClick = (id: number) => {
+    router.push(`/settings/staff/${id}`); // Navigate to the user detail page
+  };
+
+  const fileInputRef = useRef(null);
+
+  const handleButtonClick = () => {
+    // Programmatically click the hidden input
+    fileInputRef.current.click();
+  };
+
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      console.log("Selected file:", file.name);
+    }
+  };
   return (
     <>
       <div className="overflow-auto h-[calc(100vh-100px)] scrollbar-hide pb-12">
@@ -210,6 +311,34 @@ const Page = ({ params }) => {
                   onClick={() => handleTabClick("inbox")}
                 >
                   Inbox
+                </button>
+              </li>
+              <li role="presentation">
+                <button
+                  className={`inline-block  px-4 pb-2 border-b-2 rounded-t-lg ${
+                    activeTab === "timesheet"
+                      ? "border-primary text-primary"
+                      : ""
+                  }`}
+                  type="button"
+                  role="tab"
+                  onClick={() => handleTabClick("timesheet")}
+                >
+                  Timesheet
+                </button>
+              </li>
+              <li role="presentation">
+                <button
+                  className={`inline-block  px-4 pb-2 border-b-2 rounded-t-lg ${
+                    activeTab === "documents"
+                      ? "border-primary text-primary"
+                      : ""
+                  }`}
+                  type="button"
+                  role="tab"
+                  onClick={() => handleTabClick("documents")}
+                >
+                  Documents
                 </button>
               </li>
             </ul>
@@ -474,17 +603,72 @@ const Page = ({ params }) => {
             </div>
           </div>
           <div
-            className={`py-6 bg-white rounded-lg shadow px-7 ${
+            className={` ${
               activeTab === "AvailabilitySetup" ? "block" : "hidden"
             }`}
             id="AvailabilitySetup"
             role="tabpanel"
           >
-            <p className="text-sm text-gray-500 ">
-              <strong className="font-medium text-gray-800 ">
-                AvailabilitySetup tab&apos;s associated content
-              </strong>
-            </p>
+            <div className="bg-white rounded-xl">
+              <div className="flex items-center justify-between p-4 border-b last:border-b-0">
+                <div>
+                  <h2 className="text-sm font-medium text-slate-900">
+                    Mark as temporarily unavailable
+                  </h2>
+                  <h3 className="text-xs text-slate-500">
+                    Quickly temporarily disable availability across all days
+                  </h3>
+                </div>
+                <label className="inline-flex items-center cursor-pointer">
+                  <input type="checkbox" value="" className="sr-only peer" />
+                  <div className="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary/25  rounded-full peer  peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:w-5 after:h-5 after:transition-all  peer-checked:bg-primary "></div>
+                </label>
+              </div>
+
+              <div className="flex items-center justify-between p-4 border-b last:border-b-0">
+                <div>
+                  <h2 className="text-sm font-medium text-slate-900">
+                    Mark as temporarily unavailable
+                  </h2>
+                  <h3 className="text-xs text-slate-500">
+                    Quickly temporarily disable availability across all days
+                  </h3>
+                </div>
+                <div className="">
+                  <label className="block">
+                    <div className="relative">
+                      <select
+                        id="registerTypeSelection"
+                        name="registerTypeSelection"
+                        // value={values.registerTypeSelection}
+                        // onChange={handleChange}
+                        className="w-full px-3 py-2.5 border rounded-lg text-slate-500 border-gray-300 focus:ring-primary outline-none appearance-none outline-gray-m-400 select-wrapper"
+                      >
+                        <option value="Wellington">
+                          UTC−08:00 (Pacific Time)
+                        </option>
+                      </select>
+                      <Image
+                        alt="chevron down icon"
+                        className="absolute w-5 h-5 top-3 end-2"
+                        src={Images.authPageImages.arrowHeadDown}
+                      ></Image>
+                    </div>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-6">
+              <AvailabilitySetup
+                openModal={(newStep: boolean) => setIsModalOpen(newStep)}
+              ></AvailabilitySetup>
+
+              <AvailabilityModal
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+              />
+            </div>
           </div>
           <div
             className={`${activeTab === "Schedule" ? "block" : "hidden"}`}
@@ -2015,19 +2199,574 @@ const Page = ({ params }) => {
             </div>
           </div>
           <div
-            className={`py-6 bg-white rounded-lg shadow px-7 ${
+            className={`  overflow-hidden   ${
               activeTab === "inbox" ? "block" : "hidden"
             }`}
             id="inbox"
             role="tabpanel"
           >
-            <p className="text-sm text-gray-500 ">
-              This is some placeholder content the{" "}
-              <strong className="font-medium text-gray-800 ">
-                inbox tab&apos;s associated content
-              </strong>
-              .
-            </p>
+            <Inbox></Inbox>
+          </div>
+
+          <div
+            className={`  rounded-lg   ${
+              activeTab === "timesheet" ? "block" : "hidden"
+            }`}
+            id="timesheet"
+            role="tabpanel"
+          >
+            <div className="grid grid-cols-12 gap-4 mb-4">
+              <div className="grid items-stretch col-span-3 ">
+                <div className="flex flex-col justify-between gap-6 p-5 bg-white border rounded-lg">
+                  <h2 className="text-sm font-medium text-slate-900">
+                    Avg. Monthly Hours{" "}
+                  </h2>
+                  <div className="flex items-end justify-between gap-4">
+                    <div>
+                      <div className="flex items-end gap-1.5 mb-2 font-semibold text-slate-900">
+                        <span className="text-3xl">48</span>
+                        <span className="text-base">hrs</span>
+                      </div>
+                      <div className="whitespace-nowrap">
+                        <span className="text-sm font-medium text-green-500">
+                          <FontAwesomeIcon
+                            className="me-1"
+                            icon={faArrowUp}
+                          ></FontAwesomeIcon>{" "}
+                          100%
+                        </span>{" "}
+                        <span className="text-sm font-medium text-gray-700">
+                          vs last month
+                        </span>
+                      </div>
+                    </div>
+                    <BarChartComponent fill="#22C55E"></BarChartComponent>
+                  </div>
+                </div>
+              </div>
+              <div className="grid items-stretch col-span-3">
+                <div className="flex flex-col justify-between gap-6 p-5 bg-white border rounded-lg">
+                  <h2 className="text-sm font-medium text-slate-900">
+                    Avg. Earning by Month
+                  </h2>
+                  <div className="flex items-end justify-between gap-4">
+                    <div>
+                      <div className="flex items-end mb-2 gap-1.5 font-semibold text-slate-900">
+                        <span className="text-3xl">$9,600</span>
+                      </div>
+                      <div className="whitespace-nowrap">
+                        <span className="text-sm font-medium text-green-500">
+                          <FontAwesomeIcon
+                            className="me-1"
+                            icon={faArrowUp}
+                          ></FontAwesomeIcon>{" "}
+                          100%
+                        </span>{" "}
+                        <span className="text-sm font-medium text-gray-700">
+                          vs last month
+                        </span>
+                      </div>
+                    </div>
+                    <BarChartComponent fill="#993AE2"></BarChartComponent>
+                  </div>
+                </div>
+              </div>
+
+              <div className="grid items-stretch col-span-6">
+                <div className="flex bg-white border rounded-lg">
+                  <div className="w-full p-5 border-r">
+                    {" "}
+                    <h2 className="text-sm font-medium text-slate-900">
+                      Avg. Earning by Month
+                    </h2>
+                    <div className="flex items-end gap-1.5 mb-2 font-semibold mt-2 text-slate-900">
+                      <span className="text-3xl">48</span>
+                      <span className="text-base">hrs</span>
+                    </div>
+                    <div className="flex flex-col mt-6">
+                      <div className="flex items-center justify-between gap-2">
+                        <div className="flex items-center gap-1.5">
+                          <FontAwesomeIcon
+                            icon={faClockFour}
+                            className="w-4 h-4 text-amber-500"
+                          ></FontAwesomeIcon>
+                          <span className="text-sm text-slate-900">
+                            Pending{" "}
+                          </span>
+                        </div>
+
+                        <div className="flex items-baseline gap-0.5 font-semibold  text-slate-900">
+                          <span className="text-base">48</span>
+                          <span className="text-sm">hrs</span>
+                        </div>
+                      </div>
+
+                      <div className="flex items-center justify-between gap-2">
+                        <div className="flex items-center gap-1.5">
+                          <Image
+                            alt=""
+                            src={Images.authPageImages.checkedGreen}
+                          ></Image>
+                          <span className="text-sm text-slate-900">
+                            Approve
+                          </span>
+                        </div>
+
+                        <div className="flex items-baseline gap-0.5  font-semibold  text-slate-900">
+                          <span className="text-lg">10.5</span>
+                          <span className="text-sm">hrs</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="w-full p-5">
+                    {" "}
+                    <h2 className="text-sm font-medium text-slate-900">
+                      Estimated Earning
+                    </h2>
+                    <div className="flex items-end mb-2 gap-1.5 font-semibold mt-2 text-slate-900">
+                      <span className="text-3xl">$4,500</span>
+                    </div>
+                    <div className="flex flex-col mt-6">
+                      <div className="flex items-center justify-between gap-2">
+                        <div className="flex items-center gap-1.5">
+                          <FontAwesomeIcon
+                            icon={faClockFour}
+                            className="w-4 h-4 text-amber-500"
+                          ></FontAwesomeIcon>
+                          <span className="text-sm text-slate-900">
+                            Pending{" "}
+                          </span>
+                        </div>
+
+                        <div className="flex items-baseline gap-0.5 font-semibold  text-slate-900">
+                          <span className="text-base">$2,100</span>
+                        </div>
+                      </div>
+
+                      <div className="flex items-center justify-between gap-2">
+                        <div className="flex items-center gap-1.5">
+                          <Image
+                            alt=""
+                            src={Images.authPageImages.checkedGreen}
+                          ></Image>
+                          <span className="text-sm text-slate-900">
+                            Approved{" "}
+                          </span>
+                        </div>
+
+                        <div className="flex items-baseline gap-0.5  font-semibold  text-slate-900">
+                          <span className="text-lg">$2,400</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="relative overflow-x-auto border shadow border-slate-100 sm:rounded-xl">
+              <table className="w-full text-sm text-left text-gray-500 rtl:text-right">
+                <thead className="text-xs text-gray-700 bg-gray-50">
+                  <tr>
+                    <th scope="col" className="px-6 py-3">
+                      Date
+                    </th>
+                    <th scope="col" className="px-6 py-3">
+                      Start
+                    </th>
+                    <th scope="col" className="px-6 py-3">
+                      End
+                    </th>
+                    <th scope="col" className="px-6 py-3">
+                      Break
+                    </th>
+                    <th scope="col" className="px-6 py-3">
+                      Total Hrs
+                    </th>
+                    <th scope="col" className="px-6 py-3">
+                      Location
+                    </th>
+                    <th scope="col" className="px-6 py-3">
+                      Clinic Name
+                    </th>
+                    <th scope="col" className="px-6 py-3">
+                      Notes
+                    </th>
+                    <th scope="col" className="px-6 py-3"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {currentRows.map((item) => (
+                    <tr
+                      key={item.id}
+                      className={`${
+                        item.status === "Clocked in/out OK"
+                          ? "bg-white hover:bg-slate-100"
+                          : "bg-red-100 hover:bg-red-100"
+                      } border-b cursor-pointer `}
+                      // onClick={() => handleRowClick(item.id)}
+                    >
+                      <td
+                        scope="row"
+                        className={`px-6 py-4 ${
+                          item.status === "Clocked in/out OK"
+                            ? ""
+                            : "relative before:content-[''] before:absolute before:left-0 before:top-0 before:bottom-0 before:w-[4px] before:bg-red-500"
+                        }`}
+                      >
+                        <div className="flex items-center gap-2">
+                          <span className="">
+                            {item.paymentStatus === "Approved" ? (
+                              <Image
+                                alt=""
+                                src={Images.authPageImages.checkedGreen}
+                              ></Image>
+                            ) : (
+                              <FontAwesomeIcon
+                                icon={faClockFour}
+                                className="w-4 h-4 text-amber-500"
+                              ></FontAwesomeIcon>
+                            )}
+                          </span>
+                          <span className="text-sm text-gray-600">
+                            {item.date}
+                          </span>
+                        </div>
+                      </td>
+
+                      <td scope="row" className={`px-6 py-4`}>
+                        <span className="text-sm text-gray-600">
+                          {item.startTime}
+                        </span>
+                      </td>
+
+                      <td scope="row" className={`px-6 py-4`}>
+                        <span className="text-sm text-gray-600">
+                          {item.endTime}
+                        </span>
+                      </td>
+                      <td scope="row" className={`px-6 py-4`}>
+                        <span className="text-sm text-gray-600">
+                          {item.breakTime}
+                        </span>
+                      </td>
+                      <td scope="row" className={`px-6 py-4`}>
+                        <span
+                          className={`text-sm ${
+                            item.status === "Clocked in/out OK"
+                              ? "text-gray-600"
+                              : "text-red-500"
+                          }`}
+                        >
+                          {item.totalHours}
+                        </span>
+                      </td>
+                      <td scope="row" className={`px-6 py-4`}>
+                        <span className="text-sm text-gray-600">
+                          {item.location}
+                        </span>
+                      </td>
+                      <td scope="row" className={`px-6 py-4`}>
+                        <span className="text-sm text-gray-600">
+                          {item.clinic}
+                        </span>
+                      </td>
+                      <td scope="row" className={`px-6 py-4`}>
+                        <span
+                          className={`${
+                            item.status === "Clocked in/out OK"
+                              ? "text-gray-600"
+                              : "text-red-500"
+                          } text-sm `}
+                        >
+                          {item.status}
+                        </span>
+                      </td>
+
+                      <td className="w-32 px-6 py-4">
+                        <div className="relative dropdown-container">
+                          <button
+                            onClick={(e) => toggleDropdown(item.id, e)}
+                            className="inline-flex items-center p-2 text-sm font-medium text-center text-gray-900 bg-white rounded-full hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50"
+                            type="button"
+                          >
+                            <FontAwesomeIcon
+                              icon={faEllipsis}
+                              className="w-5 h-5"
+                            />
+                          </button>
+
+                          {openDropdownId === item.id && (
+                            <div className=" z-10 !fixed mt-2 bg-white divide-y divide-gray-100 rounded-lg shadow-lg right-20 w-44">
+                              <ul className="py-2 text-sm text-gray-700">
+                                {[
+                                  "Checked-in",
+                                  "Assigned",
+                                  "Counter Offer",
+                                ].map((status) => (
+                                  <li key={status}>
+                                    <button
+                                      onClick={() =>
+                                        handleStatusChange(item.id, status)
+                                      }
+                                      className="block w-full px-4 py-2 text-left hover:bg-gray-100"
+                                    >
+                                      {status}
+                                    </button>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          )}
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              <div className="flex items-center justify-between p-4 bg-white">
+                <span className="font-medium text-gray-700">
+                  Page {currentPage} of{" "}
+                  {Math.ceil(timeLineData.length / rowsPerPage)}
+                </span>
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={prevPage}
+                    disabled={currentPage === 1}
+                    className="px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 disabled:opacity-50"
+                  >
+                    Previous
+                  </button>
+                  <button
+                    onClick={nextPage}
+                    disabled={currentPage * rowsPerPage >= timeLineData.length}
+                    className="px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 disabled:opacity-50"
+                  >
+                    Next
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            className={`  rounded-lg   ${
+              activeTab === "documents" ? "block" : "hidden"
+            }`}
+            id="timesheet"
+            role="tabpanel"
+          >
+            <div className="flex flex-col gap-2 px-6 py-4 mb-4 overflow-hidden border-l-4 rounded-lg bg-purple-50 border-primary">
+              <div className="flex items-center gap-2">
+                <FontAwesomeIcon
+                  icon={faBell}
+                  className="text-orange-400"
+                ></FontAwesomeIcon>
+                <span className="text-slate-900 text-[15px]">
+                  Your Police Clearance Certificate is requested.
+                </span>
+                <button>
+                  <FontAwesomeIcon
+                    icon={faArrowUpFromBracket}
+                    className="text-primary"
+                  ></FontAwesomeIcon>
+                </button>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <FontAwesomeIcon
+                  icon={faBell}
+                  className="text-red-500"
+                ></FontAwesomeIcon>
+                <span className="text-slate-900 text-[15px]">
+                  CPR Certification has expired. Renew and upload by the end of
+                  the month.{" "}
+                </span>
+                <button>
+                  <FontAwesomeIcon
+                    icon={faArrowUpFromBracket}
+                    className="text-primary"
+                  ></FontAwesomeIcon>
+                </button>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <FontAwesomeIcon
+                  icon={faBell}
+                  className="text-blue-500"
+                ></FontAwesomeIcon>
+                <span className="text-slate-900 text-[15px]">
+                  Medical License is pending review by the manager.{" "}
+                </span>
+              </div>
+            </div>
+
+            <div className="relative overflow-x-auto border shadow border-slate-100 sm:rounded-xl">
+              <table className="w-full text-sm text-left text-gray-500 rtl:text-right">
+                <thead className="text-xs text-gray-700 bg-gray-50">
+                  <tr>
+                    <th scope="col" className="px-6 py-3">
+                      Documents Type
+                    </th>
+                    <th scope="col" className="px-6 py-3">
+                      Uploaded Date
+                    </th>
+                    <th scope="col" className="px-6 py-3">
+                      Expiry Date
+                    </th>
+                    <th scope="col" className="px-6 py-3">
+                      Status
+                    </th>
+
+                    <th scope="col" className="px-6 py-3"></th>
+                    <th scope="col" className="px-6 py-3"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {currentRows2.map((item) => (
+                    <tr
+                      key={item.id}
+                      className={` border-b cursor-pointer bg-white hover:bg-slate-100`}
+                      // onClick={() => handleRowClick(item.id)}
+                    >
+                      <td scope="row" className={`px-6 py-4`}>
+                        <div className="flex items-center gap-2">
+                          <span className="text-sm text-gray-600">
+                            {item.document}
+                          </span>
+                        </div>
+                      </td>
+
+                      <td scope="row" className={`px-6 py-4`}>
+                        <span className="text-sm text-gray-600">
+                          {item.issuedDate ? item.issuedDate : "----"}
+                        </span>
+                      </td>
+
+                      <td scope="row" className={`px-6 py-4`}>
+                        <span className="text-sm text-gray-600">
+                          {item.expiryDate ? item.expiryDate : "----"}
+                        </span>
+                      </td>
+                      <td scope="row" className={`px-6 py-4`}>
+                        <span
+                          className={`text-sm px-2 py-1 flex items-center gap-1 w-fit font-medium rounded-full ${
+                            item.status === "Pending Review"
+                              ? "bg-orange-50 text-orange-700"
+                              : item.status === "Reviewed"
+                              ? "bg-green-50 text-green-500"
+                              : item.status === "Expired"
+                              ? "bg-pink-50 text-pink-700"
+                              : item.status === "Request Pending"
+                              ? "bg-blue-50 text-blue-700"
+                              : item.status === "Request Pending"
+                              ? "bg-green-50 text-green-500"
+                              : null
+                          }`}
+                        >
+                          {item.status === "Signed" && (
+                            <Image
+                              alt=""
+                              src={Images.authPageImages.checkedGreen}
+                            ></Image>
+                          )}{" "}
+                          {item.status}
+                        </span>
+                      </td>
+                      <td
+                        scope="row"
+                        className="flex items-center gap-2 px-6 py-4"
+                      >
+                        <div>
+                          <button
+                            className="px-4 py-2 text-sm font-semibold text-gray-700 border rounded-lg hover:bg-white"
+                            onClick={handleButtonClick}
+                          >
+                            <FontAwesomeIcon
+                              className="me-1"
+                              icon={faArrowUpFromBracket}
+                            />{" "}
+                            Upload
+                          </button>
+                          <input
+                            type="file"
+                            ref={fileInputRef}
+                            onChange={handleFileChange}
+                            style={{ display: "none" }} // Hide the file input
+                          />
+                        </div>
+
+                        <span className="relative">
+                          <img src="/images/chatgreen.svg"></img>
+                          <span className="absolute w-3 h-3 bg-green-400 border-2 border-white rounded-full -top-2 left-6"></span>
+                        </span>
+                      </td>
+
+                      <td scope="row" className="w-32 px-6 py-4">
+                        <div className="relative dropdown-container">
+                          <button
+                            onClick={(e) => toggleDropdown(item.id, e)}
+                            className="inline-flex items-center p-2 text-sm font-medium text-center text-gray-900 bg-white rounded-full hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50"
+                            type="button"
+                          >
+                            <FontAwesomeIcon
+                              icon={faEllipsis}
+                              className="w-5 h-5"
+                            />
+                          </button>
+
+                          {openDropdownId === item.id && (
+                            <div className=" z-10 !fixed mt-2 bg-white divide-y divide-gray-100 rounded-lg shadow-lg right-20 w-44">
+                              <ul className="py-2 text-sm text-gray-700">
+                                {[
+                                  "Checked-in",
+                                  "Assigned",
+                                  "Counter Offer",
+                                ].map((status) => (
+                                  <li key={status}>
+                                    <button
+                                      onClick={() =>
+                                        handleStatusChange(item.id, status)
+                                      }
+                                      className="block w-full px-4 py-2 text-left hover:bg-gray-100"
+                                    >
+                                      {status}
+                                    </button>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          )}
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              <div className="flex items-center justify-between p-4 bg-white">
+                <span className="font-medium text-gray-700">
+                  Page {currentPage} of{" "}
+                  {Math.ceil(timeLineData.length / rowsPerPage)}
+                </span>
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={prevPage}
+                    disabled={currentPage === 1}
+                    className="px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 disabled:opacity-50"
+                  >
+                    Previous
+                  </button>
+                  <button
+                    onClick={nextPage}
+                    disabled={currentPage * rowsPerPage >= timeLineData.length}
+                    className="px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 disabled:opacity-50"
+                  >
+                    Next
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
