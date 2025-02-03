@@ -33,6 +33,13 @@ const Page = ({ params }) => {
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
+  const [isStepOpen, setIsStepOpen] = useState(true);
+
+  const handleStepChange = (status) => {
+    setIsStepOpen(status);
+    console.log("Step Open:", status);
+  };
+
   if (editForm) {
     return (
       <div className="overflow-auto h-[calc(100vh-100px)] scrollbar-hide pb-12">
@@ -46,122 +53,126 @@ const Page = ({ params }) => {
   return (
     <>
       <div className="overflow-auto h-[calc(100vh-100px)] scrollbar-hide pb-12">
-        <div className="pt-6 bg-white shadow px-7 rounded-xl ">
-          <div className="flex items-start justify-between gap-4">
-            <div className="flex items-center gap-4 pb-6">
-              <img
-                src="/images/remediLogo.png"
-                className="bg-gray-100 border border-gray-100 rounded-full w-21 h-21"
-                alt=""
-              />
-              <div>
-                <div className="flex items-center gap-2">
-                  <h2 className="text-lg font-semibold text-gray-900">
-                    Remedi Solutions
-                  </h2>
-                </div>
-                <h3 className="mb-1 text-sm text-gray-500 font-noraml">
-                  Healthcare
-                </h3>
-                <div className="flex items-center gap-4">
-                  <div className="flex items-center gap-2 text-xs text-gray-500">
-                    <FontAwesomeIcon icon={faEnvelope}></FontAwesomeIcon>
-                    <span>rimsha.hameed@gmail.com</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-xs text-gray-500">
-                    <FontAwesomeIcon icon={faPhone}></FontAwesomeIcon>
-                    <span>(270) 555-0117</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="relative inline-block text-left group">
-              <button
-                className="inline-flex items-center p-2 text-sm font-medium text-gray-900 bg-white rounded-full hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50"
-                type="button"
-              >
-                <FontAwesomeIcon
-                  icon={faEllipsisVertical}
-                  className="w-5 h-5 text-sm"
+        {isStepOpen === true && (
+          <div className="pt-6 bg-white shadow px-7 rounded-xl ">
+            <div className="flex items-start justify-between gap-4">
+              <div className="flex items-center gap-4 pb-6">
+                <img
+                  src="/images/remediLogo.png"
+                  className="bg-gray-100 border border-gray-100 rounded-full w-21 h-21"
+                  alt=""
                 />
-              </button>
+                <div>
+                  <div className="flex items-center gap-2">
+                    <h2 className="text-lg font-semibold text-gray-900">
+                      Remedi Solutions
+                    </h2>
+                  </div>
+                  <h3 className="mb-1 text-sm text-gray-500 font-noraml">
+                    Healthcare
+                  </h3>
+                  <div className="flex items-center gap-4">
+                    <div className="flex items-center gap-2 text-xs text-gray-500">
+                      <FontAwesomeIcon icon={faEnvelope}></FontAwesomeIcon>
+                      <span>rimsha.hameed@gmail.com</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-xs text-gray-500">
+                      <FontAwesomeIcon icon={faPhone}></FontAwesomeIcon>
+                      <span>(270) 555-0117</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-              <div className="absolute right-0 z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow group-hover:block w-44">
-                <ul className="p-2 text-sm text-gray-700">
-                  <li>
-                    <button
-                      onClick={() => setEditForm(true)}
-                      className="block w-full px-3 py-2 rounded-md text-start hover:bg-gray-100"
-                    >
-                      Edit
-                    </button>
-                  </li>
-                </ul>
+              <div className="relative inline-block text-left group">
+                <button
+                  className="inline-flex items-center p-2 text-sm font-medium text-gray-900 bg-white rounded-full hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50"
+                  type="button"
+                >
+                  <FontAwesomeIcon
+                    icon={faEllipsisVertical}
+                    className="w-5 h-5 text-sm"
+                  />
+                </button>
+
+                <div className="absolute right-0 z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow group-hover:block w-44">
+                  <ul className="p-2 text-sm text-gray-700">
+                    <li>
+                      <button
+                        onClick={() => setEditForm(true)}
+                        className="block w-full px-3 py-2 rounded-md text-start hover:bg-gray-100"
+                      >
+                        Edit
+                      </button>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div className="mb-4 border-b border-gray-200 ">
-            <ul
-              className="flex flex-wrap -mb-px text-sm font-medium text-center"
-              id="default-tab"
-              data-tabs-toggle="#default-tab-content"
-              role="tablist"
-            >
-              <li className="" role="presentation">
-                <button
-                  className={`inline-block px-4 pb-2 border-b-2 rounded-t-lg ${
-                    activeTab === "Overview"
-                      ? "border-primary text-primary"
-                      : ""
-                  }`}
-                  type="button"
-                  role="tab"
-                  onClick={() => handleTabClick("Overview")}
-                >
-                  Overview
-                </button>
-              </li>
-              <li className="" role="presentation">
-                <button
-                  className={`inline-block  px-4 pb-2 border-b-2 rounded-t-lg ${
-                    activeTab === "Documents"
-                      ? "border-primary text-primary"
-                      : ""
-                  }`}
-                  type="button"
-                  role="tab"
-                  onClick={() => handleTabClick("Documents")}
-                >
-                  Documents
-                </button>
-              </li>
-              <li className="" role="presentation">
-                <button
-                  className={`inline-block  px-4 pb-2 border-b-2 rounded-t-lg ${
-                    activeTab === "Locations"
-                      ? "border-primary text-primary"
-                      : ""
-                  }`}
-                  type="button"
-                  role="tab"
-                  onClick={() => handleTabClick("Locations")}
-                >
-                  Locations
-                </button>
-              </li>
-            </ul>
+            <div className="mb-4 border-b border-gray-200 ">
+              <ul
+                className="flex flex-wrap -mb-px text-sm font-medium text-center"
+                id="default-tab"
+                data-tabs-toggle="#default-tab-content"
+                role="tablist"
+              >
+                <li className="" role="presentation">
+                  <button
+                    className={`inline-block px-4 pb-2 border-b-2 rounded-t-lg ${
+                      activeTab === "Overview"
+                        ? "border-primary text-primary"
+                        : ""
+                    }`}
+                    type="button"
+                    role="tab"
+                    onClick={() => handleTabClick("Overview")}
+                  >
+                    Overview
+                  </button>
+                </li>
+                <li className="" role="presentation">
+                  <button
+                    className={`inline-block  px-4 pb-2 border-b-2 rounded-t-lg ${
+                      activeTab === "Documents"
+                        ? "border-primary text-primary"
+                        : ""
+                    }`}
+                    type="button"
+                    role="tab"
+                    onClick={() => handleTabClick("Documents")}
+                  >
+                    Documents
+                  </button>
+                </li>
+                <li className="" role="presentation">
+                  <button
+                    className={`inline-block  px-4 pb-2 border-b-2 rounded-t-lg ${
+                      activeTab === "Locations"
+                        ? "border-primary text-primary"
+                        : ""
+                    }`}
+                    type="button"
+                    role="tab"
+                    onClick={() => handleTabClick("Locations")}
+                  >
+                    Locations
+                  </button>
+                </li>
+              </ul>
+            </div>
           </div>
-        </div>
+        )}
         <div id="default-tab-content">
           <div
-            className={`py-6 bg-white min-h-[calc(100vh-400px)] rounded-lg shadow px-7 ${
+            className={`py-6 bg-white min-h-[calc(100vh-400px)] ${
+              isStepOpen === false && "max-w-5xl mx-auto"
+            } rounded-lg shadow px-7 ${
               activeTab === "Overview" ? "block" : "hidden"
             }`}
           >
             <div>
-              <MultiStepForm></MultiStepForm>
+              <MultiStepForm onStepChange={handleStepChange}></MultiStepForm>
             </div>
           </div>
           <div

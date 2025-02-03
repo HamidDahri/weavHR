@@ -1,106 +1,3 @@
-// import { useState } from "react";
-
-// const steps = [
-//   { id: 1, title: "Choose Your Workforce Model" },
-//   { id: 2, title: "Location & Staff Structure" },
-//   { id: 3, title: "Check-In & Check-Out Settings" },
-//   { id: 4, title: "Job Posting & Client Job Requests" },
-//   { id: 5, title: "Batch Notification Settings" },
-//   { id: 6, title: "Notifications & Reminders" },
-//   { id: 7, title: "Review & Confirm" },
-// ];
-
-// const Step1Content = () => (
-//   <div className="p-4 border rounded-md">
-//     <h2 className="mb-4 text-xl font-semibold">Choose Your Workforce Model</h2>
-//     <p className="mb-4">
-//       Which best describes your organization’s operations?
-//       <br />
-//       (Choose one option to configure your platform settings.)
-//     </p>
-//     <div className="flex flex-col gap-3">
-//       <label className="flex items-center gap-2 p-3 border rounded-md cursor-pointer">
-//         <input
-//           type="radio"
-//           name="workforceModel"
-//           value="Direct Workforce Management"
-//         />
-//         <div>
-//           <strong>Direct Workforce Management</strong>
-//           <p className="text-sm text-gray-500">
-//             For organizations managing their own workforce, including internal
-//             employees and optionally external/contract staff, but without
-//             external client job requests.
-//           </p>
-//         </div>
-//       </label>
-//       <label className="flex items-center gap-2 p-3 border rounded-md cursor-pointer">
-//         <input
-//           type="radio"
-//           name="workforceModel"
-//           value="Client & Casual Workforce"
-//         />
-//         <div>
-//           <strong>Client & Casual Workforce</strong>
-//           <p className="text-sm text-gray-500">
-//             For agencies managing external clients and casual/contracted staff,
-//             where clients request jobs and staff apply for assignments.
-//           </p>
-//         </div>
-//       </label>
-//     </div>
-//     <button className="px-4 py-2 mt-4 text-white bg-purple-600 rounded-md">
-//       Save & Close
-//     </button>
-//   </div>
-// );
-
-// export default function MultiStepForm() {
-//   const [currentStep, setCurrentStep] = useState(1);
-
-//   const renderStepContent = () => {
-//     switch (currentStep) {
-//       case 1:
-//         return <Step1Content />;
-//       // Add cases for other steps here with their respective components
-//       default:
-//         return <div>Step content goes here.</div>;
-//     }
-//   };
-
-//   return (
-//     <div className="max-w-4xl p-6 mx-auto">
-//       <h1 className="mb-4 text-2xl font-bold">
-//         Welcome to Weavik - Organization Workflow Setup
-//       </h1>
-//       <p className="mb-8 text-gray-600">
-//         Configure your organization’s settings
-//       </p>
-
-//       <div className="flex flex-col gap-4">
-//         {steps.map((step) => (
-//           <button
-//             key={step.id}
-//             className={`text-left px-4 py-2 border rounded-md flex justify-between items-center ${
-//               currentStep === step.id ? "bg-purple-50 border-purple-500" : ""
-//             }`}
-//             onClick={() => setCurrentStep(step.id)}
-//           >
-//             <span>
-//               Step {step.id}: {step.title}
-//             </span>
-//             {currentStep === step.id && (
-//               <span className="text-green-500">✓</span>
-//             )}
-//           </button>
-//         ))}
-//       </div>
-
-//       <div className="mt-6">{renderStepContent()}</div>
-//     </div>
-//   );
-// }
-
 import { useState } from "react";
 import { Images } from "../ui/images";
 import Image from "next/image";
@@ -118,7 +15,7 @@ const steps = [
 ];
 
 const Step1Content = ({ onSave }) => (
-  <div className="p-4 rounded-md">
+  <div className="rounded-md ">
     <div className="flex items-center gap-4 mb-4">
       <span className="px-3 py-2 text-sm font-medium rounded-md text-slate-500 bg-slate-100">
         Step 1
@@ -128,19 +25,23 @@ const Step1Content = ({ onSave }) => (
       </h2>
     </div>
 
-    <p className="mb-4">
-      Which best describes your organization’s operations?
-      <br />
-      (Choose one option to configure your platform settings.)
-    </p>
+    <div className="mb-4">
+      <p className="text-lg font-medium text-black ">
+        Which best describes your organization’s operations?
+      </p>
+      <span className="text-sm font-normal text-slate-900">
+        (Choose one option to configure your platform settings.)
+      </span>
+    </div>
     <div className="flex flex-col gap-3">
-      <label className="flex items-center gap-2 p-3 border rounded-md cursor-pointer">
+      <label className="radio-option">
         <input
           type="radio"
           name="workforceModel"
           value="Direct Workforce Management"
+          className="w-4 h-4 mt-1 bg-gray-100 border-gray-300 text-primary focus:ring-primary"
         />
-        <div>
+        <div className="">
           <strong>Direct Workforce Management</strong>
           <p className="text-sm text-gray-500">
             For organizations managing their own workforce, including internal
@@ -149,11 +50,12 @@ const Step1Content = ({ onSave }) => (
           </p>
         </div>
       </label>
-      <label className="flex items-center gap-2 p-3 border rounded-md cursor-pointer">
+      <label className="radio-option">
         <input
           type="radio"
           name="workforceModel"
-          value="Client & Casual Workforce"
+          value="Direct Workforce Management"
+          className="w-4 h-4 mt-1 bg-gray-100 border-gray-300 text-primary focus:ring-primary"
         />
         <div>
           <strong>Client & Casual Workforce</strong>
@@ -164,12 +66,1614 @@ const Step1Content = ({ onSave }) => (
         </div>
       </label>
     </div>
-    <button
-      className="px-4 py-2 mt-4 text-white bg-purple-600 rounded-md"
-      onClick={onSave} // Hide step content and show steps list
-    >
-      Save & Close
-    </button>
+    <div className="flex items-center justify-center gap-3">
+      <button
+        className="px-4 py-2 mt-4 bg-white border border-gray-300 rounded-md text-slate-900"
+        onClick={onSave} // Hide step content and show steps list
+      >
+        Cancel
+      </button>
+      <button
+        className="px-4 py-2 mt-4 text-white border rounded-md bg-primary border-primary"
+        onClick={onSave} // Hide step content and show steps list
+      >
+        Save & Close
+      </button>
+    </div>
+  </div>
+);
+const Step2Content = ({ onSave }) => (
+  <div className="rounded-md ">
+    <div className="flex items-center gap-4 mb-4">
+      <span className="px-3 py-2 text-sm font-medium rounded-md text-slate-500 bg-slate-100">
+        Step 2
+      </span>
+      <h2 className="text-base font-semibold text-slate-800">
+        Location & Staff Structure
+      </h2>
+    </div>
+
+    <div className="pb-6 mb-4 border-b">
+      <p className="mb-3 text-lg font-medium text-black">
+        Do you manage multiple locations?
+      </p>
+
+      <div className="flex items-center mb-2.5">
+        <input
+          id="default-radio-1"
+          type="radio"
+          value=""
+          name="default-radio"
+          className="w-4 h-4 bg-gray-100 border-gray-300 text-primary focus:ring-primary "
+        />
+        <label
+          htmlFor="default-radio-1"
+          className="text-sm font-medium text-gray-900 ms-2 "
+        >
+          Yes{" "}
+          <span className="text-xs text-gray-500">
+            (Enable location-based scheduling.)
+          </span>
+        </label>
+      </div>
+      <div className="flex items-center">
+        <input
+          id="default-radio-2"
+          type="radio"
+          value=""
+          name="default-radio"
+          className="w-4 h-4 bg-gray-100 border-gray-300 text-primary focus:ring-primary "
+        />
+        <label
+          htmlFor="default-radio-2"
+          className="text-sm font-medium text-gray-900 ms-2 "
+        >
+          No{" "}
+          <span className="text-xs text-gray-500">
+            (Single location setup.)
+          </span>
+        </label>
+      </div>
+    </div>
+
+    <div className="pb-6 mb-4 border-b">
+      <p className="mb-3 text-lg font-medium text-black">
+        Do you require staff grouping?
+      </p>
+
+      <div className="flex items-start flex-col mb-2.5">
+        <div>
+          <input
+            id="default-radio-1"
+            type="radio"
+            value=""
+            name="default-radio1"
+            className="w-4 h-4 bg-gray-100 border-gray-300 text-primary focus:ring-primary "
+          />
+          <label
+            htmlFor="default-radio-1"
+            className="text-sm font-medium text-gray-900 ms-2 "
+          >
+            Yes
+          </label>
+        </div>
+        <div className="grid w-full grid-cols-2 gap-2 p-4 mt-3 rounded-lg bg-slate-100">
+          <div className="flex items-center me-4">
+            <input
+              id="red-checkbox"
+              type="checkbox"
+              value=""
+              checked
+              className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary "
+            />
+            <label
+              htmlFor="red-checkbox"
+              className="text-sm font-medium text-gray-900 ms-2 "
+            >
+              Departments
+            </label>
+          </div>
+          <div className="flex items-center me-4">
+            <input
+              id="green-checkbox"
+              type="checkbox"
+              value=""
+              className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary "
+            />
+            <label
+              htmlFor="green-checkbox"
+              className="text-sm font-medium text-gray-900 ms-2 "
+            >
+              Staff Types
+            </label>
+          </div>
+          <div className="flex items-center me-4">
+            <input
+              id="purple-checkbox"
+              type="checkbox"
+              value=""
+              className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary "
+            />
+            <label
+              htmlFor="purple-checkbox"
+              className="text-sm font-medium text-gray-900 ms-2 "
+            >
+              Work Categories
+            </label>
+          </div>
+          <div className="flex items-center me-4">
+            <input
+              id="teal-checkbox"
+              type="checkbox"
+              value=""
+              className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary "
+            />
+            <label
+              htmlFor="teal-checkbox"
+              className="text-sm font-medium text-gray-900 ms-2 "
+            >
+              Skills
+            </label>
+          </div>
+          <div className="flex items-center me-4">
+            <input
+              id="yellow-checkbox"
+              type="checkbox"
+              value=""
+              className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary "
+            />
+            <label
+              htmlFor="yellow-checkbox"
+              className="text-sm font-medium text-gray-900 ms-2 "
+            >
+              Custom Groups
+            </label>
+          </div>
+        </div>
+      </div>
+      <div className="flex items-center">
+        <input
+          id="default-radio-2"
+          type="radio"
+          value=""
+          name="default-radio1"
+          className="w-4 h-4 bg-gray-100 border-gray-300 text-primary focus:ring-primary "
+        />
+        <label
+          htmlFor="default-radio-2"
+          className="text-sm font-medium text-gray-900 ms-2 "
+        >
+          No{" "}
+          <span className="text-xs text-gray-500">(Flat staff structure.)</span>
+        </label>
+      </div>
+    </div>
+
+    <div className="pb-6 mb-4 border-b">
+      <div className="mb-4">
+        <p className="text-lg font-medium text-black ">
+          How is your organization&apos;s working schedule structured?
+        </p>
+      </div>
+      <div className="flex flex-col gap-3">
+        <label className="radio-option">
+          <input
+            type="radio"
+            name="workforceModel"
+            value="Direct Workforce Management"
+            className="w-4 h-4 mt-1 bg-gray-100 border-gray-300 text-primary focus:ring-primary"
+          />
+          <div className="">
+            <h2 className="text-base font-medium">
+              What are your organization’s standard working hours?
+            </h2>
+            <p className="text-xs text-gray-500">
+              Example: 9 AM - 5 PM, same for all staff.
+            </p>
+          </div>
+        </label>
+        <label className="radio-option">
+          <input
+            type="radio"
+            name="workforceModel"
+            value="Direct Workforce Management"
+            className="w-4 h-4 mt-1 bg-gray-100 border-gray-300 text-primary focus:ring-primary"
+          />
+          <div>
+            <h2 className="text-base font-medium">
+              Does your organization support multiple shifts?
+            </h2>
+            <p className="text-xs text-gray-500">
+              Example: Morning Shift (7 AM - 3 PM), Evening Shift (3 PM - 11
+              PM), Night Shift (11 PM - 7 AM).
+            </p>
+          </div>
+        </label>
+      </div>
+    </div>
+    <div className="pb-6 mb-4 border-b">
+      <p className="mb-3 text-lg font-medium text-black">
+        How will staff be assigned to shifts?
+      </p>
+
+      <div className="flex items-center mb-2.5">
+        <input
+          id="default-radio-2"
+          type="radio"
+          value=""
+          name="default-radio"
+          className="w-4 h-4 bg-gray-100 border-gray-300 text-primary focus:ring-primary "
+        />
+        <label
+          htmlFor="default-radio-2"
+          className="text-sm font-medium text-gray-900 ms-2 "
+        >
+          Staff are assigned jobs manually by the organization.
+        </label>
+      </div>
+      <div className="flex items-center mb-2.5">
+        <input
+          id="default-radio-2"
+          type="radio"
+          value=""
+          name="default-radio"
+          className="w-4 h-4 bg-gray-100 border-gray-300 text-primary focus:ring-primary "
+        />
+        <label
+          htmlFor="default-radio-2"
+          className="text-sm font-medium text-gray-900 ms-2 "
+        >
+          Staff can accept or decline Jobs.
+        </label>
+      </div>
+      <div className="flex items-center ">
+        <input
+          id="default-radio-1"
+          type="radio"
+          value=""
+          name="default-radio"
+          className="w-4 h-4 bg-gray-100 border-gray-300 text-primary focus:ring-primary "
+        />
+        <label
+          htmlFor="default-radio-1"
+          className="text-sm font-medium text-gray-900 ms-2 "
+        >
+          Both (Managers assign, but staff can also accept jobs.)
+        </label>
+      </div>
+    </div>
+    <div className="flex items-center justify-center gap-3">
+      <button
+        className="px-4 py-2 mt-4 bg-white border border-gray-300 rounded-md text-slate-900"
+        onClick={onSave} // Hide step content and show steps list
+      >
+        Cancel
+      </button>
+      <button
+        className="px-4 py-2 mt-4 text-white border rounded-md bg-primary border-primary"
+        onClick={onSave} // Hide step content and show steps list
+      >
+        Save & Close
+      </button>
+    </div>
+  </div>
+);
+const Step3Content = ({ onSave }) => (
+  <div className="rounded-md ">
+    <div className="flex items-center gap-4 mb-4">
+      <span className="px-3 py-2 text-sm font-medium rounded-md text-slate-500 bg-slate-100">
+        Step 3
+      </span>
+      <h2 className="text-base font-semibold text-slate-800">
+        Check-In & Check-Out Settings
+      </h2>
+    </div>
+
+    <div className="pb-6 mb-4 border-b">
+      <p className="mb-3 text-lg font-medium text-black">
+        How should check-in/check-out be managed?
+      </p>
+
+      <div className="flex items-center mb-2.5">
+        <input
+          id="default-radio-1"
+          type="radio"
+          value=""
+          name="default-radio"
+          className="w-4 h-4 bg-gray-100 border-gray-300 text-primary focus:ring-primary "
+        />
+        <label
+          htmlFor="default-radio-1"
+          className="text-sm font-medium text-gray-900 ms-2 "
+        >
+          Check-In & Check-Out Required for All Jobs
+        </label>
+      </div>
+      <div className="flex items-center mb-2.5">
+        <input
+          id="default-radio-2"
+          type="radio"
+          value=""
+          name="default-radio"
+          className="w-4 h-4 bg-gray-100 border-gray-300 text-primary focus:ring-primary "
+        />
+        <label
+          htmlFor="default-radio-2"
+          className="text-sm font-medium text-gray-900 ms-2 "
+        >
+          Check-In & Check-Out Depends on the Job
+          <span className="text-xs text-gray-500 ms-2">
+            (Set on a per-job basis.)
+          </span>
+        </label>
+      </div>
+      <div className="flex items-center">
+        <input
+          id="default-radio-2"
+          type="radio"
+          value=""
+          name="default-radio"
+          className="w-4 h-4 bg-gray-100 border-gray-300 text-primary focus:ring-primary "
+        />
+        <label
+          htmlFor="default-radio-2"
+          className="text-sm font-medium text-gray-900 ms-2 "
+        >
+          No Check-In/Check-Out Required
+          <span className="text-xs text-gray-500 ms-2">
+            (Staff are considered present based on assigned schedule.)
+          </span>
+        </label>
+      </div>
+    </div>
+
+    <div className="pb-6 mb-4 border-b">
+      <p className="mb-3 text-lg font-medium text-black">Check-In Options:</p>
+
+      <div className="flex items-center mb-2.5">
+        <input
+          id="default-radio-1"
+          type="radio"
+          value=""
+          name="default-radio"
+          className="w-4 h-4 bg-gray-100 border-gray-300 text-primary focus:ring-primary "
+        />
+        <label
+          htmlFor="default-radio-1"
+          className="text-sm font-medium text-gray-900 ms-2 "
+        >
+          Allow auto Check-In
+          <span className="text-xs text-gray-500 ms-2">
+            (Automatically check staff in at job start time)
+          </span>
+        </label>
+      </div>
+      <div className="flex items-center mb-2.5">
+        <input
+          id="default-radio-2"
+          type="radio"
+          value=""
+          name="default-radio"
+          className="w-4 h-4 bg-gray-100 border-gray-300 text-primary focus:ring-primary "
+        />
+        <label
+          htmlFor="default-radio-2"
+          className="text-sm font-medium text-gray-900 ms-2 "
+        >
+          Staff Must Check In Manually
+        </label>
+      </div>
+      <div className="flex items-center mb-2.5">
+        <input
+          id="default-radio-2"
+          type="radio"
+          value=""
+          name="default-radio"
+          className="w-4 h-4 bg-gray-100 border-gray-300 text-primary focus:ring-primary "
+        />
+        <label
+          htmlFor="default-radio-2"
+          className="text-sm font-medium text-gray-900 ms-2 "
+        >
+          Staff Can Check In from Anywhere
+        </label>
+      </div>
+
+      <div className="flex items-center mb-2.5">
+        <input
+          id="default-radio-1"
+          type="radio"
+          value=""
+          name="default-radio"
+          className="w-4 h-4 bg-gray-100 border-gray-300 text-primary focus:ring-primary "
+        />
+        <label
+          htmlFor="default-radio-1"
+          className="text-sm font-medium text-gray-900 ms-2 "
+        >
+          Geo-Fenced Check-In
+          <span className="text-xs text-gray-500 ms-2">
+            (Restricted to Job Location)
+          </span>
+        </label>
+      </div>
+    </div>
+
+    <div className="pb-6 mb-4 ">
+      <p className="mb-3 text-lg font-medium text-black">Check-Out Options:</p>
+
+      <div className="flex items-center mb-2.5">
+        <input
+          id="default-radio-1"
+          type="radio"
+          value=""
+          name="default-radio"
+          className="w-4 h-4 bg-gray-100 border-gray-300 text-primary focus:ring-primary "
+        />
+        <label
+          htmlFor="default-radio-1"
+          className="text-sm font-medium text-gray-900 ms-2 "
+        >
+          Allow auto Check-out
+          <span className="text-xs text-gray-500 ms-2">
+            (Automatically check staff in at job start time)
+          </span>
+        </label>
+      </div>
+      <div className="flex items-center mb-2.5">
+        <input
+          id="default-radio-2"
+          type="radio"
+          value=""
+          name="default-radio"
+          className="w-4 h-4 bg-gray-100 border-gray-300 text-primary focus:ring-primary "
+        />
+        <label
+          htmlFor="default-radio-2"
+          className="text-sm font-medium text-gray-900 ms-2 "
+        >
+          Staff Must Check Out Manually
+        </label>
+      </div>
+      <div className="flex items-center mb-2.5">
+        <input
+          id="default-radio-2"
+          type="radio"
+          value=""
+          name="default-radio"
+          className="w-4 h-4 bg-gray-100 border-gray-300 text-primary focus:ring-primary "
+        />
+        <label
+          htmlFor="default-radio-2"
+          className="text-sm font-medium text-gray-900 ms-2 "
+        >
+          Staff Can Check Out from Anywhere
+        </label>
+      </div>
+
+      <div className="flex items-center mb-2.5">
+        <input
+          id="default-radio-1"
+          type="radio"
+          value=""
+          name="default-radio"
+          className="w-4 h-4 bg-gray-100 border-gray-300 text-primary focus:ring-primary "
+        />
+        <label
+          htmlFor="default-radio-1"
+          className="text-sm font-medium text-gray-900 ms-2 "
+        >
+          Geo-Fenced Check-Out
+          <span className="text-xs text-gray-500 ms-2">
+            (Restricted to Job Location)
+          </span>
+        </label>
+      </div>
+    </div>
+
+    <div className="flex items-center justify-center gap-3">
+      <button
+        className="px-4 py-2 mt-4 bg-white border border-gray-300 rounded-md text-slate-900"
+        onClick={onSave} // Hide step content and show steps list
+      >
+        Cancel
+      </button>
+      <button
+        className="px-4 py-2 mt-4 text-white border rounded-md bg-primary border-primary"
+        onClick={onSave} // Hide step content and show steps list
+      >
+        Save & Close
+      </button>
+    </div>
+  </div>
+);
+const Step4Content = ({ onSave }) => (
+  <div className="rounded-md ">
+    <div className="flex items-center gap-4 mb-4">
+      <span className="px-3 py-2 text-sm font-medium rounded-md text-slate-500 bg-slate-100">
+        Step 4
+      </span>
+      <h2 className="text-base font-semibold text-slate-800">
+        Job Posting & Client Job Requests
+      </h2>
+    </div>
+
+    <div className="pb-6 mb-4 border-b">
+      <p className="mb-3 text-lg font-medium text-black">
+        How should job posting work?
+      </p>
+
+      <div className="flex items-center mb-2.5">
+        <input
+          id="default-radio-1"
+          type="radio"
+          value=""
+          name="default-radio"
+          className="w-4 h-4 bg-gray-100 border-gray-300 text-primary focus:ring-primary "
+        />
+        <label
+          htmlFor="default-radio-1"
+          className="text-sm font-medium text-gray-900 ms-2 "
+        >
+          Clients Can Post Jobs Directly
+          <span className="text-xs text-gray-500 ms-2">
+            (Jobs go live immediately.)
+          </span>
+        </label>
+      </div>
+      <div className="flex items-center mb-2.5">
+        <input
+          id="default-radio-2"
+          type="radio"
+          value=""
+          name="default-radio"
+          className="w-4 h-4 bg-gray-100 border-gray-300 text-primary focus:ring-primary "
+        />
+        <label
+          htmlFor="default-radio-2"
+          className="text-sm font-medium text-gray-900 ms-2 "
+        >
+          Clients Can Create Job Requests & Submit for Agency Approval
+          <span className="text-xs text-gray-500 ms-2">
+            (Agency reviews job before posting.)
+          </span>
+        </label>
+      </div>
+      <div className="flex items-center">
+        <input
+          id="default-radio-2"
+          type="radio"
+          value=""
+          name="default-radio"
+          className="w-4 h-4 bg-gray-100 border-gray-300 text-primary focus:ring-primary "
+        />
+        <label
+          htmlFor="default-radio-2"
+          className="text-sm font-medium text-gray-900 ms-2 "
+        >
+          Agency Posts All Jobs Clients Cannot Post Jobs
+          <span className="text-xs text-gray-500 ms-2">
+            (Agency fully controls job postings.)
+          </span>
+        </label>
+      </div>
+    </div>
+    <div className="pb-6 mb-4 ">
+      <p className="mb-3 text-lg font-medium text-black">Job Swap Settings</p>
+
+      <div className="flex items-center mb-2.5">
+        <input
+          id="default-radio-x"
+          type="checkbox"
+          value=""
+          name="default-radiox"
+          className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary "
+        />
+        <label
+          htmlFor="default-radio-x"
+          className="text-sm font-medium text-gray-900 ms-2 "
+        >
+          Apply
+          <span className="text-xs text-gray-500 ms-2">
+            (I am fully available and interested in this shift)
+          </span>
+        </label>
+      </div>
+      <div className="flex items-center mb-2.5">
+        <input
+          id="default-radio-x"
+          type="checkbox"
+          value=""
+          name="default-radiox"
+          className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary "
+        />
+        <label
+          htmlFor="default-radio-x"
+          className="text-sm font-medium text-gray-900 ms-2 "
+        >
+          Counter Offer
+          <span className="text-xs text-gray-500 ms-2">
+            (Restricted to Job Location)
+          </span>
+        </label>
+      </div>
+
+      <div className="flex items-center mb-2.5">
+        <input
+          id="default-radio-22"
+          type="checkbox"
+          value=""
+          name="default-radio2"
+          className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary "
+        />
+        <label
+          htmlFor="default-radio-22"
+          className="text-sm font-medium text-gray-900 ms-2 "
+        >
+          Standby
+          <span className="text-xs text-gray-500 ms-2">
+            (Consider me only if no one else is available)
+          </span>
+        </label>
+      </div>
+      <div className="flex items-center mb-2.5">
+        <input
+          id="default-radio-22"
+          type="checkbox"
+          value=""
+          name="default-radio2"
+          className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary "
+        />
+        <label
+          htmlFor="default-radio-22"
+          className="text-sm font-medium text-gray-900 ms-2 "
+        >
+          Skip
+          <span className="text-xs text-gray-500 ms-2">
+            (I am not available for this shift)
+          </span>
+        </label>
+      </div>
+    </div>
+    <div className="pb-6 mb-4 ">
+      <p className="mb-3 text-lg font-medium text-black">Job Swap Settings</p>
+
+      <div className="flex items-center mb-2.5">
+        <input
+          id="default-radio-1"
+          type="radio"
+          value=""
+          name="default-radio"
+          className="w-4 h-4 bg-gray-100 border-gray-300 text-primary focus:ring-primary "
+        />
+        <label
+          htmlFor="default-radio-1"
+          className="text-sm font-medium text-gray-900 ms-2 "
+        >
+          Staff Cannot Swap Jobs
+        </label>
+      </div>
+      <div className="flex items-center mb-2.5">
+        <input
+          id="default-radio-2"
+          type="radio"
+          value=""
+          name="default-radio"
+          className="w-4 h-4 bg-gray-100 border-gray-300 text-primary focus:ring-primary "
+        />
+        <label
+          htmlFor="default-radio-2"
+          className="text-sm font-medium text-gray-900 ms-2 "
+        >
+          Staff Can Request Job Swap
+          <span className="text-xs text-gray-500 ms-2">
+            (Restricted to Job Location)
+          </span>
+        </label>
+      </div>
+      <div className="flex items-center mb-2.5">
+        <input
+          id="default-radio-2"
+          type="radio"
+          value=""
+          name="default-radio"
+          className="w-4 h-4 bg-gray-100 border-gray-300 text-primary focus:ring-primary "
+        />
+        <label
+          htmlFor="default-radio-2"
+          className="text-sm font-medium text-gray-900 ms-2 "
+        >
+          Staff Can Swap Jobs Freely
+          <span className="text-xs text-gray-500 ms-2">
+            (No Approval Required)
+          </span>
+        </label>
+      </div>
+    </div>
+
+    <div className="flex items-center justify-center gap-3">
+      <button
+        className="px-4 py-2 mt-4 bg-white border border-gray-300 rounded-md text-slate-900"
+        onClick={onSave} // Hide step content and show steps list
+      >
+        Cancel
+      </button>
+      <button
+        className="px-4 py-2 mt-4 text-white border rounded-md bg-primary border-primary"
+        onClick={onSave} // Hide step content and show steps list
+      >
+        Save & Close
+      </button>
+    </div>
+  </div>
+);
+const Step5Content = ({ onSave }) => (
+  <div className="rounded-md ">
+    <div className="flex items-center gap-4 mb-4">
+      <span className="px-3 py-2 text-sm font-medium rounded-md text-slate-500 bg-slate-100">
+        Step 5
+      </span>
+      <h2 className="text-base font-semibold text-slate-800">
+        Batch Notification Settings
+      </h2>
+    </div>
+
+    <div className="mb-4">
+      <p className="text-lg font-medium text-black ">
+        How should notifications be sent to staff for new jobs?
+      </p>
+    </div>
+    <div className="flex flex-col gap-3">
+      <label className="radio-option">
+        <input
+          type="radio"
+          name="workforceModel"
+          value="Direct Workforce Management"
+          className="w-4 h-4 mt-1 bg-gray-100 border-gray-300 text-primary focus:ring-primary"
+        />
+        <div className="">
+          <strong>Notify all eligible staff immediately</strong>
+          <p className="text-sm text-gray-500">
+            All eligible staff are notified of the job as soon as it is posted.
+          </p>
+        </div>
+      </label>
+      <label className="radio-option">
+        <input
+          type="radio"
+          name="workforceModel"
+          value="Direct Workforce Management"
+          className="w-4 h-4 mt-1 bg-gray-100 border-gray-300 text-primary focus:ring-primary"
+        />
+        <div>
+          <strong>Send notifications in batches</strong>
+          <p className="text-sm text-gray-500">
+            Notifications will be sent to small groups of staff over time.
+          </p>
+        </div>
+      </label>
+
+      <label className="radio-option">
+        <input
+          type="radio"
+          name="workforceModel"
+          value="Direct Workforce Management"
+          className="w-4 h-4 mt-1 bg-gray-100 border-gray-300 text-primary focus:ring-primary"
+        />
+        <div>
+          <strong>Notification settings can be set at each job level</strong>
+          <p className="text-sm text-gray-500">
+            Allows admins to customize notifications per job.
+          </p>
+        </div>
+      </label>
+    </div>
+
+    <div className="flex items-center justify-center gap-3">
+      <button
+        className="px-4 py-2 mt-4 bg-white border border-gray-300 rounded-md text-slate-900"
+        onClick={onSave} // Hide step content and show steps list
+      >
+        Cancel
+      </button>
+      <button
+        className="px-4 py-2 mt-4 text-white border rounded-md bg-primary border-primary"
+        onClick={onSave} // Hide step content and show steps list
+      >
+        Save & Close
+      </button>
+    </div>
+  </div>
+);
+const Step6Content = ({ onSave }) => (
+  <div className="rounded-md ">
+    <div className="flex items-center gap-4 mb-4">
+      <span className="px-3 py-2 text-sm font-medium rounded-md text-slate-500 bg-slate-100">
+        Step 6
+      </span>
+      <h2 className="text-base font-semibold text-slate-800">
+        Notifications & Reminders
+      </h2>
+    </div>
+
+    <div className="pb-4 mb-4 border-b">
+      <div className="mb-4">
+        <p className="text-lg font-medium text-black ">
+          Notification Methods (Choose all that apply):
+        </p>
+      </div>
+      <div className="flex flex-col ">
+        <label className="inline-flex items-start mb-5 cursor-pointer">
+          <input type="checkbox" value="" className="sr-only peer" />
+          <div className="relative w-9 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary/25  rounded-full peer  peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[1.5px] after:start-[1.5px] after:bg-white after:border-gray-300 after:border after:rounded-full after:w-4 after:h-4 after:transition-all  peer-checked:bg-primary "></div>
+          <span className="text-sm font-medium text-gray-900 ms-3 ">
+            Push Notification
+            <span className="block text-sm text-slate-500">
+              Sent via mobile app notifications.
+            </span>
+          </span>
+        </label>
+
+        <label className="inline-flex items-start mb-5 cursor-pointer">
+          <input type="checkbox" value="" className="sr-only peer" />
+          <div className="relative w-9 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary/25  rounded-full peer  peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[1.5px] after:start-[1.5px] after:bg-white after:border-gray-300 after:border after:rounded-full after:w-4 after:h-4 after:transition-all  peer-checked:bg-primary "></div>
+          <span className="text-sm font-medium text-gray-900 ms-3 ">
+            In-App Notification
+            <span className="block text-sm text-slate-500">
+              Visible within the platform.
+            </span>
+          </span>
+        </label>
+
+        <label className="inline-flex items-start mb-5 cursor-pointer">
+          <input type="checkbox" value="" className="sr-only peer" />
+          <div className="relative w-9 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary/25  rounded-full peer  peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[1.5px] after:start-[1.5px] after:bg-white after:border-gray-300 after:border after:rounded-full after:w-4 after:h-4 after:transition-all  peer-checked:bg-primary "></div>
+          <span className="text-sm font-medium text-gray-900 ms-3 ">
+            Email Notification
+            <span className="block text-sm text-slate-500">
+              Sent to staff’s registered email.
+            </span>
+          </span>
+        </label>
+      </div>
+    </div>
+
+    <div className="pb-4 mb-4 border-b">
+      <div className="mb-4">
+        <p className="text-lg font-medium text-black ">
+          Enable notifications for staff/admin/manager?
+        </p>
+      </div>
+
+      <div className="relative overflow-x-auto border border-slate-100 sm:rounded-xl">
+        <table className="w-full text-sm text-left text-gray-500 rtl:text-right">
+          <thead className="text-xs text-gray-600 bg-gray-50">
+            <tr>
+              <th scope="col" className="px-6 py-3">
+                Enable
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Notification
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Staff
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Admin
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Manager
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr className="bg-white border-b cursor-pointer hover:bg-slate-100">
+              <td
+                scope="row"
+                className={`flex items-center px-6 py-4 text-gray-900 whitespace-nowrap`}
+              >
+                <input
+                  id="checkbox-1"
+                  type="checkbox"
+                  value=""
+                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                />
+              </td>
+              <td className="px-6 py-4">
+                <span className="text-sm font-medium text-gray-900">
+                  New job notification
+                </span>
+              </td>
+              <td className="px-6 py-4">
+                <input
+                  id="checkbox-1"
+                  type="checkbox"
+                  value=""
+                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                />
+              </td>
+              <td className="px-6 py-4">
+                <input
+                  id="checkbox-1"
+                  type="checkbox"
+                  value=""
+                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                />
+              </td>
+              <td className="w-32 px-6 py-4">
+                <input
+                  id="checkbox-1"
+                  type="checkbox"
+                  value=""
+                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                />
+              </td>
+            </tr>
+
+            <tr className="bg-white border-b cursor-pointer hover:bg-slate-100">
+              <td
+                scope="row"
+                className={`flex items-center px-6 py-4 text-gray-900 whitespace-nowrap`}
+              >
+                <input
+                  id="checkbox-1"
+                  type="checkbox"
+                  value=""
+                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                />
+              </td>
+              <td className="px-6 py-4">
+                <span className="text-sm font-medium text-gray-900">
+                  Shift reminders
+                </span>
+              </td>
+              <td className="px-6 py-4">
+                <input
+                  id="checkbox-1"
+                  type="checkbox"
+                  value=""
+                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                />
+              </td>
+              <td className="px-6 py-4">
+                <input
+                  id="checkbox-1"
+                  type="checkbox"
+                  value=""
+                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                />
+              </td>
+              <td className="w-32 px-6 py-4">
+                <input
+                  id="checkbox-1"
+                  type="checkbox"
+                  value=""
+                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                />
+              </td>
+            </tr>
+
+            <tr className="bg-white border-b cursor-pointer hover:bg-slate-100">
+              <td
+                scope="row"
+                className={`flex items-center px-6 py-4 text-gray-900 whitespace-nowrap`}
+              >
+                <input
+                  id="checkbox-1"
+                  type="checkbox"
+                  value=""
+                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                />
+              </td>
+              <td className="px-6 py-4">
+                <span className="text-sm font-medium text-gray-900">
+                  Check-In reminders
+                </span>
+              </td>
+              <td className="px-6 py-4">
+                <input
+                  id="checkbox-1"
+                  type="checkbox"
+                  value=""
+                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                />
+              </td>
+              <td className="px-6 py-4">
+                <input
+                  id="checkbox-1"
+                  type="checkbox"
+                  value=""
+                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                />
+              </td>
+              <td className="w-32 px-6 py-4">
+                <input
+                  id="checkbox-1"
+                  type="checkbox"
+                  value=""
+                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                />
+              </td>
+            </tr>
+
+            <tr className="bg-white border-b cursor-pointer hover:bg-slate-100">
+              <td
+                scope="row"
+                className={`flex items-center px-6 py-4 text-gray-900 whitespace-nowrap`}
+              >
+                <input
+                  id="checkbox-1"
+                  type="checkbox"
+                  value=""
+                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                />
+              </td>
+              <td className="px-6 py-4">
+                <span className="text-sm font-medium text-gray-900">
+                  Job no longer available status update for unsuccessful
+                  candidates
+                </span>
+              </td>
+              <td className="px-6 py-4">
+                <input
+                  id="checkbox-1"
+                  type="checkbox"
+                  value=""
+                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                />
+              </td>
+              <td className="px-6 py-4">
+                <input
+                  id="checkbox-1"
+                  type="checkbox"
+                  value=""
+                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                />
+              </td>
+              <td className="w-32 px-6 py-4">
+                <input
+                  id="checkbox-1"
+                  type="checkbox"
+                  value=""
+                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                />
+              </td>
+            </tr>
+
+            <tr className="bg-white border-b cursor-pointer hover:bg-slate-100">
+              <td
+                scope="row"
+                className={`flex items-center px-6 py-4 text-gray-900 whitespace-nowrap`}
+              >
+                <input
+                  id="checkbox-1"
+                  type="checkbox"
+                  value=""
+                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                />
+              </td>
+              <td className="px-6 py-4">
+                <span className="text-sm font-medium text-gray-900">
+                  New Client Job Requests
+                </span>
+              </td>
+              <td className="px-6 py-4">
+                <input
+                  id="checkbox-1"
+                  type="checkbox"
+                  value=""
+                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                />
+              </td>
+              <td className="px-6 py-4">
+                <input
+                  id="checkbox-1"
+                  type="checkbox"
+                  value=""
+                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                />
+              </td>
+              <td className="w-32 px-6 py-4">
+                <input
+                  id="checkbox-1"
+                  type="checkbox"
+                  value=""
+                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                />
+              </td>
+            </tr>
+
+            <tr className="bg-white border-b cursor-pointer hover:bg-slate-100">
+              <td
+                scope="row"
+                className={`flex items-center px-6 py-4 text-gray-900 whitespace-nowrap`}
+              >
+                <input
+                  id="checkbox-1"
+                  type="checkbox"
+                  value=""
+                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                />
+              </td>
+              <td className="px-6 py-4">
+                <span className="text-sm font-medium text-gray-900">
+                  Job swap approval updates
+                </span>
+              </td>
+              <td className="px-6 py-4">
+                <input
+                  id="checkbox-1"
+                  type="checkbox"
+                  value=""
+                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                />
+              </td>
+              <td className="px-6 py-4">
+                <input
+                  id="checkbox-1"
+                  type="checkbox"
+                  value=""
+                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                />
+              </td>
+              <td className="w-32 px-6 py-4">
+                <input
+                  id="checkbox-1"
+                  type="checkbox"
+                  value=""
+                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                />
+              </td>
+            </tr>
+
+            <tr className="bg-white border-b cursor-pointer hover:bg-slate-100">
+              <td
+                scope="row"
+                className={`flex items-center px-6 py-4 text-gray-900 whitespace-nowrap`}
+              >
+                <input
+                  id="checkbox-1"
+                  type="checkbox"
+                  value=""
+                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                />
+              </td>
+              <td className="px-6 py-4">
+                <span className="text-sm font-medium text-gray-900">
+                  Staff responses - apply notifications
+                </span>
+              </td>
+              <td className="px-6 py-4">
+                <input
+                  id="checkbox-1"
+                  type="checkbox"
+                  value=""
+                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                />
+              </td>
+              <td className="px-6 py-4">
+                <input
+                  id="checkbox-1"
+                  type="checkbox"
+                  value=""
+                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                />
+              </td>
+              <td className="w-32 px-6 py-4">
+                <input
+                  id="checkbox-1"
+                  type="checkbox"
+                  value=""
+                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                />
+              </td>
+            </tr>
+
+            <tr className="bg-white border-b cursor-pointer hover:bg-slate-100">
+              <td
+                scope="row"
+                className={`flex items-center px-6 py-4 text-gray-900 whitespace-nowrap`}
+              >
+                <input
+                  id="checkbox-1"
+                  type="checkbox"
+                  value=""
+                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                />
+              </td>
+              <td className="px-6 py-4">
+                <span className="text-sm font-medium text-gray-900">
+                  Staff responses - counter offer notifications
+                </span>
+              </td>
+              <td className="px-6 py-4">
+                <input
+                  id="checkbox-1"
+                  type="checkbox"
+                  value=""
+                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                />
+              </td>
+              <td className="px-6 py-4">
+                <input
+                  id="checkbox-1"
+                  type="checkbox"
+                  value=""
+                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                />
+              </td>
+              <td className="w-32 px-6 py-4">
+                <input
+                  id="checkbox-1"
+                  type="checkbox"
+                  value=""
+                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                />
+              </td>
+            </tr>
+
+            <tr className="bg-white border-b cursor-pointer hover:bg-slate-100">
+              <td
+                scope="row"
+                className={`flex items-center px-6 py-4 text-gray-900 whitespace-nowrap`}
+              >
+                <input
+                  id="checkbox-1"
+                  type="checkbox"
+                  value=""
+                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                />
+              </td>
+              <td className="px-6 py-4">
+                <span className="text-sm font-medium text-gray-900">
+                  Staff responses - standby notifications
+                </span>
+              </td>
+              <td className="px-6 py-4">
+                <input
+                  id="checkbox-1"
+                  type="checkbox"
+                  value=""
+                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                />
+              </td>
+              <td className="px-6 py-4">
+                <input
+                  id="checkbox-1"
+                  type="checkbox"
+                  value=""
+                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                />
+              </td>
+              <td className="w-32 px-6 py-4">
+                <input
+                  id="checkbox-1"
+                  type="checkbox"
+                  value=""
+                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                />
+              </td>
+            </tr>
+
+            <tr className="bg-white border-b cursor-pointer hover:bg-slate-100">
+              <td
+                scope="row"
+                className={`flex items-center px-6 py-4 text-gray-900 whitespace-nowrap`}
+              >
+                <input
+                  id="checkbox-1"
+                  type="checkbox"
+                  value=""
+                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                />
+              </td>
+              <td className="px-6 py-4">
+                <span className="text-sm font-medium text-gray-900">
+                  Staff responses - decline notifications
+                </span>
+              </td>
+              <td className="px-6 py-4">
+                <input
+                  id="checkbox-1"
+                  type="checkbox"
+                  value=""
+                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                />
+              </td>
+              <td className="px-6 py-4">
+                <input
+                  id="checkbox-1"
+                  type="checkbox"
+                  value=""
+                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                />
+              </td>
+              <td className="w-32 px-6 py-4">
+                <input
+                  id="checkbox-1"
+                  type="checkbox"
+                  value=""
+                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                />
+              </td>
+            </tr>
+
+            <tr className="bg-white border-b cursor-pointer hover:bg-slate-100">
+              <td
+                scope="row"
+                className={`flex items-center px-6 py-4 text-gray-900 whitespace-nowrap`}
+              >
+                <input
+                  id="checkbox-1"
+                  type="checkbox"
+                  value=""
+                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                />
+              </td>
+              <td className="px-6 py-4">
+                <span className="text-sm font-medium text-gray-900">
+                  Job swap approval updates
+                </span>
+              </td>
+              <td className="px-6 py-4">
+                <input
+                  id="checkbox-1"
+                  type="checkbox"
+                  value=""
+                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                />
+              </td>
+              <td className="px-6 py-4">
+                <input
+                  id="checkbox-1"
+                  type="checkbox"
+                  value=""
+                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                />
+              </td>
+              <td className="w-32 px-6 py-4">
+                <input
+                  id="checkbox-1"
+                  type="checkbox"
+                  value=""
+                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                />
+              </td>
+            </tr>
+
+            <tr className="bg-white border-b cursor-pointer hover:bg-slate-100">
+              <td
+                scope="row"
+                className={`flex items-center px-6 py-4 text-gray-900 whitespace-nowrap`}
+              >
+                <input
+                  id="checkbox-1"
+                  type="checkbox"
+                  value=""
+                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                />
+              </td>
+              <td className="px-6 py-4">
+                <span className="text-sm font-medium text-gray-900">
+                  Job under offer notifications
+                </span>
+              </td>
+              <td className="px-6 py-4">
+                <input
+                  id="checkbox-1"
+                  type="checkbox"
+                  value=""
+                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                />
+              </td>
+              <td className="px-6 py-4">
+                <input
+                  id="checkbox-1"
+                  type="checkbox"
+                  value=""
+                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                />
+              </td>
+              <td className="w-32 px-6 py-4">
+                <input
+                  id="checkbox-1"
+                  type="checkbox"
+                  value=""
+                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                />
+              </td>
+            </tr>
+
+            <tr className="bg-white border-b cursor-pointer hover:bg-slate-100">
+              <td
+                scope="row"
+                className={`flex items-center px-6 py-4 text-gray-900 whitespace-nowrap`}
+              >
+                <input
+                  id="checkbox-1"
+                  type="checkbox"
+                  value=""
+                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                />
+              </td>
+              <td className="px-6 py-4">
+                <span className="text-sm font-medium text-gray-900">
+                  Late/Missed Check-Ins
+                </span>
+              </td>
+              <td className="px-6 py-4">
+                <input
+                  id="checkbox-1"
+                  type="checkbox"
+                  value=""
+                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                />
+              </td>
+              <td className="px-6 py-4">
+                <input
+                  id="checkbox-1"
+                  type="checkbox"
+                  value=""
+                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                />
+              </td>
+              <td className="w-32 px-6 py-4">
+                <input
+                  id="checkbox-1"
+                  type="checkbox"
+                  value=""
+                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                />
+              </td>
+            </tr>
+
+            <tr className="bg-white border-b cursor-pointer hover:bg-slate-100">
+              <td
+                scope="row"
+                className={`flex items-center px-6 py-4 text-gray-900 whitespace-nowrap`}
+              >
+                <input
+                  id="checkbox-1"
+                  type="checkbox"
+                  value=""
+                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                />
+              </td>
+              <td className="px-6 py-4">
+                <span className="text-sm font-medium text-gray-900">
+                  Expiring staff documents
+                </span>
+              </td>
+              <td className="px-6 py-4">
+                <input
+                  id="checkbox-1"
+                  type="checkbox"
+                  value=""
+                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                />
+              </td>
+              <td className="px-6 py-4">
+                <input
+                  id="checkbox-1"
+                  type="checkbox"
+                  value=""
+                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                />
+              </td>
+              <td className="w-32 px-6 py-4">
+                <input
+                  id="checkbox-1"
+                  type="checkbox"
+                  value=""
+                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                />
+              </td>
+            </tr>
+
+            <tr className="bg-white border-b cursor-pointer hover:bg-slate-100">
+              <td
+                scope="row"
+                className={`flex items-center px-6 py-4 text-gray-900 whitespace-nowrap`}
+              >
+                <input
+                  id="checkbox-1"
+                  type="checkbox"
+                  value=""
+                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                />
+              </td>
+              <td className="px-6 py-4">
+                <span className="text-sm font-medium text-gray-900">
+                  Compliance notifications
+                </span>
+              </td>
+              <td className="px-6 py-4">
+                <input
+                  id="checkbox-1"
+                  type="checkbox"
+                  value=""
+                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                />
+              </td>
+              <td className="px-6 py-4">
+                <input
+                  id="checkbox-1"
+                  type="checkbox"
+                  value=""
+                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                />
+              </td>
+              <td className="w-32 px-6 py-4">
+                <input
+                  id="checkbox-1"
+                  type="checkbox"
+                  value=""
+                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                />
+              </td>
+            </tr>
+
+            <tr className="bg-white border-b cursor-pointer hover:bg-slate-100">
+              <td
+                scope="row"
+                className={`flex items-center px-6 py-4 text-gray-900 whitespace-nowrap`}
+              >
+                <input
+                  id="checkbox-1"
+                  type="checkbox"
+                  value=""
+                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                />
+              </td>
+              <td className="px-6 py-4">
+                <span className="text-sm font-medium text-gray-900">
+                  New message notifications
+                </span>
+              </td>
+              <td className="px-6 py-4">
+                <input
+                  id="checkbox-1"
+                  type="checkbox"
+                  value=""
+                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                />
+              </td>
+              <td className="px-6 py-4">
+                <input
+                  id="checkbox-1"
+                  type="checkbox"
+                  value=""
+                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                />
+              </td>
+              <td className="w-32 px-6 py-4">
+                <input
+                  id="checkbox-1"
+                  type="checkbox"
+                  value=""
+                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div className="flex items-center justify-center gap-3">
+      <button
+        className="px-4 py-2 mt-4 bg-white border border-gray-300 rounded-md text-slate-900"
+        onClick={onSave} // Hide step content and show steps list
+      >
+        Cancel
+      </button>
+      <button
+        className="px-4 py-2 mt-4 text-white border rounded-md bg-primary border-primary"
+        onClick={onSave} // Hide step content and show steps list
+      >
+        Save & Close
+      </button>
+    </div>
   </div>
 );
 const Step7Content = ({ onSave }) => (
@@ -298,42 +1802,52 @@ const Step7Content = ({ onSave }) => (
         </div>
       </div>
     </div>
-    <button
-      className="px-4 py-2 mt-4 text-white bg-purple-600 rounded-md"
-      onClick={onSave} // Hide step content and show steps list
-    >
-      Save & Close
-    </button>
+    <div className="flex items-center justify-center gap-3">
+      <button
+        className="px-4 py-2 mt-4 bg-white border border-gray-300 rounded-md text-slate-900"
+        onClick={onSave} // Hide step content and show steps list
+      >
+        Cancel
+      </button>
+      <button
+        className="px-4 py-2 mt-4 text-white border rounded-md bg-primary border-primary"
+        onClick={onSave} // Hide step content and show steps list
+      >
+        Confirm & Save
+      </button>
+    </div>
   </div>
 );
 
-export default function MultiStepForm() {
+export default function MultiStepForm({ onStepChange }) {
   const [currentStep, setCurrentStep] = useState(null); // Initially show steps list
 
   const handleStepClick = (stepId) => {
     setCurrentStep(stepId); // Hide steps list and show step content
+    if (onStepChange) onStepChange(false);
   };
 
   const handleSaveAndClose = () => {
     setCurrentStep(null); // Show steps list and hide step content
+    if (onStepChange) onStepChange(true);
   };
 
   const renderStepContent = () => {
     if (currentStep === 1) return <Step1Content onSave={handleSaveAndClose} />;
-    if (currentStep === 2) return <Step1Content onSave={handleSaveAndClose} />;
-    if (currentStep === 3) return <Step1Content onSave={handleSaveAndClose} />;
-    if (currentStep === 4) return <Step1Content onSave={handleSaveAndClose} />;
-    if (currentStep === 5) return <Step1Content onSave={handleSaveAndClose} />;
-    if (currentStep === 6) return <Step1Content onSave={handleSaveAndClose} />;
+    if (currentStep === 2) return <Step2Content onSave={handleSaveAndClose} />;
+    if (currentStep === 3) return <Step3Content onSave={handleSaveAndClose} />;
+    if (currentStep === 4) return <Step4Content onSave={handleSaveAndClose} />;
+    if (currentStep === 5) return <Step5Content onSave={handleSaveAndClose} />;
+    if (currentStep === 6) return <Step6Content onSave={handleSaveAndClose} />;
     if (currentStep === 7) return <Step7Content onSave={handleSaveAndClose} />;
     return <div>Step content goes here.</div>;
   };
 
   return (
-    <div className="max-w-4xl mx-auto">
+    <div>
       {/* Show Steps List only if currentStep is null */}
       {currentStep === null ? (
-        <>
+        <div className="max-w-4xl mx-auto">
           <div className="mb-4">
             <h2 className="text-2xl font-semibold text-center text-gray-900">
               👋 Welcome to weavHR – Organization Workflow Setup
@@ -371,7 +1885,7 @@ export default function MultiStepForm() {
               </button>
             ))}
           </div>
-        </>
+        </div>
       ) : (
         <div className="">{renderStepContent()}</div>
       )}

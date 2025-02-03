@@ -129,7 +129,7 @@ const InboxList = ({ messages, onSelect, selectedMessage }) => {
 const EmailContent = ({ selectedMessage }) => {
   if (!selectedMessage) {
     return (
-      <div className="flex items-center justify-center w-2/3 p-6 text-gray-500">
+      <div className="flex items-center justify-center w-2/3 p-6 text-gray-500 border-l-2">
         Select a message to view its content
       </div>
     );

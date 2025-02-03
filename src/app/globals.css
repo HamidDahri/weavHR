@@ -71,3 +71,17 @@ body {
 .searchInput input {
   box-shadow: none !important;
 }
+.radio-option {
+  display: flex;
+  gap: 0.75rem;
+  padding: 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  cursor: pointer;
+}
+
+/* Target the parent label when radio is checked */
+.radio-option input[type="radio"]:checked ~ .radio-option,
+.radio-option:has(input[type="radio"]:checked) {
+  border-color: #993AE2;
+}
