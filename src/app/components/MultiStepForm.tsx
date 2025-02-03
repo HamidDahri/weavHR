@@ -2,7 +2,11 @@ import { useState } from "react";
 import { Images } from "../ui/images";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleRight } from "@fortawesome/pro-regular-svg-icons";
+import {
+  faAngleRight,
+  faEdit,
+  faPlus,
+} from "@fortawesome/pro-regular-svg-icons";
 
 const steps = [
   { id: 1, title: "Choose Your Workforce Model" },
@@ -170,7 +174,11 @@ const Step2Content = ({ onSave }) => (
               htmlFor="red-checkbox"
               className="text-sm font-medium text-gray-900 ms-2 "
             >
-              Departments
+              Departments{" "}
+              <FontAwesomeIcon
+                icon={faEdit}
+                className="text-primary ms-2"
+              ></FontAwesomeIcon>
             </label>
           </div>
           <div className="flex items-center me-4">
@@ -270,6 +278,30 @@ const Step2Content = ({ onSave }) => (
             <p className="text-xs text-gray-500">
               Example: 9 AM - 5 PM, same for all staff.
             </p>
+            <div className="flex items-center gap-2 mt-4">
+              <span className="text-sm">Start time </span>
+              <div className="overflow-hidden border rounded-md w-fit">
+                <input
+                  type="time"
+                  className="h-8 py-2 border-0 focus:outline-none focus:ring-0"
+                  name=""
+                  value="13:30"
+                  id=""
+                />
+              </div>
+            </div>
+            <div className="flex items-center gap-2 mt-4">
+              <span className="text-sm me-1">End Time </span>
+              <div className="overflow-hidden border rounded-md w-fit">
+                <input
+                  type="time"
+                  className="h-8 py-2 border-0 focus:outline-none focus:ring-0"
+                  name=""
+                  value="01:30"
+                  id=""
+                />
+              </div>
+            </div>
           </div>
         </label>
         <label className="radio-option">
@@ -291,7 +323,7 @@ const Step2Content = ({ onSave }) => (
         </label>
       </div>
     </div>
-    <div className="pb-6 mb-4 border-b">
+    <div className="pb-6 mb-4 ">
       <p className="mb-3 text-lg font-medium text-black">
         How will staff be assigned to shifts?
       </p>
@@ -479,13 +511,13 @@ const Step3Content = ({ onSave }) => (
         </label>
       </div>
 
-      <div className="flex items-center mb-2.5">
+      <div className="flex items-start mb-2.5">
         <input
           id="default-radio-1"
           type="radio"
           value=""
           name="default-radio"
-          className="w-4 h-4 bg-gray-100 border-gray-300 text-primary focus:ring-primary "
+          className="w-4 h-4 mt-1 bg-gray-100 border-gray-300 text-primary focus:ring-primary "
         />
         <label
           htmlFor="default-radio-1"
@@ -495,6 +527,20 @@ const Step3Content = ({ onSave }) => (
           <span className="text-xs text-gray-500 ms-2">
             (Restricted to Job Location)
           </span>
+          <div className="mt-3 text-sm text-slate-500">
+            Require check-in within
+            <label className="relative inline-flex items-center justify-end">
+              <input
+                type="number"
+                min={1}
+                className="w-24 h-8 border-gray-300 rounded-md ms-2 focus:ring-primary"
+              />
+              <span className="absolute px-2 py-0.5 rounded-sm bg-slate-100 me-1">
+                km
+              </span>
+            </label>
+            <span className="ms-1">of job site</span>
+          </div>
         </label>
       </div>
     </div>
@@ -550,14 +596,13 @@ const Step3Content = ({ onSave }) => (
           Staff Can Check Out from Anywhere
         </label>
       </div>
-
-      <div className="flex items-center mb-2.5">
+      <div className="flex items-start mb-2.5">
         <input
           id="default-radio-1"
           type="radio"
           value=""
           name="default-radio"
-          className="w-4 h-4 bg-gray-100 border-gray-300 text-primary focus:ring-primary "
+          className="w-4 h-4 mt-1 bg-gray-100 border-gray-300 text-primary focus:ring-primary "
         />
         <label
           htmlFor="default-radio-1"
@@ -567,6 +612,20 @@ const Step3Content = ({ onSave }) => (
           <span className="text-xs text-gray-500 ms-2">
             (Restricted to Job Location)
           </span>
+          <div className="mt-3 text-sm text-slate-500">
+            Require check-in within
+            <label className="relative inline-flex items-center justify-end">
+              <input
+                type="number"
+                min={1}
+                className="w-24 h-8 border-gray-300 rounded-md ms-2 focus:ring-primary"
+              />
+              <span className="absolute px-2 py-0.5 rounded-sm bg-slate-100 me-1">
+                km
+              </span>
+            </label>
+            <span className="ms-1">of job site</span>
+          </div>
         </label>
       </div>
     </div>
@@ -659,7 +718,9 @@ const Step4Content = ({ onSave }) => (
       </div>
     </div>
     <div className="pb-6 mb-4 ">
-      <p className="mb-3 text-lg font-medium text-black">Job Swap Settings</p>
+      <p className="mb-3 text-lg font-medium text-black">
+        How should staff respond to a job?
+      </p>
 
       <div className="flex items-center mb-2.5">
         <input
@@ -677,6 +738,10 @@ const Step4Content = ({ onSave }) => (
           <span className="text-xs text-gray-500 ms-2">
             (I am fully available and interested in this shift)
           </span>
+          <FontAwesomeIcon
+            icon={faEdit}
+            className="text-primary ms-2"
+          ></FontAwesomeIcon>
         </label>
       </div>
       <div className="flex items-center mb-2.5">
@@ -734,6 +799,9 @@ const Step4Content = ({ onSave }) => (
           </span>
         </label>
       </div>
+      <button className="text-sm font-semibold text-primary">
+        <FontAwesomeIcon icon={faPlus}></FontAwesomeIcon> add more
+      </button>
     </div>
     <div className="pb-6 mb-4 ">
       <p className="mb-3 text-lg font-medium text-black">Job Swap Settings</p>
@@ -845,11 +913,114 @@ const Step5Content = ({ onSave }) => (
           value="Direct Workforce Management"
           className="w-4 h-4 mt-1 bg-gray-100 border-gray-300 text-primary focus:ring-primary"
         />
-        <div>
+        <div className="w-full">
           <strong>Send notifications in batches</strong>
           <p className="text-sm text-gray-500">
             Notifications will be sent to small groups of staff over time.
           </p>
+
+          <div className="w-full p-4 mt-4 rounded-lg bg-slate-100">
+            <div>
+              Batch Size:
+              <label className="relative inline-flex items-center justify-end">
+                <input
+                  type="number"
+                  min={1}
+                  max={100}
+                  className="w-20 h-8 border-gray-300 rounded-md ms-2 focus:ring-primary"
+                />
+                <span className="absolute px-2 py-0.5 rounded-sm bg-slate-100 me-1">
+                  %
+                </span>
+              </label>
+              <span className="ms-2"> staff per batch</span>
+            </div>
+
+            <div>
+              Batch Interval{" "}
+              <span className="ms-2">Notify next batch after</span>
+              <label className="relative inline-flex items-center justify-end">
+                <input
+                  type="number"
+                  min={1}
+                  max={100}
+                  className="w-20 h-8 border-gray-300 rounded-md ms-2 focus:ring-primary"
+                />
+              </label>
+              <span className="ms-2"> minutes</span>
+            </div>
+          </div>
+
+          <div className="w-full p-4 mt-4 rounded-lg bg-slate-100">
+            <p className="mb-3 text-lg font-medium text-black">
+              Batch Order Priority
+            </p>
+
+            <div className="flex items-center mb-2.5">
+              <input
+                id="default-radio-x"
+                type="checkbox"
+                value=""
+                name="default-radiox"
+                className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary "
+              />
+              <label
+                htmlFor="default-radio-x"
+                className="text-sm font-medium text-gray-900 ms-2 "
+              >
+                Staff with prior work experience at this job
+                <span className="text-xs text-gray-500 ms-2">
+                  (I am fully available and interested in this shift)
+                </span>
+              </label>
+            </div>
+            <div className="flex items-center mb-2.5">
+              <input
+                id="default-radio-x"
+                type="checkbox"
+                value=""
+                name="default-radiox"
+                className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary "
+              />
+              <label
+                htmlFor="default-radio-x"
+                className="text-sm font-medium text-gray-900 ms-2 "
+              >
+                Staff with fewer assigned jobs
+              </label>
+            </div>
+
+            <div className="flex items-center mb-2.5">
+              <input
+                id="default-radio-22"
+                type="checkbox"
+                value=""
+                name="default-radio2"
+                className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary "
+              />
+              <label
+                htmlFor="default-radio-22"
+                className="text-sm font-medium text-gray-900 ms-2 "
+              >
+                Staff with higher ratings
+              </label>
+            </div>
+            <div className="flex items-center mb-2.5">
+              <input
+                id="default-radio-22"
+                type="checkbox"
+                value=""
+                name="default-radio2"
+                className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary "
+              />
+              <label
+                htmlFor="default-radio-22"
+                className="text-sm font-medium text-gray-900 ms-2 "
+              >
+                Staff closest to the job location
+              </label>
+            </div>
+          </div>
         </div>
       </label>
 

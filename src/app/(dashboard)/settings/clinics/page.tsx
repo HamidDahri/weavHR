@@ -165,7 +165,9 @@ const Page = ({ params }) => {
         )}
         <div id="default-tab-content">
           <div
-            className={`py-6 bg-white min-h-[calc(100vh-400px)] ${
+            className={`py-6 bg-white ${
+              isStepOpen === true ? "min-h-[calc(100vh-360px)]" : ""
+            } ${
               isStepOpen === false && "max-w-5xl mx-auto"
             } rounded-lg shadow px-7 ${
               activeTab === "Overview" ? "block" : "hidden"

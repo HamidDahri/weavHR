@@ -1,4 +1,6 @@
 import {
+  faAngle90,
+  faArrowLeft,
   faEllipsisVertical,
   faFilter,
 } from "@fortawesome/pro-regular-svg-icons";
@@ -136,77 +138,140 @@ const EmailContent = ({ selectedMessage }) => {
   }
 
   return (
-    <div className="w-2/3 border-l-2 ">
-      <div className="flex items-center justify-between px-6 py-3 mb-4 border-b">
-        <div className="flex items-center space-x-4">
-          <img
-            src="/images/avatar.png"
-            alt="Sender"
-            className="w-10 h-10 rounded-full"
-          />
-          <div>
-            <h2 className="text-lg font-semibold text-gray-800">
-              {selectedMessage.sender}
-            </h2>
-            <p className="text-sm text-gray-600">
-              {selectedMessage.sender
-                .toLowerCase()
-                .replace(/\s+/g, "@example.com")}
-            </p>
+    <div className="flex flex-col justify-between w-2/3 border-l-2 ">
+      <div>
+        <div className="flex items-center justify-between px-6 py-3 mb-4 border-b">
+          <div className="flex items-center space-x-4">
+            <img
+              src="/images/avatar.png"
+              alt="Sender"
+              className="w-10 h-10 rounded-full"
+            />
+            <div>
+              <h2 className="text-lg font-semibold text-gray-800">
+                {selectedMessage.sender}
+              </h2>
+              <p className="text-sm text-gray-600">
+                {selectedMessage.sender
+                  .toLowerCase()
+                  .replace(/\s+/g, "@example.com")}
+              </p>
+            </div>
+          </div>
+          <div className="relative inline-block text-left group">
+            <button
+              className="inline-flex items-center p-2 text-sm font-medium text-gray-900 bg-white rounded-full hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 "
+              type="button"
+            >
+              <FontAwesomeIcon
+                icon={faEllipsisVertical}
+                className="w-5 h-5 text-sm"
+              ></FontAwesomeIcon>
+            </button>
+
+            <div className="absolute right-0 z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 group-hover:block">
+              <ul className="p-2 text-sm text-gray-700">
+                <li>
+                  <a
+                    href="#"
+                    className="block px-3 py-2 rounded-md hover:bg-gray-100"
+                  >
+                    Reply
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
-        <div className="relative inline-block text-left group">
-          <button
-            className="inline-flex items-center p-2 text-sm font-medium text-gray-900 bg-white rounded-full hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 "
-            type="button"
-          >
-            <FontAwesomeIcon
-              icon={faEllipsisVertical}
-              className="w-5 h-5 text-sm"
-            ></FontAwesomeIcon>
-          </button>
-
-          <div className="absolute right-0 z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 group-hover:block">
-            <ul className="p-2 text-sm text-gray-700">
-              <li>
-                <a
-                  href="#"
-                  className="block px-3 py-2 rounded-md hover:bg-gray-100"
-                >
-                  Reply
-                </a>
-              </li>
-            </ul>
+        <div className="px-6 py-3">
+          <p className="text-sm text-gray-700">Hi Sarah,</p>
+          <div className="mt-4 space-y-2 text-sm text-gray-700">
+            <p>- Job Confirmation: &quot;Your shift #ER2350 confirmed&quot;</p>
+            <p>
+              - Important Job Info: &quot;Change in patient assignment for
+              tomorrows shift&quot;
+            </p>
+            <p>
+              - Onboarding: &quot;Welcome to weaveHR - Complete onboarding
+              steps&quot;
+            </p>
+            <p>
+              - PMS Credentials: Your PMS account details & login
+              instructions&quot;
+            </p>
+            <p>- Training/Modules: Mandatory training available</p>
+            <p>- Shift Swap Requests: Dr. Chen requests shift #IC2340 swap</p>
+            <p>- Documents Request: Please upload your updated certification</p>
+            <p>- Policy Updates: New infection control guidelines</p>
+            <br />
+            <a href="#" className="text-blue-500 underline">
+              Link Job ID: 13231 - Victoria Clinic
+            </a>
+            <br />
+            <button className="px-4 py-2 mt-4 text-white bg-blue-500 rounded">
+              View Attachment
+            </button>
           </div>
         </div>
       </div>
-      <div className="px-6 py-3">
-        <p className="text-sm text-gray-700">Hi Sarah,</p>
-        <div className="mt-4 space-y-2 text-sm text-gray-700">
-          <p>- Job Confirmation: &quot;Your shift #ER2350 confirmed&quot;</p>
-          <p>
-            - Important Job Info: &quot;Change in patient assignment for
-            tomorrows shift&quot;
-          </p>
-          <p>
-            - Onboarding: &quot;Welcome to weaveHR - Complete onboarding
-            steps&quot;
-          </p>
-          <p>
-            - PMS Credentials: Your PMS account details & login
-            instructions&quot;
-          </p>
-          <p>- Training/Modules: Mandatory training available</p>
-          <p>- Shift Swap Requests: Dr. Chen requests shift #IC2340 swap</p>
-          <p>- Documents Request: Please upload your updated certification</p>
-          <p>- Policy Updates: New infection control guidelines</p>
-          <br />
-          <a href="#" className="text-blue-500 underline">
-            Link Job ID: 13231 - Victoria Clinic
-          </a>
-          <br />
-          <button className="px-4 py-2 mt-4 text-white bg-blue-500 rounded">
-            View Attachment
+      <div className="flex items-center justify-between p-2 border-t">
+        <div className="flex items-center gap-2">
+          <div className="inline-flex rounded-md shadow-xs" role="group">
+            <button
+              type="button"
+              className="px-4 py-2 text-sm font-medium text-gray-900 bg-white border rounded-s-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 "
+            >
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 25"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M15.4881 4.83829C15.8026 5.10785 15.839 5.58133 15.5694 5.89582L9.98781 12.4077L15.5694 18.9196C15.839 19.2341 15.8026 19.7076 15.4881 19.9772C15.1736 20.2467 14.7001 20.2103 14.4306 19.8958L8.43056 12.8958C8.18981 12.615 8.18981 12.2005 8.43056 11.9196L14.4306 4.91963C14.7001 4.60514 15.1736 4.56872 15.4881 4.83829Z"
+                  fill="#4B5565"
+                />
+              </svg>
+            </button>
+
+            <button
+              type="button"
+              className="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-s-0 rounded-e-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 "
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 25"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M8.51192 4.83829C8.82641 4.56872 9.29989 4.60514 9.56946 4.91963L15.5695 11.9196C15.8102 12.2005 15.8102 12.615 15.5695 12.8958L9.56946 19.8958C9.29989 20.2103 8.82641 20.2467 8.51192 19.9772C8.19743 19.7076 8.161 19.2341 8.43057 18.9196L14.0122 12.4077L8.43057 5.89582C8.161 5.58133 8.19743 5.10785 8.51192 4.83829Z"
+                  fill="#4B5565"
+                />
+              </svg>
+            </button>
+          </div>
+
+          <button className="px-4 py-2 bg-white border border-gray-300 rounded-md text-slate-900 hover:bg-gray-200">
+            <FontAwesomeIcon icon={faEllipsisVertical}></FontAwesomeIcon>
+          </button>
+        </div>
+
+        <div className="flex items-center justify-center gap-3">
+          <button className="px-4 py-2 bg-white border border-gray-300 rounded-md text-slate-900 hover:bg-gray-200">
+            Reply All
+          </button>
+          <button className="px-4 py-2 bg-white border border-gray-300 rounded-md text-slate-900 hover:bg-gray-200">
+            Forward
+          </button>
+          <button className="px-4 py-2 text-white border rounded-md bg-primary border-primary hover:bg-primaryDark">
+            Reply
           </button>
         </div>
       </div>
