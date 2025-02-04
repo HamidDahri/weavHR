@@ -31,7 +31,7 @@ const ContactInformationForm: React.FC<ContactInformationFormProps> = ({
           <input
             id="state"
             type="text"
-            className={`w-full px-3 py-2.5 border border-gray-300 shadow-sm focus:ring-primary rounded-lg outline-none placeholder:text-gray-m-500`}
+            className={`w-full px-3 py-2.5 border-0  rounded-lg focus:ring-primary focus:shadow bg-slate-100 focus:bg-white focus:ring-[0.5px] outline-none placeholder:text-gray-m-500`}
             name="state"
             placeholder=""
           ></input>
@@ -49,7 +49,7 @@ const ContactInformationForm: React.FC<ContactInformationFormProps> = ({
           <input
             id="state"
             type="text"
-            className={`w-full px-3 py-2.5 border border-gray-300 shadow-sm focus:ring-primary rounded-lg outline-none placeholder:text-gray-m-500`}
+            className={`w-full px-3 py-2.5 border-0  rounded-lg focus:ring-primary focus:shadow bg-slate-100 focus:bg-white focus:ring-[0.5px] outline-none placeholder:text-gray-m-500`}
             name="state"
             placeholder=""
           ></input>
@@ -68,7 +68,7 @@ const ContactInformationForm: React.FC<ContactInformationFormProps> = ({
           <input
             id="state"
             type="text"
-            className={`w-full px-3 py-2.5 border border-gray-300 shadow-sm focus:ring-primary rounded-lg outline-none placeholder:text-gray-m-500`}
+            className={`w-full px-3 py-2.5 border-0  rounded-lg focus:ring-primary focus:shadow bg-slate-100 focus:bg-white focus:ring-[0.5px] outline-none placeholder:text-gray-m-500`}
             name="state"
             placeholder=""
           ></input>
@@ -86,7 +86,7 @@ const ContactInformationForm: React.FC<ContactInformationFormProps> = ({
           <input
             id="state"
             type="text"
-            className={`w-full px-3 py-2.5 border border-gray-300 shadow-sm focus:ring-primary rounded-lg outline-none placeholder:text-gray-m-500`}
+            className={`w-full px-3 py-2.5 border-0  rounded-lg focus:ring-primary focus:shadow bg-slate-100 focus:bg-white focus:ring-[0.5px] outline-none placeholder:text-gray-m-500`}
             name="state"
             placeholder=""
           ></input>
@@ -105,7 +105,7 @@ const ContactInformationForm: React.FC<ContactInformationFormProps> = ({
           <input
             id="state"
             type="text"
-            className={`w-full px-3 py-2.5 border border-gray-300 shadow-sm focus:ring-primary rounded-lg outline-none placeholder:text-gray-m-500`}
+            className={`w-full px-3 py-2.5 border-0  rounded-lg focus:ring-primary focus:shadow bg-slate-100 focus:bg-white focus:ring-[0.5px] outline-none placeholder:text-gray-m-500`}
             name="state"
             placeholder=""
           ></input>
@@ -123,7 +123,7 @@ const ContactInformationForm: React.FC<ContactInformationFormProps> = ({
           <input
             id="state"
             type="email"
-            className={`w-full px-3 py-2.5 border border-gray-300 shadow-sm focus:ring-primary rounded-lg outline-none placeholder:text-gray-m-500`}
+            className={`w-full px-3 py-2.5 border-0  rounded-lg focus:ring-primary focus:shadow bg-slate-100 focus:bg-white focus:ring-[0.5px] outline-none placeholder:text-gray-m-500`}
             name="state"
             placeholder=""
           ></input>
@@ -146,7 +146,7 @@ const ContactInformationForm: React.FC<ContactInformationFormProps> = ({
               name="registerTypeSelection"
               // value={values.registerTypeSelection}
               // onChange={handleChange}
-              className="w-full px-3 py-2.5 border rounded-lg border-gray-300 focus:ring-primary outline-none appearance-none outline-gray-m-400 select-wrapper"
+              className="w-full px-3 py-2.5 border-0  rounded-lg focus:ring-primary focus:shadow bg-slate-100 focus:bg-white focus:ring-[0.5px] outline-none placeholder:text-gray-m-500 appearance-none select-wrapper"
             >
               <option value="NZD">NZD</option>
               <option value="USD">USD</option>

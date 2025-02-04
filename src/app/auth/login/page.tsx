@@ -28,7 +28,7 @@ const Login = () => {
               <input
                 id="state"
                 type="text"
-                className={`w-full px-3 py-2.5 border border-gray-300 shadow-sm rounded-lg outline-none focus:ring-primary placeholder:text-gray-m-500`}
+                className={`w-full px-3 py-2.5 border-0  rounded-lg focus:ring-primary focus:shadow bg-slate-100 focus:bg-white focus:ring-[0.5px] outline-none placeholder:text-gray-m-500`}
                 name="state"
                 placeholder=""
               ></input>
@@ -46,7 +46,7 @@ const Login = () => {
               <input
                 id="state"
                 type="password"
-                className={`w-full px-3 py-2.5 border border-gray-300 shadow-sm rounded-lg outline-none focus:ring-primary placeholder:text-gray-m-500`}
+                className={`w-full px-3 py-2.5 border-0  rounded-lg focus:ring-primary focus:shadow bg-slate-100 focus:bg-white focus:ring-[0.5px] outline-none placeholder:text-gray-m-500`}
                 name="state"
                 placeholder=""
               ></input>
