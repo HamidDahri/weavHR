@@ -1001,12 +1001,12 @@ const Page = () => {
               </div>
             ) : (
               <div className="col-span-8 px-4 py-5 pb-8 bg-white rounded-xl">
-                <h2 className="mb-4 text-xl font-medium text-slate-900">
+                <h2 className="mb-4 text-xl font-medium text-haiti">
                   Notification Preferences
                 </h2>
 
                 <div className="flex items-center gap-4 mb-4">
-                  <span className="text-sm font-normal text-slate-900">
+                  <span className="text-sm font-normal text-black">
                     Notify Eligible Staff
                   </span>
                   <div className="flex items-center ">
@@ -1019,7 +1019,7 @@ const Page = () => {
                     />
                     <label
                       htmlFor="default-radio-1"
-                      className="text-sm font-medium text-gray-900 ms-2 "
+                      className="text-base font-medium text-gray-500 ms-2 "
                     >
                       Yes
                     </label>
@@ -1035,7 +1035,7 @@ const Page = () => {
                     />
                     <label
                       htmlFor="default-radio-2"
-                      className="text-sm font-medium text-gray-900 ms-2 "
+                      className="text-base font-medium text-gray-500 ms-2 "
                     >
                       No
                     </label>
@@ -1043,7 +1043,7 @@ const Page = () => {
                 </div>
 
                 <div className="flex flex-col gap-2 mb-4">
-                  <span className="text-sm font-normal text-slate-900">
+                  <span className="text-sm font-normal text-black">
                     Notification Method
                   </span>
                   <div className="flex items-center gap-4">
@@ -1056,7 +1056,7 @@ const Page = () => {
                       />
                       <label
                         htmlFor="default-checkbox"
-                        className="text-sm font-normal text-gray-600 ms-2 "
+                        className="text-base font-normal text-gray-500 ms-2 "
                       >
                         Email
                       </label>
@@ -1073,7 +1073,7 @@ const Page = () => {
                       />
                       <label
                         htmlFor="default-checkbox"
-                        className="text-sm font-normal text-gray-600 ms-2 "
+                        className="text-base font-normal text-gray-500 ms-2 "
                       >
                         In-App Notification
                       </label>
@@ -1082,8 +1082,8 @@ const Page = () => {
                 </div>
 
                 <div className="flex flex-col gap-2 mb-4">
-                  <span className="text-sm font-normal text-slate-900">
-                    Notification Method
+                  <span className="text-sm font-normal text-haiti">
+                    Notification Preferences
                   </span>
                   <div className="flex items-center gap-4">
                     <div className="flex items-center ">
@@ -1096,7 +1096,7 @@ const Page = () => {
                       />
                       <label
                         htmlFor="default-radio-3"
-                        className="text-sm font-medium text-gray-900 ms-2 "
+                        className="text-base font-medium text-gray-500 ms-2 "
                       >
                         Notify in Batches
                       </label>
@@ -1112,7 +1112,7 @@ const Page = () => {
                       />
                       <label
                         htmlFor="default-radio-4"
-                        className="text-sm font-medium text-gray-900 ms-2 "
+                        className="text-base font-medium text-gray-500 ms-2 "
                       >
                         Notify All Available Staff Immediately
                       </label>
@@ -1140,7 +1140,7 @@ const Page = () => {
                         <img src="/images/jobs/crown.svg"></img>
                         <label
                           htmlFor="default-checkbox"
-                          className="text-sm font-normal text-gray-600 "
+                          className="text-sm font-normal text-gray-500 "
                         >
                           Notify Priority Staff staff immediately
                         </label>
@@ -1154,7 +1154,7 @@ const Page = () => {
                     </div>
                     <div className="col-span-10">
                       <div className="flex items-center gap-2">
-                        <span className="text-sm text-slate-500">
+                        <span className="text-sm text-gray-500">
                           Notify next
                         </span>
                         <input
@@ -1165,7 +1165,7 @@ const Page = () => {
                           placeholder="0"
                           required
                         />
-                        <span className="text-sm text-slate-500">
+                        <span className="text-sm text-gray-500">
                           staff after
                         </span>
                         <input
@@ -1186,7 +1186,7 @@ const Page = () => {
                     </div>
                     <div className="col-span-10">
                       <div className="flex items-center gap-2">
-                        <span className="text-sm text-slate-500">
+                        <span className="text-sm text-gray-500">
                           Notify next
                         </span>
                         <input
@@ -1197,7 +1197,7 @@ const Page = () => {
                           placeholder="0"
                           required
                         />
-                        <span className="text-sm text-slate-500">
+                        <span className="text-sm text-gray-500">
                           staff after
                         </span>
                         <input
@@ -1218,7 +1218,7 @@ const Page = () => {
                     </div>
                     <div className="col-span-10">
                       <div className="flex items-center gap-2">
-                        <span className="text-sm text-slate-500">
+                        <span className="text-sm text-gray-500">
                           Notify remaining staff after
                         </span>
                         <input
@@ -1234,14 +1234,14 @@ const Page = () => {
                   </div>
                 </div>
 
-                <h2 className="mb-4 text-xl font-medium text-slate-900">
+                <h2 className="mb-4 text-xl font-medium text-haiti">
                   Check in/Check out settings
                 </h2>
 
                 <div className="grid grid-cols-12 gap-4 mb-4">
                   <div className="col-span-12">
                     <label className="block ">
-                      <span className="block mb-1 text-base font-medium text-gray-700">
+                      <span className="block mb-1 text-base font-medium text-black">
                         Check-In required?
                       </span>
 
@@ -1249,7 +1249,7 @@ const Page = () => {
                         <select
                           id="registerTypeSelection"
                           name="registerTypeSelection"
-                          className="w-full px-3 py-2.5 border rounded-lg focus:ring-primary border-gray-300 outline-none appearance-none outline-gray-m-400 select-wrapper"
+                          className="w-full px-3 py-2.5 border text-slate-900 rounded-lg focus:ring-primary border-gray-300 outline-none appearance-none outline-gray-m-400 select-wrapper"
                         >
                           <option value="Wellington">
                             No check-in required
@@ -1272,7 +1272,7 @@ const Page = () => {
 
                   <div className="col-span-12">
                     <label className="block ">
-                      <span className="block mb-1 text-base font-medium text-gray-700">
+                      <span className="block mb-1 text-base font-medium text-black">
                         Check-out required?
                       </span>
 
@@ -1280,7 +1280,7 @@ const Page = () => {
                         <select
                           id="registerTypeSelection"
                           name="registerTypeSelection"
-                          className="w-full px-3 py-2.5 border rounded-lg focus:ring-primary border-gray-300 outline-none appearance-none outline-gray-m-400 select-wrapper"
+                          className="w-full px-3 py-2.5 border text-slate-900 rounded-lg focus:ring-primary border-gray-300 outline-none appearance-none outline-gray-m-400 select-wrapper"
                         >
                           <option value="Wellington">
                             No check-in required
@@ -1306,7 +1306,7 @@ const Page = () => {
                   <label className="inline-flex items-center mb-5 cursor-pointer">
                     <input type="checkbox" value="" className="sr-only peer" />
                     <div className="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary/25  rounded-full peer  peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:w-5 after:h-5 after:transition-all  peer-checked:bg-primary "></div>
-                    <span className="text-sm font-medium text-gray-900 ms-3 ">
+                    <span className="text-sm font-medium text-black ms-3 ">
                       Automatically check-in staff at job start time
                       <span className="text-slate-500 ms-2">
                         (Enable if manual check-in/out is not required)
@@ -1319,7 +1319,7 @@ const Page = () => {
                   <label className="inline-flex items-center mb-5 cursor-pointer">
                     <input type="checkbox" value="" className="sr-only peer" />
                     <div className="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary/25  rounded-full peer  peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:w-5 after:h-5 after:transition-all  peer-checked:bg-primary "></div>
-                    <span className="text-sm font-medium text-gray-900 ms-3 ">
+                    <span className="text-sm font-medium text-black ms-3 ">
                       Automatically check-out staff at job end time
                       <span className="text-slate-500 ms-2">
                         (Enable if manual check-in/out is not required)
@@ -1328,15 +1328,15 @@ const Page = () => {
                   </label>
                 </div>
 
-                <h2 className="mb-4 text-xl font-medium text-slate-900">
+                <h2 className="mb-4 text-xl font-medium text-haiti">
                   Notifications for Check-In/Check-Out
                 </h2>
 
                 <div className="flex flex-col gap-2 mb-4">
-                  <span className="text-sm font-normal text-slate-900">
+                  <span className="text-sm font-normal text-black">
                     Enable reminders for staff to check in or check out:
                   </span>
-                  <div className="">
+                  <div className="flex flex-col gap-2">
                     <div>
                       <input
                         id="default-checkbox"
@@ -1346,7 +1346,7 @@ const Page = () => {
                       />
                       <label
                         htmlFor="default-checkbox"
-                        className="text-sm font-normal text-gray-600 ms-2 "
+                        className="text-base font-normal text-gray-500 ms-2 "
                       >
                         Notify staff 15 minutes before job start time
                       </label>
@@ -1363,7 +1363,7 @@ const Page = () => {
                       />
                       <label
                         htmlFor="default-checkbox"
-                        className="text-sm font-normal text-gray-600 ms-2 "
+                        className="text-base font-normal text-gray-500 ms-2 "
                       >
                         Notify staff if not checked In 5 minutes after start
                         time
@@ -1381,7 +1381,7 @@ const Page = () => {
                       />
                       <label
                         htmlFor="default-checkbox"
-                        className="text-sm font-normal text-gray-600 ms-2 "
+                        className="text-base font-normal text-gray-500 ms-2 "
                       >
                         Notify staff 15 minutes before job end time for
                         check-out

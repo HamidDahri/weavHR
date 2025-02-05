@@ -19,6 +19,8 @@ module.exports = {
         success700: "#027A48",
         ebonClay: "#1D2939",
         modernGray900: "#121926",
+        eggShell: "#E9EAEB",
+        haiti: "#181D27",
       },
     },
   },

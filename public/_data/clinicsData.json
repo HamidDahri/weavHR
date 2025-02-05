@@ -1,0 +1,177 @@
+[
+    {
+        "avatar": "/images/avatar.png",
+        "name": "Anaesthesia Associates",
+        "email": "oliva.rhye@gmail.com",
+        "status": "Active",
+        "date": "24 Jan, 2023",
+        "location": [
+            "Auckland",
+            "California"
+        ],
+        "id": 1
+    },
+    {
+        "avatar": "/images/avatar.png",
+        "name": "Auckland Radiology Group",
+        "email": "jaxon.smith@gmail.com",
+        "status": "Inactive",
+        "date": "15 Feb, 2023",
+        "location": [
+            "Auckland",
+            "London",
+            "Chicago"
+        ],
+        "id": 2
+    },
+    {
+        "avatar": "/images/avatar.png",
+        "name": "Global Health Clinic",
+        "email": "alice.jones@gmail.com",
+        "status": "Active",
+        "date": "10 Mar, 2023",
+        "location": [
+            "New York"
+        ],
+        "id": 3
+    },
+    {
+        "avatar": "/images/avatar.png",
+        "name": "Wellness Care Center",
+        "email": "robert.brown@gmail.com",
+        "status": "Inactive",
+        "date": "22 Apr, 2023",
+        "location": [
+            "Sydney",
+            "Melbourne"
+        ],
+        "id": 4
+    },
+    {
+        "avatar": "/images/avatar.png",
+        "name": "City Medical Hub",
+        "email": "sophia.wilson@gmail.com",
+        "status": "Active",
+        "date": "12 May, 2023",
+        "location": [
+            "Chicago"
+        ],
+        "id": 5
+    },
+    {
+        "avatar": "/images/avatar.png",
+        "name": "Sunrise Hospital",
+        "email": "michael.johnson@gmail.com",
+        "status": "Inactive",
+        "date": "30 Jun, 2023",
+        "location": [
+            "San Francisco",
+            "Los Angeles"
+        ],
+        "id": 6
+    },
+    {
+        "avatar": "/images/avatar.png",
+        "name": "Greenfield Medical",
+        "email": "emily.white@gmail.com",
+        "status": "Active",
+        "date": "07 Jul, 2023",
+        "location": [
+            "Auckland"
+        ],
+        "id": 7
+    },
+    {
+        "avatar": "/images/avatar.png",
+        "name": "Harmony Wellness",
+        "email": "david.lee@gmail.com",
+        "status": "Active",
+        "date": "19 Aug, 2023",
+        "location": [
+            "Toronto",
+            "Vancouver"
+        ],
+        "id": 8
+    },
+    {
+        "avatar": "/images/avatar.png",
+        "name": "Northside Health Group",
+        "email": "emma.thomas@gmail.com",
+        "status": "Inactive",
+        "date": "05 Sep, 2023",
+        "location": [
+            "London",
+            "Manchester"
+        ],
+        "id": 9
+    },
+    {
+        "avatar": "/images/avatar.png",
+        "name": "East Bay Hospital",
+        "email": "james.roberts@gmail.com",
+        "status": "Active",
+        "date": "21 Oct, 2023",
+        "location": [
+            "San Diego"
+        ],
+        "id": 10
+    },
+    {
+        "avatar": "/images/avatar.png",
+        "name": "West Coast Medical",
+        "email": "mia.martinez@gmail.com",
+        "status": "Inactive",
+        "date": "09 Nov, 2023",
+        "location": [
+            "Los Angeles",
+            "Seattle"
+        ],
+        "id": 11
+    },
+    {
+        "avatar": "/images/avatar.png",
+        "name": "Bay Area Clinic",
+        "email": "ethan.anderson@gmail.com",
+        "status": "Active",
+        "date": "03 Dec, 2023",
+        "location": [
+            "San Francisco"
+        ],
+        "id": 12
+    },
+    {
+        "avatar": "/images/avatar.png",
+        "name": "HealthFirst Center",
+        "email": "olivia.jackson@gmail.com",
+        "status": "Inactive",
+        "date": "18 Jan, 2024",
+        "location": [
+            "Boston",
+            "New York"
+        ],
+        "id": 13
+    },
+    {
+        "avatar": "/images/avatar.png",
+        "name": "CarePlus Hospital",
+        "email": "lucas.harris@gmail.com",
+        "status": "Active",
+        "date": "14 Feb, 2024",
+        "location": [
+            "Miami"
+        ],
+        "id": 14
+    },
+    {
+        "avatar": "/images/avatar.png",
+        "name": "Wellbeing Specialists",
+        "email": "ava.moore@gmail.com",
+        "status": "Inactive",
+        "date": "27 Mar, 2024",
+        "location": [
+            "Toronto",
+            "Montreal"
+        ],
+        "id": 15
+    }
+]

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import data from "../../../../../../public/_data/userData.json";
+import data from "../../../../../../public/_data/clinicsData.json";
 import timeLineData from "../../../../../../public/_data/timeLineData.json";
 import documentsData from "../../../../../../public/_data/documentsData.json";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -28,7 +28,6 @@ import {
   faPenToSquare,
   faPhone,
   faShareNodes,
-  faXmark,
 } from "@fortawesome/pro-regular-svg-icons";
 import { Images } from "../../../../ui/images";
 import { useRouter } from "next/navigation";
@@ -57,7 +56,7 @@ const Page = ({ params }) => {
   const handleTabClick = (tabId: TabId) => {
     setActiveTab(tabId);
   };
-  const [view, setView] = useState("list");
+  const [view, setView] = useState("grid");
   const [listView, setListView] = useState("TodayJobs");
 
   const user = data.find((item) => item.id === parseInt(id, 10));
@@ -67,7 +66,6 @@ const Page = ({ params }) => {
   const [rowsPerPage, setRowsPerPage] = useState(8);
   const [currentPage, setCurrentPage] = useState(1);
   const [screenHeight, setScreenHeight] = useState(0);
-  const [infoSection, setInfoSection] = useState(true);
 
   const rowHeight = 72;
   const totalPadding = 80;
@@ -173,7 +171,7 @@ const Page = ({ params }) => {
                   </span>
                 </div>
                 <h3 className="mb-1 text-sm text-gray-500 font-noraml">
-                  {user.role}
+                  {user.location}
                 </h3>
                 <div className="flex items-center gap-4">
                   <div className="flex items-center gap-2 text-xs text-gray-500">
@@ -348,305 +346,50 @@ const Page = ({ params }) => {
         </div>
         <div id="default-tab-content">
           <div
-            className={` ${activeTab === "Overview" ? "block" : "hidden"}`}
+            className={`py-6 bg-white rounded-lg shadow px-7 ${
+              activeTab === "Overview" ? "block" : "hidden"
+            }`}
             id="Overview"
             role="tabpanel"
           >
-            {infoSection && (
-              <div className="relative p-4 mb-3 bg-[#FFF7D1] border border-yellow-200 rounded-xl">
-                <div className="flex items-center gap-3">
-                  <span className="text-base font-medium text-black">
-                    Gordon Munro
-                  </span>
-                  <span className="block w-2 h-2 bg-yellow-300 rounded-full"></span>
+            <div className="mb-6">
+              <h2 className="text-base font-medium text-gray-900">Overview</h2>
+              <p className="text-base text-ebonClay ">
+                As a dedicated and compassionate General Practitioner with over
+                12 years of experience in primary care, I am committed to
+                providing comprehensive healthcare services to individuals and
+                families. My expertise lies in diagnosing a wide range of
+                conditions, offering preventive care, and managing chronic
+                diseases. I am particularly interested in [specific interests
+                like geriatric care, women&apos;s health, pediatrics, etc.].
+              </p>
+            </div>
 
-                  <span className="text-base font-medium text-black">
-                    30 min ago Edited
-                  </span>
-                  <span className="block w-2 h-2 bg-yellow-300 rounded-full"></span>
-                  <span className="text-base font-medium text-black">
-                    <FontAwesomeIcon
-                      icon={faLock}
-                      className="me-1 text-slate-700"
-                    ></FontAwesomeIcon>{" "}
-                    Internal notes
-                  </span>
-                </div>
+            <div className="mb-6">
+              <h2 className="mb-2 text-base font-medium text-gray-900">
+                Groups
+              </h2>
 
-                <p className="mt-2 text-base text-black">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                  irure dolor in reprehenderit in voluptate velit esse cillum
-                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                  cupidatat non proident, sunt in culpa qui officia deserunt
-                  mollit anim id est laborum.
-                </p>
-                <button
-                  className="absolute top-2 end-4"
-                  onClick={() => setInfoSection(false)}
-                >
-                  <FontAwesomeIcon
-                    icon={faXmark}
-                    className="text-lg text-primary"
-                  ></FontAwesomeIcon>
-                </button>
+              <span className="inline-flex items-center bg-gray-100 text-gray-700 text-sm font-medium px-2.5 py-0.5 rounded-full">
+                Auckland
+              </span>
+            </div>
+
+            <div className="mb-6">
+              <h2 className="mb-2 text-base font-medium text-gray-900">
+                Address
+              </h2>
+              <div className="px-5 py-3 text-gray-700 rounded-lg bg-gray-50">
+                House No 123 Queen Street, Ponsonby, Auckland 1011, New Zealand
               </div>
-            )}
+            </div>
 
-            <div className="py-6 bg-white rounded-lg shadow px-7">
-              <div className="grid grid-cols-6 gap-4 mb-6">
-                <div className="p-3 bg-white border border-gray-200 rounded-xl">
-                  <span className="flex items-center justify-center w-10 h-10 rounded-full bg-cyan-100">
-                    <img src="/images/invitedIcon.svg" alt="" />
-                  </span>
-
-                  <div className="flex items-center justify-between gap-3 mt-2">
-                    <span className="block text-sm font-medium text-gray-600">
-                      Invited
-                    </span>
-                    <span className="block text-lg font-semibold text-gray-900">
-                      200
-                    </span>
-                  </div>
-                </div>
-
-                <div className="p-3 bg-white border border-gray-200 rounded-xl">
-                  <span className="flex items-center justify-center w-10 h-10 bg-pink-100 rounded-full">
-                    <img src="/images/seenIcon.svg" alt="" />
-                  </span>
-
-                  <div className="flex items-center justify-between gap-3 mt-2">
-                    <span className="block text-sm font-medium text-gray-600">
-                      Seen
-                    </span>
-                    <span className="block text-lg font-semibold text-gray-900">
-                      180
-                    </span>
-                  </div>
-                </div>
-
-                <div className="p-3 bg-white border border-gray-200 rounded-xl">
-                  <span className="flex items-center justify-center w-10 h-10 bg-green-100 rounded-full">
-                    <img src="/images/appliedIcon.svg" alt="" />
-                  </span>
-
-                  <div className="flex items-center justify-between gap-3 mt-2">
-                    <span className="block text-sm font-medium text-gray-600">
-                      Applied
-                    </span>
-                    <span className="block text-lg font-semibold text-gray-900">
-                      100
-                    </span>
-                  </div>
-                </div>
-
-                <div className="p-3 bg-white border border-gray-200 rounded-xl">
-                  <span className="flex items-center justify-center w-10 h-10 bg-blue-100 rounded-full">
-                    <img src="/images/tentativeIcon.svg" alt="" />
-                  </span>
-
-                  <div className="flex items-center justify-between gap-3 mt-2">
-                    <span className="block text-sm font-medium text-gray-600">
-                      Tentative
-                    </span>
-                    <span className="block text-lg font-semibold text-gray-900">
-                      30
-                    </span>
-                  </div>
-                </div>
-
-                <div className="p-3 bg-white border border-gray-200 rounded-xl">
-                  <span className="flex items-center justify-center w-10 h-10 bg-orange-100 rounded-full">
-                    <img src="/images/priorityIcon.svg" alt="" />
-                  </span>
-
-                  <div className="flex items-center justify-between gap-3 mt-2">
-                    <span className="block text-sm font-medium text-gray-600">
-                      Priority
-                    </span>
-                    <span className="block text-lg font-semibold text-gray-900">
-                      11
-                    </span>
-                  </div>
-                </div>
-
-                <div className="p-3 bg-white border border-gray-200 rounded-xl">
-                  <span className="flex items-center justify-center w-10 h-10 rounded-full bg-rose-100">
-                    <img src="/images/declinedIcon.svg" alt="" />
-                  </span>
-
-                  <div className="flex items-center justify-between gap-3 mt-2">
-                    <span className="block text-sm font-medium text-gray-600">
-                      Declined
-                    </span>
-                    <span className="block text-lg font-semibold text-gray-900">
-                      11
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mb-6">
-                <h2 className="text-base font-medium text-gray-900">
-                  Overview
-                </h2>
-                <p className="text-base text-ebonClay ">
-                  As a dedicated and compassionate General Practitioner with
-                  over 12 years of experience in primary care, I am committed to
-                  providing comprehensive healthcare services to individuals and
-                  families. My expertise lies in diagnosing a wide range of
-                  conditions, offering preventive care, and managing chronic
-                  diseases. I am particularly interested in [specific interests
-                  like geriatric care, women&apos;s health, pediatrics, etc.].
-                </p>
-              </div>
-
-              <div className="mb-6">
-                <ul className="text-sm list-disc list-inside text-ebonClay">
-                  <li>
-                    Conducting regular patient consultations and physical
-                    examinations.
-                  </li>
-                  <li>Diagnosing and treating various health conditions.</li>
-                  <li>
-                    Advising on diet, exercise, and other lifestyle choices.
-                  </li>
-                  <li>
-                    Coordinating with specialists for patient referrals when
-                    necessary.
-                  </li>
-                  <li>
-                    Maintaining up-to-date patient records and confidentiality.
-                  </li>
-                </ul>
-              </div>
-
-              <div className="mb-6">
-                <h2 className="mb-2 text-base font-medium text-gray-900">
-                  Language
-                </h2>
-                <div className="px-5 py-3 text-gray-700 rounded-lg bg-gray-50">
-                  English | Urdu | Maori
-                </div>
-              </div>
-
-              <div className="mb-6">
-                <h2 className="mb-2 text-base font-medium text-gray-900">
-                  Skills
-                </h2>
-
-                <span className="inline-flex items-center bg-gray-100 text-gray-700 text-sm font-medium px-2.5 py-0.5 rounded-full">
-                  {user.role}
-                </span>
-              </div>
-
-              <div className="mb-6">
-                <h2 className="mb-2 text-base font-medium text-gray-900">
-                  Groups
-                </h2>
-
-                <span className="inline-flex items-center bg-gray-100 text-gray-700 text-sm font-medium px-2.5 py-0.5 rounded-full">
-                  {user.role}
-                </span>
-              </div>
-
-              <div className="mb-6">
-                <h2 className="mb-2 text-base font-medium text-gray-900">
-                  Address
-                </h2>
-                <div className="px-5 py-3 text-gray-700 rounded-lg bg-gray-50">
-                  House No 123 Queen Street, Ponsonby, Auckland 1011, New
-                  Zealand
-                </div>
-              </div>
-
-              <div className="mb-6">
-                <h2 className="mb-2 text-base font-medium text-gray-900">
-                  Emergency Contact Detailss
-                </h2>
-                <div className="px-5 py-3 text-gray-700 rounded-lg bg-gray-50">
-                  Hammed Khan | Brother | 064532275
-                </div>
-              </div>
-
-              <div className="mb-6">
-                <h2 className="mb-2 text-base font-medium text-gray-900">
-                  Permissions
-                </h2>
-                <div className="px-5 py-3 mb-3 text-gray-700 rounded-lg bg-gray-50">
-                  <span className="text-slate-500">Staff Type:</span> GP |
-                  Internal Staff | <span className="text-slate-500">Role:</span>{" "}
-                  Admin
-                </div>
-
-                <div className="grid grid-cols-3 px-5 py-3 text-gray-700 rounded-lg bg-gray-50">
-                  <span className="flex items-center gap-2">
-                    <Image
-                      alt=""
-                      src={Images.authPageImages.checkedGreen}
-                    ></Image>
-                    Allowed staff app access
-                  </span>
-                  <span className="flex items-center gap-2">
-                    <Image
-                      alt=""
-                      src={Images.authPageImages.checkedGreen}
-                    ></Image>
-                    Eligible to receive jobs
-                  </span>
-                  <span className="flex items-center gap-2">
-                    <Image
-                      alt=""
-                      src={Images.authPageImages.checkedGreen}
-                    ></Image>
-                    Notifications Enabled
-                  </span>
-                </div>
-
-                <div className="mb-6">
-                  <h2 className="mb-2 text-base font-medium text-gray-900">
-                    Department
-                  </h2>
-                  <div className="px-5 py-3 text-gray-700 rounded-lg bg-gray-50">
-                    GP
-                  </div>
-                </div>
-
-                <div className="mb-6">
-                  <h2 className="mb-2 text-base font-medium text-gray-900">
-                    Location
-                  </h2>
-                  <div className="px-5 py-3 text-gray-700 rounded-lg bg-gray-50">
-                    Auckland
-                  </div>
-                </div>
-
-                <div className="mb-6">
-                  <h2 className="mb-2 text-base font-medium text-gray-900">
-                    Employment Details:
-                  </h2>
-                  <div className="px-5 py-3 text-gray-700 rounded-lg bg-gray-50">
-                    Start Date: 11 Dec 2024 | Casual | Hourly | $150 hr
-                  </div>
-                </div>
-
-                <div className="mb-6">
-                  <h2 className="mb-2 text-base font-medium text-gray-900">
-                    Login Credentials
-                  </h2>
-                  <div className="grid grid-cols-3 px-5 py-3 text-gray-700 rounded-lg bg-gray-50">
-                    <span className="block ">richellejes</span>
-                    <span className="flex items-center gap-2">
-                      <Image
-                        alt=""
-                        src={Images.authPageImages.checkedGreen}
-                      ></Image>
-                      2FA Enabled
-                    </span>
-                  </div>
-                </div>
+            <div className="mb-6">
+              <h2 className="mb-2 text-base font-medium text-gray-900">
+                Primary Contact Person::
+              </h2>
+              <div className="px-5 py-3 text-gray-700 rounded-lg bg-gray-50">
+                Hammed Khan | Brother | 064532275
               </div>
             </div>
           </div>

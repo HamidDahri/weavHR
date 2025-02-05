@@ -1,771 +1,299 @@
 "use client";
 
-import React, { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faEllipsis,
-  faEllipsisVertical,
-  faEnvelope,
-  faLocationDot,
-  faMagnifyingGlass,
-  faPhone,
+  faInfoCircle,
   faPlus,
 } from "@fortawesome/pro-regular-svg-icons";
-import AddOrganizationForm from "../../../components/AddOrganizationForm";
-import Modal from "../../../components/Modal";
-import { Images } from "../../../ui/images";
-import Image from "next/image";
-import MultiStepForm from "../../../components/MultiStepForm";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useState, useEffect } from "react";
+import AddStaffForm from "../../../components/AddStaffForm";
+import { useRouter } from "next/navigation";
+import data from "../../../../../public/_data/clinicsData.json";
+import AddClinicForm from "../../../components/AddClinicForm";
 
-type TabId = "Overview" | "Documents" | "Locations" | "Settings";
+export default function StaffPage() {
+  const [addStaff, setAddStaff] = useState(false);
 
-const Page = ({ params }) => {
-  const [activeTab, setActiveTab] = useState<TabId>("Settings");
+  const [openDropdownId, setOpenDropdownId] = useState(null);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [screenHeight, setScreenHeight] = useState(0);
 
-  const [editForm, setEditForm] = useState(false);
+  const rowHeight = 72;
+  const totalPadding = 30;
+  const rowLimit = screenHeight / (rowHeight + totalPadding);
 
-  const handleTabClick = (tabId: TabId) => {
-    setActiveTab(tabId);
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        openDropdownId !== null &&
+        !event.target.closest(".dropdown-container")
+      ) {
+        setOpenDropdownId(null);
+      }
+    };
+
+    document.addEventListener("click", handleClickOutside);
+    return () => document.removeEventListener("click", handleClickOutside);
+  }, [openDropdownId]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setScreenHeight(window.innerHeight - 0);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    setRowsPerPage(Math.floor(rowLimit));
+  }, [screenHeight]);
+
+  const startIndex = (currentPage - 1) * rowsPerPage;
+  const endIndex = startIndex + rowsPerPage;
+  const currentRows = data.slice(startIndex, endIndex);
+
+  const nextPage = () => {
+    if (currentPage * rowsPerPage < data.length) {
+      setCurrentPage(currentPage + 1);
+    }
   };
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
-
-  const [isStepOpen, setIsStepOpen] = useState(true);
-
-  const handleStepChange = (status) => {
-    setIsStepOpen(status);
-    console.log("Step Open:", status);
+  const prevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
   };
 
-  if (editForm) {
+  const handleStatusChange = (id, newStatus) => {
+    console.log(id, newStatus);
+  };
+
+  const toggleDropdown = (id, e) => {
+    e.stopPropagation();
+    setOpenDropdownId(openDropdownId === id ? null : id);
+  };
+
+  const router = useRouter();
+
+  const handleRowClick = (id: number) => {
+    router.push(`/settings/clinics/${id}`); // Navigate to the user detail page
+  };
+
+  if (addStaff) {
     return (
-      <div className="overflow-auto h-[calc(100vh-100px)] scrollbar-hide pb-12">
-        <AddOrganizationForm
-          onClickHandler={(newStep: boolean) => setEditForm(newStep)}
-        ></AddOrganizationForm>
-      </div>
+      <>
+        <div className="h-[calc(100vh-100px)] overflow-y-auto pb-12 scrollbar-hide">
+          <div>
+            <AddClinicForm
+              onClickHandler={(newStep: boolean) => setAddStaff(newStep)}
+            ></AddClinicForm>
+          </div>
+        </div>
+      </>
     );
   }
 
   return (
     <>
-      <div className="overflow-auto h-[calc(100vh-100px)] scrollbar-hide pb-12">
-        {isStepOpen === true && (
-          <div className="pt-6 bg-white shadow px-7 rounded-xl ">
-            <div className="flex items-start justify-between gap-4">
-              <div className="flex items-center gap-4 pb-6">
-                <img
-                  src="/images/remediLogo.png"
-                  className="bg-gray-100 border border-gray-100 rounded-full w-21 h-21"
-                  alt=""
+      <div className="overflow-auto h-[calc(100vh-100px)]">
+        <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center gap-2">
+            <span className="flex items-center justify-center w-10 h-10 bg-white border border-gray-200 rounded-lg shadow-sm">
+              <FontAwesomeIcon className="w-4 h-4" icon={faInfoCircle} />
+            </span>
+            <h2 className="text-lg font-medium text-gray-800">Clinics</h2>
+          </div>
+          <div className="flex items-end justify-end w-full gap-4">
+            <form className="w-full max-w-xs">
+              <label className="mb-2 text-sm font-medium text-gray-900 sr-only">
+                Search
+              </label>
+              <div className="relative">
+                <div className="absolute inset-y-0 flex items-center pointer-events-none start-0 ps-3">
+                  <svg
+                    className="w-4 h-4 text-gray-500"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      stroke="currentColor"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+                    />
+                  </svg>
+                </div>
+                <input
+                  type="search"
+                  id="default-search"
+                  className="block w-full p-3 text-sm text-gray-500 border rounded-lg border-slate-200 focus:outline-none focus:border-gray-300 ps-10 bg-gray-50 focus:ring-0"
+                  placeholder="Search by name, email, phone"
+                  required
                 />
-                <div>
-                  <div className="flex items-center gap-2">
-                    <h2 className="text-lg font-semibold text-gray-900">
-                      Remedi Solutions
-                    </h2>
-                  </div>
-                  <h3 className="mb-1 text-sm text-gray-500 font-noraml">
-                    Healthcare
-                  </h3>
-                  <div className="flex items-center gap-4">
-                    <div className="flex items-center gap-2 text-xs text-gray-500">
-                      <FontAwesomeIcon icon={faEnvelope}></FontAwesomeIcon>
-                      <span>rimsha.hameed@gmail.com</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-xs text-gray-500">
-                      <FontAwesomeIcon icon={faPhone}></FontAwesomeIcon>
-                      <span>(270) 555-0117</span>
-                    </div>
-                  </div>
-                </div>
               </div>
-
-              <div className="relative inline-block text-left group">
-                <button
-                  className="inline-flex items-center p-2 text-sm font-medium text-gray-900 bg-white rounded-full hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50"
-                  type="button"
-                >
-                  <FontAwesomeIcon
-                    icon={faEllipsisVertical}
-                    className="w-5 h-5 text-sm"
-                  />
-                </button>
-
-                <div className="absolute right-0 z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow group-hover:block w-44">
-                  <ul className="p-2 text-sm text-gray-700">
-                    <li>
-                      <button
-                        onClick={() => setEditForm(true)}
-                        className="block w-full px-3 py-2 rounded-md text-start hover:bg-gray-100"
-                      >
-                        Edit
-                      </button>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <div className="mb-4 border-b border-gray-200 ">
-              <ul
-                className="flex flex-wrap -mb-px text-sm font-medium text-center"
-                id="default-tab"
-                data-tabs-toggle="#default-tab-content"
-                role="tablist"
+            </form>
+            <div className="flex items-center px-3 border rounded-lg">
+              <input
+                id="vue-checkbox"
+                type="checkbox"
+                className="w-5 h-5 border border-gray-300 rounded-md text-primary focus:ring-primary"
+              />
+              <label
+                htmlFor="vue-checkbox"
+                className="w-full py-3 text-sm font-medium text-gray-500 ms-2"
               >
-                <li className="" role="presentation">
-                  <button
-                    className={`inline-block px-4 pb-2 border-b-2 rounded-t-lg ${
-                      activeTab === "Overview"
-                        ? "border-primary text-primary"
-                        : ""
-                    }`}
-                    type="button"
-                    role="tab"
-                    onClick={() => handleTabClick("Overview")}
-                  >
-                    Overview
-                  </button>
-                </li>
-                <li className="" role="presentation">
-                  <button
-                    className={`inline-block  px-4 pb-2 border-b-2 rounded-t-lg ${
-                      activeTab === "Documents"
-                        ? "border-primary text-primary"
-                        : ""
-                    }`}
-                    type="button"
-                    role="tab"
-                    onClick={() => handleTabClick("Documents")}
-                  >
-                    Documents
-                  </button>
-                </li>
-                <li className="" role="presentation">
-                  <button
-                    className={`inline-block  px-4 pb-2 border-b-2 rounded-t-lg ${
-                      activeTab === "Locations"
-                        ? "border-primary text-primary"
-                        : ""
-                    }`}
-                    type="button"
-                    role="tab"
-                    onClick={() => handleTabClick("Locations")}
-                  >
-                    Locations
-                  </button>
-                </li>
-
-                <li className="" role="presentation">
-                  <button
-                    className={`inline-block px-4 pb-2 border-b-2 rounded-t-lg ${
-                      activeTab === "Settings"
-                        ? "border-primary text-primary"
-                        : ""
-                    }`}
-                    type="button"
-                    role="tab"
-                    onClick={() => handleTabClick("Settings")}
-                  >
-                    Settings
-                  </button>
-                </li>
-              </ul>
+                Active
+              </label>
             </div>
-          </div>
-        )}
-        <div id="default-tab-content">
-          <div
-            className={`py-6 bg-white rounded-lg shadow px-7 ${
-              activeTab === "Overview" ? "block" : "hidden"
-            }`}
-          >
-            <div className="grid justify-center grid-cols-12 ">
-              <div className="grid grid-cols-12 col-span-12 py-3 border-b border-slate-100">
-                <div className="col-span-4">
-                  <h2 className="text-sm text-slate-500">Organization Name:</h2>
-                </div>
-                <div className="col-span-8 ">
-                  <h3 className="text-sm text-black">XYZ Healthcare </h3>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-12 col-span-12 py-3 border-b border-slate-100">
-                <div className="col-span-4">
-                  <h2 className="text-sm text-slate-500">
-                    Business Number/Tax ID:
-                  </h2>
-                </div>
-                <div className="col-span-8 ">
-                  <h3 className="text-sm text-black">123456789 </h3>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-12 col-span-12 py-3 border-b border-slate-100">
-                <div className="col-span-4">
-                  <h2 className="text-sm text-slate-500">GST:</h2>
-                </div>
-                <div className="col-span-8 ">
-                  <h3 className="text-sm text-black">EX31231123</h3>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-12 col-span-12 py-3 border-b border-slate-100">
-                <div className="col-span-4">
-                  <h2 className="text-sm text-slate-500">Industry:</h2>
-                </div>
-                <div className="col-span-8 ">
-                  <h3 className="text-sm text-black">Healthcare</h3>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-12 col-span-12 py-3 border-b border-slate-100">
-                <div className="col-span-4">
-                  <h2 className="text-sm text-slate-500">Organization Type:</h2>
-                </div>
-                <div className="col-span-8 ">
-                  <h3 className="text-sm text-black">Private Company</h3>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-12 col-span-12 py-3 border-b border-slate-100">
-                <div className="col-span-4">
-                  <h2 className="text-sm text-slate-500">Industry</h2>
-                </div>
-                <div className="col-span-8 ">
-                  <h3 className="text-sm text-black">Healthcare</h3>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-12 col-span-12 py-3 border-b border-slate-100">
-                <div className="col-span-4">
-                  <h2 className="text-sm text-slate-500">Organization Size:</h2>
-                </div>
-                <div className="col-span-8 ">
-                  <h3 className="text-sm text-black">200 Employees, Annual</h3>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-12 col-span-12 py-3 border-b border-slate-100">
-                <div className="col-span-4">
-                  <h2 className="text-sm text-slate-500">
-                    Primary Contact Name:
-                  </h2>
-                </div>
-                <div className="col-span-8 ">
-                  <h3 className="text-sm text-black">John Doe </h3>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-12 col-span-12 py-3 border-b border-slate-100">
-                <div className="col-span-4">
-                  <h2 className="text-sm text-slate-500">Email Address:</h2>
-                </div>
-                <div className="col-span-8 ">
-                  <h3 className="text-sm text-black">john.doe@xyz.com </h3>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-12 col-span-12 py-3 border-b border-slate-100">
-                <div className="col-span-4">
-                  <h2 className="text-sm text-slate-500">Billing Email: </h2>
-                </div>
-                <div className="col-span-8 ">
-                  <h3 className="text-sm text-black">accounts@xyz.com</h3>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-12 col-span-12 py-3 border-b border-slate-100">
-                <div className="col-span-4">
-                  <h2 className="text-sm text-slate-500">
-                    Preferred Currency:
-                  </h2>
-                </div>
-                <div className="col-span-8 ">
-                  <h3 className="text-sm text-black">NZD</h3>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-12 col-span-12 py-3 border-b border-slate-100">
-                <div className="col-span-4">
-                  <h2 className="text-sm text-slate-500">Phone Number: </h2>
-                </div>
-                <div className="col-span-8 ">
-                  <h3 className="text-sm text-black">+64 21 123 4567</h3>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-12 col-span-12 py-3 border-b border-slate-100">
-                <div className="col-span-4">
-                  <h2 className="text-sm text-slate-500">Position: </h2>
-                </div>
-                <div className="col-span-8 ">
-                  <h3 className="text-sm text-black">Manager </h3>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-12 col-span-12 py-3 border-b border-slate-100">
-                <div className="col-span-4">
-                  <h2 className="text-sm text-slate-500">Address: </h2>
-                </div>
-                <div className="col-span-8 ">
-                  <h3 className="text-sm text-black">
-                    123 Queen Street, Ponsonby, Auckland, NZ123 Queen Street,
-                    Ponsonby, Auckland, NZ
-                  </h3>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-12 col-span-12 py-3 border-b border-slate-100">
-                <div className="col-span-4">
-                  <h2 className="text-sm text-slate-500">Time Zone:</h2>
-                </div>
-                <div className="col-span-8 ">
-                  <h3 className="text-sm text-black">GMT+12:00 Auckland</h3>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            className={`py-6 bg-white ${
-              isStepOpen === true ? "min-h-[calc(100vh-360px)]" : ""
-            } ${
-              isStepOpen === false && "max-w-5xl mx-auto"
-            } rounded-lg shadow px-7 ${
-              activeTab === "Settings" ? "block" : "hidden"
-            }`}
-          >
-            <div>
-              <MultiStepForm onStepChange={handleStepChange}></MultiStepForm>
-            </div>
-          </div>
-          <div
-            className={`py-6 bg-white rounded-lg shadow px-7 ${
-              activeTab === "Documents" ? "block" : "hidden"
-            }`}
-          >
-            <p className="text-sm text-gray-500 ">
-              <strong className="font-medium text-gray-800 ">
-                Documents tab&apos;s associated content
-              </strong>
-            </p>
-          </div>
-          <div
-            className={` ${activeTab === "Locations" ? "block" : "hidden"}`}
-            id="Locations"
-            role="tabpanel"
-          >
-            <div>
-              <div className="flex items-center justify-between mb-4">
-                <h2 className="text-lg font-medium text-gray-800">Locations</h2>
-                <button
-                  type="button"
-                  onClick={openModal}
-                  className="inline-flex items-center gap-2 px-5 py-3 text-sm font-medium text-center text-white rounded-lg bg-primary hover:bg-primaryDark focus:ring-0 focus:outline-none focus:ring-blue-300"
-                >
-                  <FontAwesomeIcon className="w-4 h-4" icon={faPlus} />
-                  Add
-                </button>
-              </div>
-
-              <div className="relative overflow-x-auto border border-slate-100 sm:rounded-xl">
-                <table className="w-full text-sm text-left text-gray-500 rtl:text-right">
-                  <thead className="text-xs text-gray-600 bg-gray-50">
-                    <tr>
-                      <th scope="col" className="px-6 py-3">
-                        Short code
-                      </th>
-                      <th scope="col" className="px-6 py-3">
-                        Address
-                      </th>
-                      <th scope="col" className="px-6 py-3">
-                        Suburb
-                      </th>
-                      <th scope="col" className="px-6 py-3">
-                        City
-                      </th>
-                      <th scope="col" className="px-6 py-3"></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr className="bg-white border-b cursor-pointer hover:bg-slate-100">
-                      <td
-                        scope="row"
-                        className={`flex items-center px-6 py-4 text-gray-900 whitespace-nowrap`}
-                      >
-                        <div className="text-sm font-normal text-gray-600">
-                          City Centre
-                        </div>
-                      </td>
-                      <td className="px-6 py-4">
-                        <span className="text-sm font-medium text-gray-900">
-                          55 queen street
-                        </span>
-                      </td>
-                      <td className="px-6 py-4">
-                        <div className="text-sm font-normal text-gray-600">
-                          CBD
-                        </div>
-                      </td>
-                      <td className="px-6 py-4">
-                        <span className="text-sm font-normal text-gray-600">
-                          Auckland
-                        </span>
-                      </td>
-                      <td className="w-32 px-6 py-4">
-                        <div className="relative dropdown-container">
-                          <button
-                            className="inline-flex items-center p-2 text-sm font-medium text-center text-gray-900 bg-white rounded-full hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50"
-                            type="button"
-                          >
-                            <FontAwesomeIcon
-                              icon={faEllipsis}
-                              className="w-5 h-5"
-                            />
-                          </button>
-
-                          {/* <div className=" z-10 !fixed mt-2 bg-white divide-y divide-gray-100 rounded-lg shadow-lg right-20 w-44">
-                          <ul className="py-2 text-sm text-gray-700">
-                            <li>
-                              <button className="block w-full px-4 py-2 text-left hover:bg-gray-100">
-                                test
-                              </button>
-                            </li>
-                          </ul>
-                        </div> */}
-                        </div>
-                      </td>
-                    </tr>
-                    <tr className="bg-white border-b cursor-pointer hover:bg-slate-100">
-                      <td
-                        scope="row"
-                        className={`flex items-center px-6 py-4 text-gray-900 whitespace-nowrap`}
-                      >
-                        <div className="text-sm font-normal text-gray-600">
-                          Rototuna
-                        </div>
-                      </td>
-                      <td className="px-6 py-4">
-                        <span className="text-sm font-medium text-gray-900">
-                          11 Victoria street
-                        </span>
-                      </td>
-                      <td className="px-6 py-4">
-                        <div className="text-sm font-normal text-gray-600">
-                          Rototuna
-                        </div>
-                      </td>
-                      <td className="px-6 py-4">
-                        <span className="text-sm font-normal text-gray-600">
-                          Hamilton
-                        </span>
-                      </td>
-                      <td className="w-32 px-6 py-4">
-                        <div className="relative dropdown-container">
-                          <button
-                            className="inline-flex items-center p-2 text-sm font-medium text-center text-gray-900 bg-white rounded-full hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50"
-                            type="button"
-                          >
-                            <FontAwesomeIcon
-                              icon={faEllipsis}
-                              className="w-5 h-5"
-                            />
-                          </button>
-
-                          {/* <div className=" z-10 !fixed mt-2 bg-white divide-y divide-gray-100 rounded-lg shadow-lg right-20 w-44">
-                          <ul className="py-2 text-sm text-gray-700">
-                            <li>
-                              <button className="block w-full px-4 py-2 text-left hover:bg-gray-100">
-                                test
-                              </button>
-                            </li>
-                          </ul>
-                        </div> */}
-                        </div>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
+            <button
+              type="button"
+              onClick={() => setAddStaff(true)}
+              className="inline-flex items-center gap-2 px-5 py-3 text-sm font-medium text-center text-white rounded-lg bg-primary hover:bg-primaryDark focus:ring-0 focus:outline-none focus:ring-blue-300"
+            >
+              <FontAwesomeIcon className="w-4 h-4" icon={faPlus} />
+              Add
+            </button>
           </div>
         </div>
 
-        <Modal isOpen={isModalOpen} onClose={closeModal} size="extraLarge">
-          <span className="flex items-center justify-center w-10 h-10 mb-4 border rounded-md border-slate-300">
-            <FontAwesomeIcon
-              icon={faLocationDot}
-              className="text-gray-800"
-            ></FontAwesomeIcon>
-          </span>
-
-          <h2 className="mb-3 text-lg font-semibold text-gray-900">
-            Add Location
-          </h2>
-
-          <div className="grid grid-cols-12 gap-3">
-            <div className="col-span-12">
-              <form className="w-full mx-auto">
-                <div className="relative">
-                  <div className="absolute inset-y-0 flex items-center pointer-events-none start-0 ps-3">
-                    <FontAwesomeIcon
-                      icon={faMagnifyingGlass}
-                      className="text-slate-500"
-                    ></FontAwesomeIcon>
-                  </div>
-                  <input
-                    type="search"
-                    id="default-search"
-                    className="block w-full px-4 py-3 text-sm text-gray-900 border border-gray-300 rounded-lg ps-10 bg-gray-50 focus:ring-primary focus:border-primary "
-                    placeholder="Find address"
-                    required
-                  />
-                </div>
-              </form>
-            </div>
-            <div className="col-span-6 ">
-              <label className="block ">
-                <span className="block mb-1 text-base font-medium text-gray-700">
-                  Short code
-                </span>
-
-                <input
-                  id="state"
-                  type="text"
-                  className={`w-full px-3 py-2 border border-gray-300 focus:ring-primary shadow-sm rounded-lg outline-none placeholder:text-gray-m-500`}
-                  name="state"
-                  placeholder=""
-                ></input>
-              </label>
-            </div>
-            <div className="col-span-6 ">
-              <label className="block ">
-                <span className="block mb-1 text-base font-medium text-gray-700">
-                  Building/Unit
-                </span>
-
-                <input
-                  id="state"
-                  type="text"
-                  className={`w-full px-3 py-2 border border-gray-300 focus:ring-primary shadow-sm rounded-lg outline-none placeholder:text-gray-m-500`}
-                  name="state"
-                  placeholder=""
-                ></input>
-              </label>
-            </div>
-            <div className="col-span-12">
-              <label className="block ">
-                <span className="block mb-1 text-base font-medium text-gray-700">
-                  Street address
-                </span>
-
-                <input
-                  id="state"
-                  type="text"
-                  className={`w-full px-3 py-2 border border-gray-300 focus:ring-primary shadow-sm rounded-lg outline-none placeholder:text-gray-m-500`}
-                  name="state"
-                  placeholder=""
-                ></input>
-              </label>
-            </div>
-            <div className="col-span-12 ">
-              <label className="block ">
-                <span className="block mb-1 text-base font-medium text-gray-700">
-                  Suburb
-                </span>
-
-                <input
-                  id="state"
-                  type="text"
-                  className={`w-full px-3 py-2 border border-gray-300 focus:ring-primary shadow-sm rounded-lg outline-none placeholder:text-gray-m-500`}
-                  name="state"
-                  placeholder=""
-                ></input>
-              </label>
-            </div>
-            <div className="col-span-6">
-              <label className="block">
-                <span className="block mb-1 text-base font-medium text-gray-700">
-                  City
-                  <span className="text-red-500 ms-1">*</span>
-                </span>
-
-                <div className="relative">
-                  <select
-                    id="registerTypeSelection"
-                    name="registerTypeSelection"
-                    className="w-full px-3 py-2.5 border rounded-lg focus:ring-primary border-gray-300 outline-none appearance-none outline-gray-m-400 select-wrapper"
+        <div className="relative overflow-x-auto border border-slate-100 sm:rounded-xl">
+          <table className="w-full text-sm text-left text-gray-500 rtl:text-right">
+            <thead className="text-xs text-gray-700 bg-gray-50">
+              <tr>
+                <th scope="col" className="px-6 py-3">
+                  Clinics
+                </th>
+                <th scope="col" className="px-6 py-3">
+                  Status
+                </th>
+                <th scope="col" className="px-6 py-3">
+                  Joined at
+                </th>
+                <th scope="col" className="px-6 py-3">
+                  Locations
+                </th>
+                <th scope="col" className="px-6 py-3"></th>
+              </tr>
+            </thead>
+            <tbody>
+              {currentRows.map((item) => (
+                <tr
+                  key={item.id}
+                  className="bg-white border-b cursor-pointer hover:bg-slate-100"
+                  onClick={() => handleRowClick(item.id)}
+                >
+                  <td
+                    scope="row"
+                    className={`flex items-center px-6 py-4 text-gray-900  whitespace-nowrap`}
                   >
-                    <option value="Wellington">Wellington (GMT+13)</option>
-                    <option value=" New Zealand">New Zealand (GMT+13)</option>
-                  </select>
-                  <Image
-                    alt="chevron down icon"
-                    className="absolute w-5 h-5 top-3 end-2"
-                    src={Images.authPageImages.arrowHeadDown}
-                  ></Image>
-                </div>
-              </label>
-            </div>
-            <div className="col-span-6">
-              <label className="block">
-                <span className="block mb-1 text-base font-medium text-gray-700">
-                  State
-                  <span className="text-red-500 ms-1">*</span>
-                </span>
+                    <img
+                      className="w-10 h-10 rounded-full"
+                      src={item.avatar}
+                      alt="Avatar"
+                    />
+                    <div className="ps-3">
+                      <div className="text-base font-medium text-gray-900">
+                        {item.name}
+                      </div>
+                      <div className="font-normal text-gray-600">
+                        {item.email}
+                      </div>
+                    </div>
+                  </td>
+                  <td className="px-6 py-4">
+                    <span
+                      className={`inline-flex items-center ${
+                        item.status === "Active"
+                          ? "bg-success50 text-success700"
+                          : "bg-red-100 text-red-700"
+                      } text-sm font-medium px-2.5 py-0.5 rounded-full`}
+                    >
+                      {item.status}
+                    </span>
+                  </td>
+                  <td className="px-6 py-4">
+                    <div className="flex items-center text-gray-600">
+                      {item.date}
+                    </div>
+                  </td>
+                  <td className="px-6 py-4">
+                    <span className="inline-flex items-center text-sm text-gray-600">
+                      {item.location?.[0]}
+                      <span className="text-sm font-semibold text-primary">
+                        {item.location?.length > 1 &&
+                          `, +${item.location.length - 1}`}
+                      </span>
+                    </span>
+                  </td>
+                  <td className="w-32 px-6 py-4">
+                    <div className="relative dropdown-container">
+                      <button
+                        onClick={(e) => toggleDropdown(item.id, e)}
+                        className="inline-flex items-center p-2 text-sm font-medium text-center text-gray-900 bg-white rounded-full hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50"
+                        type="button"
+                      >
+                        <FontAwesomeIcon
+                          icon={faEllipsis}
+                          className="w-5 h-5"
+                        />
+                      </button>
 
-                <div className="relative">
-                  <select
-                    id="registerTypeSelection"
-                    name="registerTypeSelection"
-                    className="w-full px-3 py-2.5 border rounded-lg focus:ring-primary border-gray-300 outline-none appearance-none outline-gray-m-400 select-wrapper"
-                  >
-                    <option value="Wellington">Wellington (GMT+13)</option>
-                    <option value=" New Zealand">New Zealand (GMT+13)</option>
-                  </select>
-                  <Image
-                    alt="chevron down icon"
-                    className="absolute w-5 h-5 top-3 end-2"
-                    src={Images.authPageImages.arrowHeadDown}
-                  ></Image>
-                </div>
-              </label>
-            </div>
-            <div className="col-span-6 ">
-              <label className="block ">
-                <span className="block mb-1 text-base font-medium text-gray-700">
-                  Latitude
-                </span>
-
-                <input
-                  id="state"
-                  type="text"
-                  className={`w-full px-3 py-2 border border-gray-300 focus:ring-primary shadow-sm rounded-lg outline-none placeholder:text-gray-m-500`}
-                  name="state"
-                  placeholder=""
-                ></input>
-              </label>
-            </div>
-            <div className="col-span-6 ">
-              <label className="block ">
-                <span className="block mb-1 text-base font-medium text-gray-700">
-                  Longitude
-                </span>
-
-                <input
-                  id="state"
-                  type="text"
-                  className={`w-full px-3 py-2 border border-gray-300 focus:ring-primary shadow-sm rounded-lg outline-none placeholder:text-gray-m-500`}
-                  name="state"
-                  placeholder=""
-                ></input>
-              </label>
-            </div>
-            <div className="col-span-12 ">
-              <label className="block ">
-                <span className="block mb-1 text-base font-medium text-gray-700">
-                  Geo fence radius
-                </span>
-
-                <input
-                  id="state"
-                  type="text"
-                  className={`w-full px-3 py-2 border border-gray-300 focus:ring-primary shadow-sm rounded-lg outline-none placeholder:text-gray-m-500`}
-                  name="state"
-                  placeholder=""
-                ></input>
-              </label>
-            </div>
-            <div className="col-span-6 ">
-              <label className="block ">
-                <span className="block mb-1 text-base font-medium text-gray-700">
-                  RFID
-                </span>
-
-                <input
-                  id="state"
-                  type="text"
-                  className={`w-full px-3 py-2 border border-gray-300 focus:ring-primary shadow-sm rounded-lg outline-none placeholder:text-gray-m-500`}
-                  name="state"
-                  placeholder=""
-                ></input>
-              </label>
-            </div>
-            <div className="col-span-6 ">
-              <label className="block ">
-                <span className="block mb-1 text-base font-medium text-gray-700">
-                  Barcode ID
-                </span>
-
-                <input
-                  id="state"
-                  type="text"
-                  className={`w-full px-3 py-2 border border-gray-300 focus:ring-primary shadow-sm rounded-lg outline-none placeholder:text-gray-m-500`}
-                  name="state"
-                  placeholder=""
-                ></input>
-              </label>
-            </div>
-
-            <div className="col-span-12">
-              <div className="flex items-center gap-3">
-                <div>
-                  <input
-                    id="default-checkbox"
-                    type="checkbox"
-                    value=""
-                    className="w-4 h-4 bg-white rounded border-slate-300 text-primary focus:ring-primary focus:ring-2 "
-                  />
-                  <label
-                    htmlFor="default-checkbox"
-                    className="text-sm font-normal text-gray-600 ms-2 "
-                  >
-                    Primary location
-                  </label>
-                </div>
-                <div>
-                  <input
-                    id="default-checkbox"
-                    type="checkbox"
-                    value=""
-                    checked
-                    readOnly
-                    className="w-4 h-4 bg-white rounded border-slate-300 text-primary focus:ring-primary focus:ring-2 "
-                  />
-                  <label
-                    htmlFor="default-checkbox"
-                    className="text-sm font-normal text-gray-600 ms-2 "
-                  >
-                    Active
-                  </label>
-                </div>
-              </div>
-            </div>
-
-            <div className="flex items-center justify-end col-span-12 gap-3">
+                      {openDropdownId === item.id && (
+                        <div className=" z-10 !fixed mt-2 bg-white divide-y divide-gray-100 rounded-lg shadow-lg right-20 w-44">
+                          <ul className="py-2 text-sm text-gray-700">
+                            {["Checked-in", "Assigned", "Counter Offer"].map(
+                              (status) => (
+                                <li key={status}>
+                                  <button
+                                    onClick={() =>
+                                      handleStatusChange(item.id, status)
+                                    }
+                                    className="block w-full px-4 py-2 text-left hover:bg-gray-100"
+                                  >
+                                    {status}
+                                  </button>
+                                </li>
+                              )
+                            )}
+                          </ul>
+                        </div>
+                      )}
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <div className="flex items-center justify-between p-4 bg-white">
+            <span className="font-medium text-gray-700">
+              Page {currentPage} of {Math.ceil(data.length / rowsPerPage)}
+            </span>
+            <div className="flex items-center gap-2">
               <button
-                onClick={closeModal}
-                className="w-full px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 disabled:opacity-50"
+                onClick={prevPage}
+                disabled={currentPage === 1}
+                className="px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 disabled:opacity-50"
               >
-                Cancel
+                Previous
               </button>
               <button
-                type="button"
-                onClick={closeModal}
-                className="w-full gap-2 px-5 py-3 text-sm font-medium text-white rounded-lg bg-primary hover:bg-primaryDark focus:ring-0 focus:outline-none focus:ring-blue-300"
+                onClick={nextPage}
+                disabled={currentPage * rowsPerPage >= data.length}
+                className="px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 disabled:opacity-50"
               >
-                Save
+                Next
               </button>
             </div>
           </div>
-        </Modal>
+        </div>
       </div>
     </>
   );
-};
-
-export default Page;
+}
