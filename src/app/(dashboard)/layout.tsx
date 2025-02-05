@@ -11,7 +11,7 @@ export default function DashboardLayout({
       <Sidebar />
       <div className="w-full">
         <TopNav />
-        <div className="w-full max-h-screen bg-gray-50">
+        <div className="w-full max-h-screen bg-porcelain">
           <div className="px-5 py-4">{children}</div>
         </div>
       </div>

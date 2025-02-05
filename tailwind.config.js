@@ -21,6 +21,7 @@ module.exports = {
         modernGray900: "#121926",
         eggShell: "#E9EAEB",
         haiti: "#181D27",
+        porcelain: "#EEF2F6",
       },
     },
   },

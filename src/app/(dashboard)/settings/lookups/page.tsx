@@ -45,7 +45,7 @@ const jobTypes = [
 
 const page = () => {
   return (
-    <div className="">
+    <div className="h-[calc(100vh-100px)]">
       <div className="flex items-center gap-2 mb-4">
         <span className="flex items-center justify-center w-10 h-10 bg-white border border-gray-200 rounded-lg shadow-sm">
           <FontAwesomeIcon className="w-4 h-4" icon={faInfoCircle} />
