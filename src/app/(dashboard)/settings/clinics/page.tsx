@@ -17,10 +17,10 @@ import { Images } from "../../../ui/images";
 import Image from "next/image";
 import MultiStepForm from "../../../components/MultiStepForm";
 
-type TabId = "Overview" | "Documents" | "Locations";
+type TabId = "Overview" | "Documents" | "Locations" | "Settings";
 
 const Page = ({ params }) => {
-  const [activeTab, setActiveTab] = useState<TabId>("Overview");
+  const [activeTab, setActiveTab] = useState<TabId>("Settings");
 
   const [editForm, setEditForm] = useState(false);
 
@@ -159,18 +159,184 @@ const Page = ({ params }) => {
                     Locations
                   </button>
                 </li>
+
+                <li className="" role="presentation">
+                  <button
+                    className={`inline-block px-4 pb-2 border-b-2 rounded-t-lg ${
+                      activeTab === "Settings"
+                        ? "border-primary text-primary"
+                        : ""
+                    }`}
+                    type="button"
+                    role="tab"
+                    onClick={() => handleTabClick("Settings")}
+                  >
+                    Settings
+                  </button>
+                </li>
               </ul>
             </div>
           </div>
         )}
         <div id="default-tab-content">
           <div
+            className={`py-6 bg-white rounded-lg shadow px-7 ${
+              activeTab === "Overview" ? "block" : "hidden"
+            }`}
+          >
+            <div className="grid justify-center grid-cols-12 ">
+              <div className="grid grid-cols-12 col-span-12 py-3 border-b border-slate-100">
+                <div className="col-span-4">
+                  <h2 className="text-sm text-slate-500">Organization Name:</h2>
+                </div>
+                <div className="col-span-8 ">
+                  <h3 className="text-sm text-black">XYZ Healthcare </h3>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-12 col-span-12 py-3 border-b border-slate-100">
+                <div className="col-span-4">
+                  <h2 className="text-sm text-slate-500">
+                    Business Number/Tax ID:
+                  </h2>
+                </div>
+                <div className="col-span-8 ">
+                  <h3 className="text-sm text-black">123456789 </h3>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-12 col-span-12 py-3 border-b border-slate-100">
+                <div className="col-span-4">
+                  <h2 className="text-sm text-slate-500">GST:</h2>
+                </div>
+                <div className="col-span-8 ">
+                  <h3 className="text-sm text-black">EX31231123</h3>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-12 col-span-12 py-3 border-b border-slate-100">
+                <div className="col-span-4">
+                  <h2 className="text-sm text-slate-500">Industry:</h2>
+                </div>
+                <div className="col-span-8 ">
+                  <h3 className="text-sm text-black">Healthcare</h3>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-12 col-span-12 py-3 border-b border-slate-100">
+                <div className="col-span-4">
+                  <h2 className="text-sm text-slate-500">Organization Type:</h2>
+                </div>
+                <div className="col-span-8 ">
+                  <h3 className="text-sm text-black">Private Company</h3>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-12 col-span-12 py-3 border-b border-slate-100">
+                <div className="col-span-4">
+                  <h2 className="text-sm text-slate-500">Industry</h2>
+                </div>
+                <div className="col-span-8 ">
+                  <h3 className="text-sm text-black">Healthcare</h3>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-12 col-span-12 py-3 border-b border-slate-100">
+                <div className="col-span-4">
+                  <h2 className="text-sm text-slate-500">Organization Size:</h2>
+                </div>
+                <div className="col-span-8 ">
+                  <h3 className="text-sm text-black">200 Employees, Annual</h3>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-12 col-span-12 py-3 border-b border-slate-100">
+                <div className="col-span-4">
+                  <h2 className="text-sm text-slate-500">
+                    Primary Contact Name:
+                  </h2>
+                </div>
+                <div className="col-span-8 ">
+                  <h3 className="text-sm text-black">John Doe </h3>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-12 col-span-12 py-3 border-b border-slate-100">
+                <div className="col-span-4">
+                  <h2 className="text-sm text-slate-500">Email Address:</h2>
+                </div>
+                <div className="col-span-8 ">
+                  <h3 className="text-sm text-black">john.doe@xyz.com </h3>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-12 col-span-12 py-3 border-b border-slate-100">
+                <div className="col-span-4">
+                  <h2 className="text-sm text-slate-500">Billing Email: </h2>
+                </div>
+                <div className="col-span-8 ">
+                  <h3 className="text-sm text-black">accounts@xyz.com</h3>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-12 col-span-12 py-3 border-b border-slate-100">
+                <div className="col-span-4">
+                  <h2 className="text-sm text-slate-500">
+                    Preferred Currency:
+                  </h2>
+                </div>
+                <div className="col-span-8 ">
+                  <h3 className="text-sm text-black">NZD</h3>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-12 col-span-12 py-3 border-b border-slate-100">
+                <div className="col-span-4">
+                  <h2 className="text-sm text-slate-500">Phone Number: </h2>
+                </div>
+                <div className="col-span-8 ">
+                  <h3 className="text-sm text-black">+64 21 123 4567</h3>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-12 col-span-12 py-3 border-b border-slate-100">
+                <div className="col-span-4">
+                  <h2 className="text-sm text-slate-500">Position: </h2>
+                </div>
+                <div className="col-span-8 ">
+                  <h3 className="text-sm text-black">Manager </h3>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-12 col-span-12 py-3 border-b border-slate-100">
+                <div className="col-span-4">
+                  <h2 className="text-sm text-slate-500">Address: </h2>
+                </div>
+                <div className="col-span-8 ">
+                  <h3 className="text-sm text-black">
+                    123 Queen Street, Ponsonby, Auckland, NZ123 Queen Street,
+                    Ponsonby, Auckland, NZ
+                  </h3>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-12 col-span-12 py-3 border-b border-slate-100">
+                <div className="col-span-4">
+                  <h2 className="text-sm text-slate-500">Time Zone:</h2>
+                </div>
+                <div className="col-span-8 ">
+                  <h3 className="text-sm text-black">GMT+12:00 Auckland</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
             className={`py-6 bg-white ${
               isStepOpen === true ? "min-h-[calc(100vh-360px)]" : ""
             } ${
               isStepOpen === false && "max-w-5xl mx-auto"
             } rounded-lg shadow px-7 ${
-              activeTab === "Overview" ? "block" : "hidden"
+              activeTab === "Settings" ? "block" : "hidden"
             }`}
           >
             <div>

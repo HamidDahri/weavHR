@@ -20,11 +20,11 @@ const steps = [
 
 const Step1Content = ({ onSave }) => (
   <div className="rounded-md ">
-    <div className="flex items-center gap-4 mb-4">
+    <div className="flex items-center gap-4 mb-6">
       <span className="px-3 py-2 text-sm font-medium rounded-md text-slate-500 bg-slate-100">
         Step 1
       </span>
-      <h2 className="text-base font-semibold text-slate-800">
+      <h2 className="text-base font-medium text-slate-800">
         Choose Your Workforce Model
       </h2>
     </div>
@@ -37,7 +37,7 @@ const Step1Content = ({ onSave }) => (
         (Choose one option to configure your platform settings.)
       </span>
     </div>
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col gap-3 mb-4">
       <label className="radio-option">
         <input
           type="radio"
@@ -46,7 +46,9 @@ const Step1Content = ({ onSave }) => (
           className="w-4 h-4 mt-1 bg-gray-100 border-gray-300 text-primary focus:ring-primary"
         />
         <div className="">
-          <strong>Direct Workforce Management</strong>
+          <h2 className="text-base font-medium text-black">
+            Direct Workforce Management
+          </h2>
           <p className="text-sm text-gray-500">
             For organizations managing their own workforce, including internal
             employees and optionally external/contract staff, but without
@@ -62,7 +64,9 @@ const Step1Content = ({ onSave }) => (
           className="w-4 h-4 mt-1 bg-gray-100 border-gray-300 text-primary focus:ring-primary"
         />
         <div>
-          <strong>Client & Casual Workforce</strong>
+          <h2 className="text-base font-medium text-black">
+            Client & Casual Workforce
+          </h2>
           <p className="text-sm text-gray-500">
             For agencies managing external clients and casual/contracted staff,
             where clients request jobs and staff apply for assignments.
@@ -92,7 +96,7 @@ const Step2Content = ({ onSave }) => (
       <span className="px-3 py-2 text-sm font-medium rounded-md text-slate-500 bg-slate-100">
         Step 2
       </span>
-      <h2 className="text-base font-semibold text-slate-800">
+      <h2 className="text-base font-medium text-slate-800">
         Location & Staff Structure
       </h2>
     </div>
@@ -115,7 +119,7 @@ const Step2Content = ({ onSave }) => (
           className="text-sm font-medium text-gray-900 ms-2 "
         >
           Yes{" "}
-          <span className="text-xs text-gray-500">
+          <span className="text-xs text-slate-500">
             (Enable location-based scheduling.)
           </span>
         </label>
@@ -133,7 +137,7 @@ const Step2Content = ({ onSave }) => (
           className="text-sm font-medium text-gray-900 ms-2 "
         >
           No{" "}
-          <span className="text-xs text-gray-500">
+          <span className="text-xs text-slate-500">
             (Single location setup.)
           </span>
         </label>
@@ -152,7 +156,7 @@ const Step2Content = ({ onSave }) => (
             type="radio"
             value=""
             name="default-radio1"
-            className="w-4 h-4 bg-gray-100 border-gray-300 text-primary focus:ring-primary "
+            className="w-3.5 h-3.5 bg-gray-100 border-gray-300 text-primary focus:ring-primary "
           />
           <label
             htmlFor="default-radio-1"
@@ -168,13 +172,13 @@ const Step2Content = ({ onSave }) => (
               type="checkbox"
               value=""
               checked
-              className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary "
+              className="w-3.5 h-3.5 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary "
             />
             <label
               htmlFor="red-checkbox"
-              className="text-sm font-medium text-gray-900 ms-2 "
+              className="text-sm font-medium text-slate-900 ms-2 "
             >
-              Departments{" "}
+              Departments
               <FontAwesomeIcon
                 icon={faEdit}
                 className="text-primary ms-2"
@@ -186,11 +190,11 @@ const Step2Content = ({ onSave }) => (
               id="green-checkbox"
               type="checkbox"
               value=""
-              className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary "
+              className="w-3.5 h-3.5 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary "
             />
             <label
               htmlFor="green-checkbox"
-              className="text-sm font-medium text-gray-900 ms-2 "
+              className="text-sm font-medium text-slate-900 ms-2 "
             >
               Staff Types
             </label>
@@ -200,11 +204,11 @@ const Step2Content = ({ onSave }) => (
               id="purple-checkbox"
               type="checkbox"
               value=""
-              className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary "
+              className="w-3.5 h-3.5 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary "
             />
             <label
               htmlFor="purple-checkbox"
-              className="text-sm font-medium text-gray-900 ms-2 "
+              className="text-sm font-medium text-slate-900 ms-2 "
             >
               Work Categories
             </label>
@@ -214,11 +218,11 @@ const Step2Content = ({ onSave }) => (
               id="teal-checkbox"
               type="checkbox"
               value=""
-              className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary "
+              className="w-3.5 h-3.5 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary "
             />
             <label
               htmlFor="teal-checkbox"
-              className="text-sm font-medium text-gray-900 ms-2 "
+              className="text-sm font-medium text-slate-900 ms-2 "
             >
               Skills
             </label>
@@ -228,11 +232,11 @@ const Step2Content = ({ onSave }) => (
               id="yellow-checkbox"
               type="checkbox"
               value=""
-              className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary "
+              className="w-3.5 h-3.5 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary "
             />
             <label
               htmlFor="yellow-checkbox"
-              className="text-sm font-medium text-gray-900 ms-2 "
+              className="text-sm font-medium text-slate-900 ms-2 "
             >
               Custom Groups
             </label>
@@ -249,10 +253,12 @@ const Step2Content = ({ onSave }) => (
         />
         <label
           htmlFor="default-radio-2"
-          className="text-sm font-medium text-gray-900 ms-2 "
+          className="text-sm font-medium text-slate-900 ms-2 "
         >
           No{" "}
-          <span className="text-xs text-gray-500">(Flat staff structure.)</span>
+          <span className="text-xs text-slate-500">
+            (Flat staff structure.)
+          </span>
         </label>
       </div>
     </div>
@@ -272,14 +278,14 @@ const Step2Content = ({ onSave }) => (
             className="w-4 h-4 mt-1 bg-gray-100 border-gray-300 text-primary focus:ring-primary"
           />
           <div className="">
-            <h2 className="text-base font-medium">
+            <h2 className="text-base font-medium text-black">
               What are your organization’s standard working hours?
             </h2>
-            <p className="text-xs text-gray-500">
+            <p className="text-xs text-slate-500">
               Example: 9 AM - 5 PM, same for all staff.
             </p>
             <div className="flex items-center gap-2 mt-4">
-              <span className="text-sm">Start time </span>
+              <span className="text-sm text-black">Start time </span>
               <div className="overflow-hidden border rounded-md w-fit">
                 <input
                   type="time"
@@ -291,7 +297,7 @@ const Step2Content = ({ onSave }) => (
               </div>
             </div>
             <div className="flex items-center gap-2 mt-4">
-              <span className="text-sm me-1">End Time </span>
+              <span className="text-sm text-black me-1">End Time </span>
               <div className="overflow-hidden border rounded-md w-fit">
                 <input
                   type="time"
@@ -312,10 +318,10 @@ const Step2Content = ({ onSave }) => (
             className="w-4 h-4 mt-1 bg-gray-100 border-gray-300 text-primary focus:ring-primary"
           />
           <div>
-            <h2 className="text-base font-medium">
+            <h2 className="text-base font-medium text-black">
               Does your organization support multiple shifts?
             </h2>
-            <p className="text-xs text-gray-500">
+            <p className="text-xs text-slate-500">
               Example: Morning Shift (7 AM - 3 PM), Evening Shift (3 PM - 11
               PM), Night Shift (11 PM - 7 AM).
             </p>
@@ -338,7 +344,7 @@ const Step2Content = ({ onSave }) => (
         />
         <label
           htmlFor="default-radio-2"
-          className="text-sm font-medium text-gray-900 ms-2 "
+          className="text-sm font-medium text-slate-500 ms-2 "
         >
           Staff are assigned jobs manually by the organization.
         </label>
@@ -353,7 +359,7 @@ const Step2Content = ({ onSave }) => (
         />
         <label
           htmlFor="default-radio-2"
-          className="text-sm font-medium text-gray-900 ms-2 "
+          className="text-sm font-medium text-slate-500 ms-2 "
         >
           Staff can accept or decline Jobs.
         </label>
@@ -368,7 +374,7 @@ const Step2Content = ({ onSave }) => (
         />
         <label
           htmlFor="default-radio-1"
-          className="text-sm font-medium text-gray-900 ms-2 "
+          className="text-sm font-medium text-slate-500 ms-2 "
         >
           Both (Managers assign, but staff can also accept jobs.)
         </label>
@@ -416,7 +422,7 @@ const Step3Content = ({ onSave }) => (
         />
         <label
           htmlFor="default-radio-1"
-          className="text-sm font-medium text-gray-900 ms-2 "
+          className="text-sm font-medium text-slate-500 ms-2 "
         >
           Check-In & Check-Out Required for All Jobs
         </label>
@@ -431,10 +437,10 @@ const Step3Content = ({ onSave }) => (
         />
         <label
           htmlFor="default-radio-2"
-          className="text-sm font-medium text-gray-900 ms-2 "
+          className="text-sm font-medium text-slate-500 ms-2 "
         >
           Check-In & Check-Out Depends on the Job
-          <span className="text-xs text-gray-500 ms-2">
+          <span className="text-xs text-gray-400 ms-2">
             (Set on a per-job basis.)
           </span>
         </label>
@@ -449,10 +455,10 @@ const Step3Content = ({ onSave }) => (
         />
         <label
           htmlFor="default-radio-2"
-          className="text-sm font-medium text-gray-900 ms-2 "
+          className="text-sm font-medium text-slate-500 ms-2 "
         >
           No Check-In/Check-Out Required
-          <span className="text-xs text-gray-500 ms-2">
+          <span className="text-xs text-gray-400 ms-2">
             (Staff are considered present based on assigned schedule.)
           </span>
         </label>
@@ -472,10 +478,10 @@ const Step3Content = ({ onSave }) => (
         />
         <label
           htmlFor="default-radio-1"
-          className="text-sm font-medium text-gray-900 ms-2 "
+          className="text-sm font-medium text-slate-500 ms-2 "
         >
           Allow auto Check-In
-          <span className="text-xs text-gray-500 ms-2">
+          <span className="text-xs text-gray-400 ms-2">
             (Automatically check staff in at job start time)
           </span>
         </label>
@@ -490,7 +496,7 @@ const Step3Content = ({ onSave }) => (
         />
         <label
           htmlFor="default-radio-2"
-          className="text-sm font-medium text-gray-900 ms-2 "
+          className="text-sm font-medium text-slate-500 ms-2 "
         >
           Staff Must Check In Manually
         </label>
@@ -505,7 +511,7 @@ const Step3Content = ({ onSave }) => (
         />
         <label
           htmlFor="default-radio-2"
-          className="text-sm font-medium text-gray-900 ms-2 "
+          className="text-sm font-medium text-slate-500 ms-2 "
         >
           Staff Can Check In from Anywhere
         </label>
@@ -521,10 +527,10 @@ const Step3Content = ({ onSave }) => (
         />
         <label
           htmlFor="default-radio-1"
-          className="text-sm font-medium text-gray-900 ms-2 "
+          className="text-sm font-medium text-slate-500 ms-2 "
         >
           Geo-Fenced Check-In
-          <span className="text-xs text-gray-500 ms-2">
+          <span className="text-xs text-gray-400 ms-2">
             (Restricted to Job Location)
           </span>
           <div className="mt-3 text-sm text-slate-500">
@@ -558,10 +564,10 @@ const Step3Content = ({ onSave }) => (
         />
         <label
           htmlFor="default-radio-1"
-          className="text-sm font-medium text-gray-900 ms-2 "
+          className="text-sm font-medium text-slate-500 ms-2 "
         >
           Allow auto Check-out
-          <span className="text-xs text-gray-500 ms-2">
+          <span className="text-xs text-gray-400 ms-2">
             (Automatically check staff in at job start time)
           </span>
         </label>
@@ -576,7 +582,7 @@ const Step3Content = ({ onSave }) => (
         />
         <label
           htmlFor="default-radio-2"
-          className="text-sm font-medium text-gray-900 ms-2 "
+          className="text-sm font-medium text-slate-500 ms-2 "
         >
           Staff Must Check Out Manually
         </label>
@@ -591,7 +597,7 @@ const Step3Content = ({ onSave }) => (
         />
         <label
           htmlFor="default-radio-2"
-          className="text-sm font-medium text-gray-900 ms-2 "
+          className="text-sm font-medium text-slate-500 ms-2 "
         >
           Staff Can Check Out from Anywhere
         </label>
@@ -606,10 +612,10 @@ const Step3Content = ({ onSave }) => (
         />
         <label
           htmlFor="default-radio-1"
-          className="text-sm font-medium text-gray-900 ms-2 "
+          className="text-sm font-medium text-slate-500 ms-2 "
         >
           Geo-Fenced Check-Out
-          <span className="text-xs text-gray-500 ms-2">
+          <span className="text-xs text-gray-400 ms-2">
             (Restricted to Job Location)
           </span>
           <div className="mt-3 text-sm text-slate-500">
@@ -652,7 +658,7 @@ const Step4Content = ({ onSave }) => (
       <span className="px-3 py-2 text-sm font-medium rounded-md text-slate-500 bg-slate-100">
         Step 4
       </span>
-      <h2 className="text-base font-semibold text-slate-800">
+      <h2 className="text-base font-medium text-slate-800">
         Job Posting & Client Job Requests
       </h2>
     </div>
@@ -672,10 +678,10 @@ const Step4Content = ({ onSave }) => (
         />
         <label
           htmlFor="default-radio-1"
-          className="text-sm font-medium text-gray-900 ms-2 "
+          className="text-sm font-medium text-slate-500 ms-2 "
         >
           Clients Can Post Jobs Directly
-          <span className="text-xs text-gray-500 ms-2">
+          <span className="text-xs text-gray-400 ms-2">
             (Jobs go live immediately.)
           </span>
         </label>
@@ -690,10 +696,10 @@ const Step4Content = ({ onSave }) => (
         />
         <label
           htmlFor="default-radio-2"
-          className="text-sm font-medium text-gray-900 ms-2 "
+          className="text-sm font-medium text-slate-500 ms-2 "
         >
           Clients Can Create Job Requests & Submit for Agency Approval
-          <span className="text-xs text-gray-500 ms-2">
+          <span className="text-xs text-gray-400 ms-2">
             (Agency reviews job before posting.)
           </span>
         </label>
@@ -708,10 +714,10 @@ const Step4Content = ({ onSave }) => (
         />
         <label
           htmlFor="default-radio-2"
-          className="text-sm font-medium text-gray-900 ms-2 "
+          className="text-sm font-medium text-slate-500 ms-2 "
         >
           Agency Posts All Jobs Clients Cannot Post Jobs
-          <span className="text-xs text-gray-500 ms-2">
+          <span className="text-xs text-gray-400 ms-2">
             (Agency fully controls job postings.)
           </span>
         </label>
@@ -722,81 +728,101 @@ const Step4Content = ({ onSave }) => (
         How should staff respond to a job?
       </p>
 
-      <div className="flex items-center mb-2.5">
+      <div className="flex items-center mb-2.5 group cursor-pointer">
         <input
           id="default-radio-x"
           type="checkbox"
           value=""
           name="default-radiox"
-          className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary "
+          className="w-4 h-4 border-gray-300 rounded-sm text-primary focus:ring-primary "
         />
         <label
           htmlFor="default-radio-x"
-          className="text-sm font-medium text-gray-900 ms-2 "
+          className="text-sm font-medium text-slate-900 ms-2 "
         >
           Apply
-          <span className="text-xs text-gray-500 ms-2">
+          <span className="text-xs text-slate-500 ms-2">
             (I am fully available and interested in this shift)
           </span>
-          <FontAwesomeIcon
-            icon={faEdit}
-            className="text-primary ms-2"
-          ></FontAwesomeIcon>
+          <button className="invisible group-hover:visible">
+            <FontAwesomeIcon
+              icon={faEdit}
+              className="text-primary ms-2"
+            ></FontAwesomeIcon>
+          </button>
         </label>
       </div>
-      <div className="flex items-center mb-2.5">
+      <div className="flex items-center mb-2.5 group cursor-pointer">
         <input
           id="default-radio-x"
           type="checkbox"
           value=""
           name="default-radiox"
-          className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary "
+          className="w-4 h-4 border-gray-300 rounded-sm text-primary focus:ring-primary "
         />
         <label
           htmlFor="default-radio-x"
-          className="text-sm font-medium text-gray-900 ms-2 "
+          className="text-sm font-medium text-slate-900 ms-2 "
         >
           Counter Offer
-          <span className="text-xs text-gray-500 ms-2">
+          <span className="text-xs text-slate-500 ms-2">
             (Restricted to Job Location)
           </span>
+          <button className="invisible group-hover:visible">
+            <FontAwesomeIcon
+              icon={faEdit}
+              className="text-primary ms-2"
+            ></FontAwesomeIcon>
+          </button>
         </label>
       </div>
 
-      <div className="flex items-center mb-2.5">
+      <div className="flex items-center mb-2.5 group cursor-pointer">
         <input
           id="default-radio-22"
           type="checkbox"
           value=""
           name="default-radio2"
-          className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary "
+          className="w-4 h-4 border-gray-300 rounded-sm text-primary focus:ring-primary "
         />
         <label
           htmlFor="default-radio-22"
-          className="text-sm font-medium text-gray-900 ms-2 "
+          className="text-sm font-medium text-slate-900 ms-2 "
         >
           Standby
-          <span className="text-xs text-gray-500 ms-2">
+          <span className="text-xs text-slate-500 ms-2">
             (Consider me only if no one else is available)
           </span>
+          <button className="invisible group-hover:visible">
+            <FontAwesomeIcon
+              icon={faEdit}
+              className="text-primary ms-2"
+            ></FontAwesomeIcon>
+          </button>
         </label>
       </div>
-      <div className="flex items-center mb-2.5">
+      <div className="flex items-center mb-2.5 group cursor-pointer">
         <input
           id="default-radio-22"
           type="checkbox"
           value=""
           name="default-radio2"
-          className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary "
+          className="w-4 h-4 border-gray-300 rounded-sm text-primary focus:ring-primary "
         />
         <label
           htmlFor="default-radio-22"
-          className="text-sm font-medium text-gray-900 ms-2 "
+          className="text-sm font-medium text-slate-900 ms-2 "
         >
           Skip
-          <span className="text-xs text-gray-500 ms-2">
+          <span className="text-xs text-slate-500 ms-2">
             (I am not available for this shift)
           </span>
+          <button className="invisible group-hover:visible">
+            <FontAwesomeIcon
+              icon={faEdit}
+              className="text-primary ms-2"
+            ></FontAwesomeIcon>
+          </button>
         </label>
       </div>
       <button className="text-sm font-semibold text-primary">
@@ -816,7 +842,7 @@ const Step4Content = ({ onSave }) => (
         />
         <label
           htmlFor="default-radio-1"
-          className="text-sm font-medium text-gray-900 ms-2 "
+          className="text-sm font-medium text-gray-500 ms-2 "
         >
           Staff Cannot Swap Jobs
         </label>
@@ -831,10 +857,10 @@ const Step4Content = ({ onSave }) => (
         />
         <label
           htmlFor="default-radio-2"
-          className="text-sm font-medium text-gray-900 ms-2 "
+          className="text-sm font-medium text-gray-500 ms-2 "
         >
           Staff Can Request Job Swap
-          <span className="text-xs text-gray-500 ms-2">
+          <span className="text-xs text-slate-500 ms-2">
             (Restricted to Job Location)
           </span>
         </label>
@@ -849,10 +875,10 @@ const Step4Content = ({ onSave }) => (
         />
         <label
           htmlFor="default-radio-2"
-          className="text-sm font-medium text-gray-900 ms-2 "
+          className="text-sm font-medium text-gray-500 ms-2 "
         >
           Staff Can Swap Jobs Freely
-          <span className="text-xs text-gray-500 ms-2">
+          <span className="text-xs text-slate-500 ms-2">
             (No Approval Required)
           </span>
         </label>
@@ -881,7 +907,7 @@ const Step5Content = ({ onSave }) => (
       <span className="px-3 py-2 text-sm font-medium rounded-md text-slate-500 bg-slate-100">
         Step 5
       </span>
-      <h2 className="text-base font-semibold text-slate-800">
+      <h2 className="text-base font-medium text-slate-800">
         Batch Notification Settings
       </h2>
     </div>
@@ -900,8 +926,10 @@ const Step5Content = ({ onSave }) => (
           className="w-4 h-4 mt-1 bg-gray-100 border-gray-300 text-primary focus:ring-primary"
         />
         <div className="">
-          <strong>Notify all eligible staff immediately</strong>
-          <p className="text-sm text-gray-500">
+          <h2 className="text-base font-medium text-black">
+            Notify all eligible staff immediately
+          </h2>
+          <p className="text-sm text-slate-500">
             All eligible staff are notified of the job as soon as it is posted.
           </p>
         </div>
@@ -914,40 +942,44 @@ const Step5Content = ({ onSave }) => (
           className="w-4 h-4 mt-1 bg-gray-100 border-gray-300 text-primary focus:ring-primary"
         />
         <div className="w-full">
-          <strong>Send notifications in batches</strong>
-          <p className="text-sm text-gray-500">
+          <h2 className="text-base font-medium text-black">
+            Send notifications in batches
+          </h2>
+          <p className="text-sm text-slate-500">
             Notifications will be sent to small groups of staff over time.
           </p>
 
           <div className="w-full p-4 mt-4 rounded-lg bg-slate-100">
-            <div>
-              Batch Size:
+            <div className="text-sm">
+              <span className="text-slate-900"> Batch Size:</span>
               <label className="relative inline-flex items-center justify-end">
                 <input
                   type="number"
                   min={1}
                   max={100}
-                  className="w-20 h-8 border-gray-300 rounded-md ms-2 focus:ring-primary"
+                  className="w-20 border-gray-300 rounded-md h-7 ms-2 focus:ring-primary"
                 />
                 <span className="absolute px-2 py-0.5 rounded-sm bg-slate-100 me-1">
                   %
                 </span>
               </label>
-              <span className="ms-2"> staff per batch</span>
+              <span className="ms-2 text-slate-500"> staff per batch</span>
             </div>
 
-            <div>
-              Batch Interval{" "}
-              <span className="ms-2">Notify next batch after</span>
+            <div className="text-sm">
+              <span className="text-slate-900">Batch Interval</span>
+              <span className="ms-2 text-slate-500">
+                Notify next batch after
+              </span>
               <label className="relative inline-flex items-center justify-end">
                 <input
                   type="number"
                   min={1}
                   max={100}
-                  className="w-20 h-8 border-gray-300 rounded-md ms-2 focus:ring-primary"
+                  className="w-20 border-gray-300 rounded-md h-7 ms-2 focus:ring-primary"
                 />
               </label>
-              <span className="ms-2"> minutes</span>
+              <span className="ms-2 text-slate-500"> minutes</span>
             </div>
           </div>
 
@@ -962,16 +994,13 @@ const Step5Content = ({ onSave }) => (
                 type="checkbox"
                 value=""
                 name="default-radiox"
-                className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary "
+                className="w-4 h-4 border-gray-300 rounded-sm text-primary focus:ring-primary "
               />
               <label
                 htmlFor="default-radio-x"
-                className="text-sm font-medium text-gray-900 ms-2 "
+                className="text-sm font-medium text-slate-900 ms-2 "
               >
                 Staff with prior work experience at this job
-                <span className="text-xs text-gray-500 ms-2">
-                  (I am fully available and interested in this shift)
-                </span>
               </label>
             </div>
             <div className="flex items-center mb-2.5">
@@ -980,11 +1009,11 @@ const Step5Content = ({ onSave }) => (
                 type="checkbox"
                 value=""
                 name="default-radiox"
-                className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary "
+                className="w-4 h-4 border-gray-300 rounded-sm text-primary focus:ring-primary "
               />
               <label
                 htmlFor="default-radio-x"
-                className="text-sm font-medium text-gray-900 ms-2 "
+                className="text-sm font-medium text-slate-900 ms-2 "
               >
                 Staff with fewer assigned jobs
               </label>
@@ -996,11 +1025,11 @@ const Step5Content = ({ onSave }) => (
                 type="checkbox"
                 value=""
                 name="default-radio2"
-                className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary "
+                className="w-4 h-4 border-gray-300 rounded-sm text-primary focus:ring-primary "
               />
               <label
                 htmlFor="default-radio-22"
-                className="text-sm font-medium text-gray-900 ms-2 "
+                className="text-sm font-medium text-slate-900 ms-2 "
               >
                 Staff with higher ratings
               </label>
@@ -1011,11 +1040,11 @@ const Step5Content = ({ onSave }) => (
                 type="checkbox"
                 value=""
                 name="default-radio2"
-                className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary "
+                className="w-4 h-4 border-gray-300 rounded-sm text-primary focus:ring-primary "
               />
               <label
                 htmlFor="default-radio-22"
-                className="text-sm font-medium text-gray-900 ms-2 "
+                className="text-sm font-medium text-slate-900 ms-2 "
               >
                 Staff closest to the job location
               </label>
@@ -1032,8 +1061,10 @@ const Step5Content = ({ onSave }) => (
           className="w-4 h-4 mt-1 bg-gray-100 border-gray-300 text-primary focus:ring-primary"
         />
         <div>
-          <strong>Notification settings can be set at each job level</strong>
-          <p className="text-sm text-gray-500">
+          <h2 className="text-base font-medium text-black">
+            Notification settings can be set at each job level
+          </h2>
+          <p className="text-sm text-slate-500">
             Allows admins to customize notifications per job.
           </p>
         </div>
@@ -1062,7 +1093,7 @@ const Step6Content = ({ onSave }) => (
       <span className="px-3 py-2 text-sm font-medium rounded-md text-slate-500 bg-slate-100">
         Step 6
       </span>
-      <h2 className="text-base font-semibold text-slate-800">
+      <h2 className="text-base font-medium text-slate-800">
         Notifications & Reminders
       </h2>
     </div>
@@ -1077,7 +1108,7 @@ const Step6Content = ({ onSave }) => (
         <label className="inline-flex items-start mb-5 cursor-pointer">
           <input type="checkbox" value="" className="sr-only peer" />
           <div className="relative w-9 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary/25  rounded-full peer  peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[1.5px] after:start-[1.5px] after:bg-white after:border-gray-300 after:border after:rounded-full after:w-4 after:h-4 after:transition-all  peer-checked:bg-primary "></div>
-          <span className="text-sm font-medium text-gray-900 ms-3 ">
+          <span className="text-base font-medium text-black ms-3 ">
             Push Notification
             <span className="block text-sm text-slate-500">
               Sent via mobile app notifications.
@@ -1088,7 +1119,7 @@ const Step6Content = ({ onSave }) => (
         <label className="inline-flex items-start mb-5 cursor-pointer">
           <input type="checkbox" value="" className="sr-only peer" />
           <div className="relative w-9 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary/25  rounded-full peer  peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[1.5px] after:start-[1.5px] after:bg-white after:border-gray-300 after:border after:rounded-full after:w-4 after:h-4 after:transition-all  peer-checked:bg-primary "></div>
-          <span className="text-sm font-medium text-gray-900 ms-3 ">
+          <span className="text-base font-medium text-black ms-3 ">
             In-App Notification
             <span className="block text-sm text-slate-500">
               Visible within the platform.
@@ -1099,7 +1130,7 @@ const Step6Content = ({ onSave }) => (
         <label className="inline-flex items-start mb-5 cursor-pointer">
           <input type="checkbox" value="" className="sr-only peer" />
           <div className="relative w-9 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary/25  rounded-full peer  peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[1.5px] after:start-[1.5px] after:bg-white after:border-gray-300 after:border after:rounded-full after:w-4 after:h-4 after:transition-all  peer-checked:bg-primary "></div>
-          <span className="text-sm font-medium text-gray-900 ms-3 ">
+          <span className="text-base font-medium text-black ms-3 ">
             Email Notification
             <span className="block text-sm text-slate-500">
               Sent to staff’s registered email.
@@ -1109,7 +1140,7 @@ const Step6Content = ({ onSave }) => (
       </div>
     </div>
 
-    <div className="pb-4 mb-4 border-b">
+    <div className="pb-4 mb-4">
       <div className="mb-4">
         <p className="text-lg font-medium text-black ">
           Enable notifications for staff/admin/manager?
@@ -1147,11 +1178,11 @@ const Step6Content = ({ onSave }) => (
                   id="checkbox-1"
                   type="checkbox"
                   value=""
-                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                  className="w-4 h-4 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
                 />
               </td>
               <td className="px-6 py-4">
-                <span className="text-sm font-medium text-gray-900">
+                <span className="text-sm text-slate-900">
                   New job notification
                 </span>
               </td>
@@ -1160,7 +1191,7 @@ const Step6Content = ({ onSave }) => (
                   id="checkbox-1"
                   type="checkbox"
                   value=""
-                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                  className="w-4 h-4 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
                 />
               </td>
               <td className="px-6 py-4">
@@ -1168,7 +1199,7 @@ const Step6Content = ({ onSave }) => (
                   id="checkbox-1"
                   type="checkbox"
                   value=""
-                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                  className="w-4 h-4 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
                 />
               </td>
               <td className="w-32 px-6 py-4">
@@ -1176,7 +1207,7 @@ const Step6Content = ({ onSave }) => (
                   id="checkbox-1"
                   type="checkbox"
                   value=""
-                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                  className="w-4 h-4 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
                 />
               </td>
             </tr>
@@ -1190,20 +1221,18 @@ const Step6Content = ({ onSave }) => (
                   id="checkbox-1"
                   type="checkbox"
                   value=""
-                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                  className="w-4 h-4 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
                 />
               </td>
               <td className="px-6 py-4">
-                <span className="text-sm font-medium text-gray-900">
-                  Shift reminders
-                </span>
+                <span className="text-sm text-slate-900">Shift reminders</span>
               </td>
               <td className="px-6 py-4">
                 <input
                   id="checkbox-1"
                   type="checkbox"
                   value=""
-                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                  className="w-4 h-4 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
                 />
               </td>
               <td className="px-6 py-4">
@@ -1211,7 +1240,7 @@ const Step6Content = ({ onSave }) => (
                   id="checkbox-1"
                   type="checkbox"
                   value=""
-                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                  className="w-4 h-4 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
                 />
               </td>
               <td className="w-32 px-6 py-4">
@@ -1219,7 +1248,7 @@ const Step6Content = ({ onSave }) => (
                   id="checkbox-1"
                   type="checkbox"
                   value=""
-                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                  className="w-4 h-4 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
                 />
               </td>
             </tr>
@@ -1233,11 +1262,11 @@ const Step6Content = ({ onSave }) => (
                   id="checkbox-1"
                   type="checkbox"
                   value=""
-                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                  className="w-4 h-4 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
                 />
               </td>
               <td className="px-6 py-4">
-                <span className="text-sm font-medium text-gray-900">
+                <span className="text-sm text-slate-900">
                   Check-In reminders
                 </span>
               </td>
@@ -1246,7 +1275,7 @@ const Step6Content = ({ onSave }) => (
                   id="checkbox-1"
                   type="checkbox"
                   value=""
-                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                  className="w-4 h-4 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
                 />
               </td>
               <td className="px-6 py-4">
@@ -1254,7 +1283,7 @@ const Step6Content = ({ onSave }) => (
                   id="checkbox-1"
                   type="checkbox"
                   value=""
-                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                  className="w-4 h-4 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
                 />
               </td>
               <td className="w-32 px-6 py-4">
@@ -1262,7 +1291,7 @@ const Step6Content = ({ onSave }) => (
                   id="checkbox-1"
                   type="checkbox"
                   value=""
-                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                  className="w-4 h-4 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
                 />
               </td>
             </tr>
@@ -1276,11 +1305,11 @@ const Step6Content = ({ onSave }) => (
                   id="checkbox-1"
                   type="checkbox"
                   value=""
-                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                  className="w-4 h-4 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
                 />
               </td>
               <td className="px-6 py-4">
-                <span className="text-sm font-medium text-gray-900">
+                <span className="text-sm text-slate-900">
                   Job no longer available status update for unsuccessful
                   candidates
                 </span>
@@ -1290,7 +1319,7 @@ const Step6Content = ({ onSave }) => (
                   id="checkbox-1"
                   type="checkbox"
                   value=""
-                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                  className="w-4 h-4 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
                 />
               </td>
               <td className="px-6 py-4">
@@ -1298,7 +1327,7 @@ const Step6Content = ({ onSave }) => (
                   id="checkbox-1"
                   type="checkbox"
                   value=""
-                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                  className="w-4 h-4 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
                 />
               </td>
               <td className="w-32 px-6 py-4">
@@ -1306,7 +1335,7 @@ const Step6Content = ({ onSave }) => (
                   id="checkbox-1"
                   type="checkbox"
                   value=""
-                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                  className="w-4 h-4 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
                 />
               </td>
             </tr>
@@ -1320,11 +1349,11 @@ const Step6Content = ({ onSave }) => (
                   id="checkbox-1"
                   type="checkbox"
                   value=""
-                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                  className="w-4 h-4 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
                 />
               </td>
               <td className="px-6 py-4">
-                <span className="text-sm font-medium text-gray-900">
+                <span className="text-sm text-slate-900">
                   New Client Job Requests
                 </span>
               </td>
@@ -1333,7 +1362,7 @@ const Step6Content = ({ onSave }) => (
                   id="checkbox-1"
                   type="checkbox"
                   value=""
-                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                  className="w-4 h-4 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
                 />
               </td>
               <td className="px-6 py-4">
@@ -1341,7 +1370,7 @@ const Step6Content = ({ onSave }) => (
                   id="checkbox-1"
                   type="checkbox"
                   value=""
-                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                  className="w-4 h-4 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
                 />
               </td>
               <td className="w-32 px-6 py-4">
@@ -1349,7 +1378,7 @@ const Step6Content = ({ onSave }) => (
                   id="checkbox-1"
                   type="checkbox"
                   value=""
-                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                  className="w-4 h-4 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
                 />
               </td>
             </tr>
@@ -1363,11 +1392,11 @@ const Step6Content = ({ onSave }) => (
                   id="checkbox-1"
                   type="checkbox"
                   value=""
-                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                  className="w-4 h-4 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
                 />
               </td>
               <td className="px-6 py-4">
-                <span className="text-sm font-medium text-gray-900">
+                <span className="text-sm text-slate-900">
                   Job swap approval updates
                 </span>
               </td>
@@ -1376,7 +1405,7 @@ const Step6Content = ({ onSave }) => (
                   id="checkbox-1"
                   type="checkbox"
                   value=""
-                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                  className="w-4 h-4 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
                 />
               </td>
               <td className="px-6 py-4">
@@ -1384,7 +1413,7 @@ const Step6Content = ({ onSave }) => (
                   id="checkbox-1"
                   type="checkbox"
                   value=""
-                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                  className="w-4 h-4 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
                 />
               </td>
               <td className="w-32 px-6 py-4">
@@ -1392,7 +1421,7 @@ const Step6Content = ({ onSave }) => (
                   id="checkbox-1"
                   type="checkbox"
                   value=""
-                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                  className="w-4 h-4 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
                 />
               </td>
             </tr>
@@ -1406,11 +1435,11 @@ const Step6Content = ({ onSave }) => (
                   id="checkbox-1"
                   type="checkbox"
                   value=""
-                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                  className="w-4 h-4 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
                 />
               </td>
               <td className="px-6 py-4">
-                <span className="text-sm font-medium text-gray-900">
+                <span className="text-sm text-slate-900">
                   Staff responses - apply notifications
                 </span>
               </td>
@@ -1419,7 +1448,7 @@ const Step6Content = ({ onSave }) => (
                   id="checkbox-1"
                   type="checkbox"
                   value=""
-                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                  className="w-4 h-4 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
                 />
               </td>
               <td className="px-6 py-4">
@@ -1427,7 +1456,7 @@ const Step6Content = ({ onSave }) => (
                   id="checkbox-1"
                   type="checkbox"
                   value=""
-                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                  className="w-4 h-4 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
                 />
               </td>
               <td className="w-32 px-6 py-4">
@@ -1435,7 +1464,7 @@ const Step6Content = ({ onSave }) => (
                   id="checkbox-1"
                   type="checkbox"
                   value=""
-                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                  className="w-4 h-4 border-gray-300 rounded-sm b text-primary focus:ring-primary focus:ring-2 "
                 />
               </td>
             </tr>
@@ -1449,11 +1478,11 @@ const Step6Content = ({ onSave }) => (
                   id="checkbox-1"
                   type="checkbox"
                   value=""
-                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                  className="w-4 h-4 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
                 />
               </td>
               <td className="px-6 py-4">
-                <span className="text-sm font-medium text-gray-900">
+                <span className="text-sm text-slate-900">
                   Staff responses - counter offer notifications
                 </span>
               </td>
@@ -1462,7 +1491,7 @@ const Step6Content = ({ onSave }) => (
                   id="checkbox-1"
                   type="checkbox"
                   value=""
-                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                  className="w-4 h-4 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
                 />
               </td>
               <td className="px-6 py-4">
@@ -1470,7 +1499,7 @@ const Step6Content = ({ onSave }) => (
                   id="checkbox-1"
                   type="checkbox"
                   value=""
-                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                  className="w-4 h-4 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
                 />
               </td>
               <td className="w-32 px-6 py-4">
@@ -1478,7 +1507,7 @@ const Step6Content = ({ onSave }) => (
                   id="checkbox-1"
                   type="checkbox"
                   value=""
-                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                  className="w-4 h-4 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
                 />
               </td>
             </tr>
@@ -1492,11 +1521,11 @@ const Step6Content = ({ onSave }) => (
                   id="checkbox-1"
                   type="checkbox"
                   value=""
-                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                  className="w-4 h-4 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
                 />
               </td>
               <td className="px-6 py-4">
-                <span className="text-sm font-medium text-gray-900">
+                <span className="text-sm text-slate-900">
                   Staff responses - standby notifications
                 </span>
               </td>
@@ -1505,7 +1534,7 @@ const Step6Content = ({ onSave }) => (
                   id="checkbox-1"
                   type="checkbox"
                   value=""
-                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                  className="w-4 h-4 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
                 />
               </td>
               <td className="px-6 py-4">
@@ -1513,7 +1542,7 @@ const Step6Content = ({ onSave }) => (
                   id="checkbox-1"
                   type="checkbox"
                   value=""
-                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                  className="w-4 h-4 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
                 />
               </td>
               <td className="w-32 px-6 py-4">
@@ -1521,7 +1550,7 @@ const Step6Content = ({ onSave }) => (
                   id="checkbox-1"
                   type="checkbox"
                   value=""
-                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                  className="w-4 h-4 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
                 />
               </td>
             </tr>
@@ -1535,11 +1564,11 @@ const Step6Content = ({ onSave }) => (
                   id="checkbox-1"
                   type="checkbox"
                   value=""
-                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                  className="w-4 h-4 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
                 />
               </td>
               <td className="px-6 py-4">
-                <span className="text-sm font-medium text-gray-900">
+                <span className="text-sm text-slate-900">
                   Staff responses - decline notifications
                 </span>
               </td>
@@ -1548,7 +1577,7 @@ const Step6Content = ({ onSave }) => (
                   id="checkbox-1"
                   type="checkbox"
                   value=""
-                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                  className="w-4 h-4 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
                 />
               </td>
               <td className="px-6 py-4">
@@ -1556,7 +1585,7 @@ const Step6Content = ({ onSave }) => (
                   id="checkbox-1"
                   type="checkbox"
                   value=""
-                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                  className="w-4 h-4 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
                 />
               </td>
               <td className="w-32 px-6 py-4">
@@ -1564,7 +1593,7 @@ const Step6Content = ({ onSave }) => (
                   id="checkbox-1"
                   type="checkbox"
                   value=""
-                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                  className="w-4 h-4 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
                 />
               </td>
             </tr>
@@ -1578,11 +1607,11 @@ const Step6Content = ({ onSave }) => (
                   id="checkbox-1"
                   type="checkbox"
                   value=""
-                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                  className="w-4 h-4 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
                 />
               </td>
               <td className="px-6 py-4">
-                <span className="text-sm font-medium text-gray-900">
+                <span className="text-sm text-slate-900">
                   Job swap approval updates
                 </span>
               </td>
@@ -1591,7 +1620,7 @@ const Step6Content = ({ onSave }) => (
                   id="checkbox-1"
                   type="checkbox"
                   value=""
-                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                  className="w-4 h-4 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
                 />
               </td>
               <td className="px-6 py-4">
@@ -1599,7 +1628,7 @@ const Step6Content = ({ onSave }) => (
                   id="checkbox-1"
                   type="checkbox"
                   value=""
-                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                  className="w-4 h-4 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
                 />
               </td>
               <td className="w-32 px-6 py-4">
@@ -1607,7 +1636,7 @@ const Step6Content = ({ onSave }) => (
                   id="checkbox-1"
                   type="checkbox"
                   value=""
-                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                  className="w-4 h-4 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
                 />
               </td>
             </tr>
@@ -1621,11 +1650,11 @@ const Step6Content = ({ onSave }) => (
                   id="checkbox-1"
                   type="checkbox"
                   value=""
-                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                  className="w-4 h-4 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
                 />
               </td>
               <td className="px-6 py-4">
-                <span className="text-sm font-medium text-gray-900">
+                <span className="text-sm text-slate-900">
                   Job under offer notifications
                 </span>
               </td>
@@ -1634,7 +1663,7 @@ const Step6Content = ({ onSave }) => (
                   id="checkbox-1"
                   type="checkbox"
                   value=""
-                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                  className="w-4 h-4 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
                 />
               </td>
               <td className="px-6 py-4">
@@ -1642,7 +1671,7 @@ const Step6Content = ({ onSave }) => (
                   id="checkbox-1"
                   type="checkbox"
                   value=""
-                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                  className="w-4 h-4 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
                 />
               </td>
               <td className="w-32 px-6 py-4">
@@ -1650,7 +1679,7 @@ const Step6Content = ({ onSave }) => (
                   id="checkbox-1"
                   type="checkbox"
                   value=""
-                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                  className="w-4 h-4 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
                 />
               </td>
             </tr>
@@ -1664,11 +1693,11 @@ const Step6Content = ({ onSave }) => (
                   id="checkbox-1"
                   type="checkbox"
                   value=""
-                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                  className="w-4 h-4 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
                 />
               </td>
               <td className="px-6 py-4">
-                <span className="text-sm font-medium text-gray-900">
+                <span className="text-sm text-slate-900">
                   Late/Missed Check-Ins
                 </span>
               </td>
@@ -1677,7 +1706,7 @@ const Step6Content = ({ onSave }) => (
                   id="checkbox-1"
                   type="checkbox"
                   value=""
-                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                  className="w-4 h-4 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
                 />
               </td>
               <td className="px-6 py-4">
@@ -1685,7 +1714,7 @@ const Step6Content = ({ onSave }) => (
                   id="checkbox-1"
                   type="checkbox"
                   value=""
-                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                  className="w-4 h-4 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
                 />
               </td>
               <td className="w-32 px-6 py-4">
@@ -1693,7 +1722,7 @@ const Step6Content = ({ onSave }) => (
                   id="checkbox-1"
                   type="checkbox"
                   value=""
-                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                  className="w-4 h-4 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
                 />
               </td>
             </tr>
@@ -1707,11 +1736,11 @@ const Step6Content = ({ onSave }) => (
                   id="checkbox-1"
                   type="checkbox"
                   value=""
-                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                  className="w-4 h-4 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
                 />
               </td>
               <td className="px-6 py-4">
-                <span className="text-sm font-medium text-gray-900">
+                <span className="text-sm text-slate-900">
                   Expiring staff documents
                 </span>
               </td>
@@ -1720,7 +1749,7 @@ const Step6Content = ({ onSave }) => (
                   id="checkbox-1"
                   type="checkbox"
                   value=""
-                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                  className="w-4 h-4 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
                 />
               </td>
               <td className="px-6 py-4">
@@ -1728,7 +1757,7 @@ const Step6Content = ({ onSave }) => (
                   id="checkbox-1"
                   type="checkbox"
                   value=""
-                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                  className="w-4 h-4 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
                 />
               </td>
               <td className="w-32 px-6 py-4">
@@ -1736,7 +1765,7 @@ const Step6Content = ({ onSave }) => (
                   id="checkbox-1"
                   type="checkbox"
                   value=""
-                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                  className="w-4 h-4 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
                 />
               </td>
             </tr>
@@ -1750,11 +1779,11 @@ const Step6Content = ({ onSave }) => (
                   id="checkbox-1"
                   type="checkbox"
                   value=""
-                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                  className="w-4 h-4 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
                 />
               </td>
               <td className="px-6 py-4">
-                <span className="text-sm font-medium text-gray-900">
+                <span className="text-sm text-slate-900">
                   Compliance notifications
                 </span>
               </td>
@@ -1763,7 +1792,7 @@ const Step6Content = ({ onSave }) => (
                   id="checkbox-1"
                   type="checkbox"
                   value=""
-                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                  className="w-4 h-4 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
                 />
               </td>
               <td className="px-6 py-4">
@@ -1771,7 +1800,7 @@ const Step6Content = ({ onSave }) => (
                   id="checkbox-1"
                   type="checkbox"
                   value=""
-                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                  className="w-4 h-4 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
                 />
               </td>
               <td className="w-32 px-6 py-4">
@@ -1779,12 +1808,12 @@ const Step6Content = ({ onSave }) => (
                   id="checkbox-1"
                   type="checkbox"
                   value=""
-                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                  className="w-4 h-4 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
                 />
               </td>
             </tr>
 
-            <tr className="bg-white border-b cursor-pointer hover:bg-slate-100">
+            <tr className="bg-white cursor-pointer hover:bg-slate-100">
               <td
                 scope="row"
                 className={`flex items-center px-6 py-4 text-gray-900 whitespace-nowrap`}
@@ -1793,11 +1822,11 @@ const Step6Content = ({ onSave }) => (
                   id="checkbox-1"
                   type="checkbox"
                   value=""
-                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                  className="w-4 h-4 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
                 />
               </td>
               <td className="px-6 py-4">
-                <span className="text-sm font-medium text-gray-900">
+                <span className="text-sm text-slate-900">
                   New message notifications
                 </span>
               </td>
@@ -1806,7 +1835,7 @@ const Step6Content = ({ onSave }) => (
                   id="checkbox-1"
                   type="checkbox"
                   value=""
-                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                  className="w-4 h-4 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
                 />
               </td>
               <td className="px-6 py-4">
@@ -1814,7 +1843,7 @@ const Step6Content = ({ onSave }) => (
                   id="checkbox-1"
                   type="checkbox"
                   value=""
-                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                  className="w-4 h-4 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
                 />
               </td>
               <td className="w-32 px-6 py-4">
@@ -1822,7 +1851,7 @@ const Step6Content = ({ onSave }) => (
                   id="checkbox-1"
                   type="checkbox"
                   value=""
-                  className="w-4 h-4 bg-gray-100 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
+                  className="w-4 h-4 border-gray-300 rounded-sm text-primary focus:ring-primary focus:ring-2 "
                 />
               </td>
             </tr>
