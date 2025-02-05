@@ -2746,7 +2746,7 @@ const Page = ({ params }) => {
                         </div>
 
                         <span className="relative">
-                          <img src="/images/chatgreen.svg"></img>
+                          <img src="/images/chatGreen.svg"></img>
                           <span className="absolute w-3 h-3 bg-green-400 border-2 border-white rounded-full -top-2 left-6"></span>
                         </span>
                       </td>
