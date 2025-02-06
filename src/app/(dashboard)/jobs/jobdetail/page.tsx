@@ -50,7 +50,7 @@ const Page = () => {
 
   if (successNoti) {
     return (
-      <div className=" h-[calc(100vh-120px)] flex justify-center items-center">
+      <div className=" h-[calc(100vh-100px)] flex justify-center items-center">
         <div className="w-full max-w-4xl p-5 bg-white shadow rounded-xl">
           <div className="block mb-4 overflow-hidden ">
             <div className="grid-cols-[50px_1fr] grid overflow-hidden rounded-xl mb-6">
@@ -222,7 +222,7 @@ const Page = () => {
   }
 
   return (
-    <div className=" h-[calc(100vh-120px)]">
+    <div className=" h-[calc(100vh-100px)]">
       <div className="flex items-center justify-between gap-3 mb-4">
         <h2 className="text-2xl font-semibold text-modernGray900">
           Victoria Clinic

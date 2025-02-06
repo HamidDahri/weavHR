@@ -46,7 +46,7 @@ const Page = () => {
   }
 
   return (
-    <div className=" h-[calc(100vh-120px)]">
+    <div className=" h-[calc(100vh-100px)]">
       <div>
         <button
           onClick={() => setAddStaff(true)}
